@@ -1,5 +1,6 @@
 package com.hanjinliangi.androidstudy;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.blankj.utilcode.util.BarUtils;
+import com.hanjinliangi.androidstudy.systemwidget.SystemWidgetStudyActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -92,7 +94,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_gallery) {
             //系统View的学习
-
+            startActivity(new Intent(this, SystemWidgetStudyActivity.class));
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {

@@ -6,20 +6,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.hanjinliangi.androidstudy.systemwidget.SystemWidgetStudyActivity">
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="368dp"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp">
+        <ScrollView
+            android:layout_width="368dp"
+            android:layout_height="551dp"
+            tools:layout_editor_absoluteY="8dp"
+            tools:layout_editor_absoluteX="8dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/CoordinatorLayout"
+                    android:onClick="CoordinatorLayout"
+                    android:text="CoordinatorLayout学习"/>
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/Toolbar"
+                    android:onClick="Toolbar"
+                    android:text="Toolbar学习"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/AppBarLayout"
+                    android:onClick="AppBarLayout"
+                    android:text="AppBarLayout学习"/>
 
-    </android.support.design.widget.AppBarLayout>
 
+
+            </LinearLayout>
+        </ScrollView>
 </android.support.constraint.ConstraintLayout>

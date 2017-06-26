@@ -21,6 +21,11 @@
         </activity>
         <activity android:name=".systemwidget.SystemWidgetStudyActivity">
         </activity>
+        <activity android:name=".systemwidget.coordinatorlayout.CoordinatorLayoutActivity">
+        </activity>
+        <activity android:name=".systemwidget.appbarlayout.ToolBarActivity"/>
+        <activity android:name=".systemwidget.appbarlayout.AppBarLayoutActivity">
+        </activity>
     </application>
 
 </manifest>
