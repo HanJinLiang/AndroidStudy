@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hanjinliang.androidstudy.customerviews.horizontalselectedview.HorizontalSelectedViewActivity">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="V"
+            android:gravity="center"
+            />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:text="《"
+            android:gravity="center"
+            android:onClick="pre"/>
+    <com.hanjinliang.androidstudy.customerviews.horizontalselectedview.HorizontalSelectedView
+        android:id="@+id/HorizontalSelectedView"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        app:HorizontalSelectedViewCount="5"
+        app:HorizontalSelectedViewSelectedColor="@color/colorAccent"
+        app:HorizontalSelectedViewSelectedSize="20sp"
+        app:HorizontalSelectedViewUnselectedColor="@color/colorPrimary"
+        app:HorizontalSelectedViewUnselectedSize="14sp"/>
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:text="》"
+            android:gravity="center"
+            android:onClick="next"/>
+        </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#afafaf"/>
+
+</LinearLayout>

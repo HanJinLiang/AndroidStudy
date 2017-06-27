@@ -1,17 +1,13 @@
-package com.hanjinliangi.androidstudy.systemwidget.appbarlayout;
+package com.hanjinliang.androidstudy.systemwidget.appbarlayout;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.AppBarLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.WindowManager;
 
-import com.blankj.utilcode.util.BarUtils;
-import com.hanjinliangi.androidstudy.Common.BaseActivity;
-import com.hanjinliangi.androidstudy.R;
+import com.hanjinliang.androidstudy.Common.BaseActivity;
+import com.hanjinliang.androidstudy.R;
 
 /**
  * AppBarLayoutActivity学习

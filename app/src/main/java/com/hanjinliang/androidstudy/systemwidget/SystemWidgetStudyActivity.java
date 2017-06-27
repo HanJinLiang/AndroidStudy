@@ -1,15 +1,14 @@
-package com.hanjinliangi.androidstudy.systemwidget;
+package com.hanjinliang.androidstudy.systemwidget;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.hanjinliangi.androidstudy.R;
-import com.hanjinliangi.androidstudy.systemwidget.appbarlayout.AppBarLayoutActivity;
-import com.hanjinliangi.androidstudy.systemwidget.appbarlayout.ToolBarActivity;
-import com.hanjinliangi.androidstudy.systemwidget.coordinatorlayout.CoordinatorLayoutActivity;
+import com.hanjinliang.androidstudy.R;
+import com.hanjinliang.androidstudy.systemwidget.appbarlayout.AppBarLayoutActivity;
+import com.hanjinliang.androidstudy.systemwidget.appbarlayout.ToolBarActivity;
+import com.hanjinliang.androidstudy.systemwidget.coordinatorlayout.CoordinatorLayoutActivity;
 
 /**
  * 系统组件

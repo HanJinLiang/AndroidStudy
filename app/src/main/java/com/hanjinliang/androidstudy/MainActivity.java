@@ -1,11 +1,10 @@
-package com.hanjinliangi.androidstudy;
+package com.hanjinliang.androidstudy;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,7 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.blankj.utilcode.util.BarUtils;
-import com.hanjinliangi.androidstudy.systemwidget.SystemWidgetStudyActivity;
+import com.hanjinliang.androidstudy.customerviews.CustomerViewStudyActivity;
+import com.hanjinliang.androidstudy.systemwidget.SystemWidgetStudyActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // 自定义View学习
-
+            startActivity(new Intent(this, CustomerViewStudyActivity.class));
         } else if (id == R.id.nav_gallery) {
             //系统View的学习
             startActivity(new Intent(this, SystemWidgetStudyActivity.class));

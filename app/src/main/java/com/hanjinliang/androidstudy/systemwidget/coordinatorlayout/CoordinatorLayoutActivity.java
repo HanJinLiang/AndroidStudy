@@ -1,9 +1,9 @@
-package com.hanjinliangi.androidstudy.systemwidget.coordinatorlayout;
+package com.hanjinliang.androidstudy.systemwidget.coordinatorlayout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.hanjinliangi.androidstudy.R;
+import com.hanjinliang.androidstudy.R;
 
 /**
  * CoordinatorLayout   协调布局

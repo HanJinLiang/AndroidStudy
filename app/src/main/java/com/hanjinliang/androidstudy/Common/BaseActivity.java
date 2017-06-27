@@ -1,4 +1,4 @@
-package com.hanjinliangi.androidstudy.Common;
+package com.hanjinliang.androidstudy.Common;
 
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;

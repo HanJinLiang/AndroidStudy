@@ -1,14 +1,11 @@
-package com.hanjinliangi.androidstudy.systemwidget.coordinatorlayout;
+package com.hanjinliang.androidstudy.systemwidget.coordinatorlayout;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.FrameLayout;
 
 /**
  * Created by HanJinLiang on 2017-06-26.

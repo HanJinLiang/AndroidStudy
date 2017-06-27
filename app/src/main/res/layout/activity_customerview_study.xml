@@ -17,23 +17,15 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:id="@+id/CoordinatorLayout"
-                    android:onClick="CoordinatorLayout"
-                    android:text="CoordinatorLayout学习"/>
-
+                    android:id="@+id/HorizontalSelectedView"
+                    android:onClick="HorizontalSelectedView"
+                    android:text="HorizontalSelectedView"/>
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:id="@+id/Toolbar"
-                    android:onClick="Toolbar"
-                    android:text="Toolbar学习"/>
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:id="@+id/AppBarLayout"
-                    android:onClick="AppBarLayout"
-                    android:text="AppBarLayout学习"/>
-
+                    android:id="@+id/CustomerProgressBar"
+                    android:onClick="CustomerProgressBar"
+                    android:text="CustomerProgressBar"/>
 
 
             </LinearLayout>

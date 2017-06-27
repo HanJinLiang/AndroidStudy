@@ -1,18 +1,15 @@
-package com.hanjinliangi.androidstudy.systemwidget.appbarlayout;
+package com.hanjinliang.androidstudy.systemwidget.appbarlayout;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.blankj.utilcode.util.SnackbarUtils;
-import com.hanjinliangi.androidstudy.R;
+import com.hanjinliang.androidstudy.R;
 
 /**
  * Created by HanJinLiang on 2017-06-26.

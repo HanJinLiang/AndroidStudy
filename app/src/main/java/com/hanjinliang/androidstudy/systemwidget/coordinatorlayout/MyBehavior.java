@@ -1,4 +1,4 @@
-package com.hanjinliangi.androidstudy.systemwidget.coordinatorlayout;
+package com.hanjinliang.androidstudy.systemwidget.coordinatorlayout;
 
 import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;

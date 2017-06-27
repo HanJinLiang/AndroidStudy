@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hanjinliangi.androidstudy.systemwidget.coordinatorlayout.CoordinatorLayoutActivity">
+    tools:context="com.hanjinliang.androidstudy.systemwidget.coordinatorlayout.CoordinatorLayoutActivity">
     <Button
         android:id="@+id/btn"
         android:layout_width="wrap_content"
@@ -17,7 +17,7 @@
         app:layout_behavior="com.hanjinliangi.androidstudy.systemwidget.coordinatorlayout.MyBehavior"
       />
 
-    <com.hanjinliangi.androidstudy.systemwidget.coordinatorlayout.TempView
+    <com.hanjinliang.androidstudy.systemwidget.coordinatorlayout.TempView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginLeft="300dp"

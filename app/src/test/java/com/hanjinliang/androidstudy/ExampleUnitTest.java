@@ -1,4 +1,4 @@
-package com.hanjinliangi.androidstudy;
+package com.hanjinliang.androidstudy;
 
 import org.junit.Test;
 

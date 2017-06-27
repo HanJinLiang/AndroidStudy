@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="HorizontalSelectedView">
+        <!--一屏幕可见数量-->
+        <attr name="HorizontalSelectedViewCount" format="integer"/>
+        <!--被选择字体大小和颜色-->
+        <attr name="HorizontalSelectedViewSelectedSize" format="dimension"/>
+        <attr name="HorizontalSelectedViewSelectedColor" format="color|reference"/>
+        <!--没有被选择字体大小和颜色-->
+        <attr name="HorizontalSelectedViewUnselectedSize" format="dimension"/>
+        <attr name="HorizontalSelectedViewUnselectedColor" format="color|reference"/>
+    </declare-styleable>
+
+    <!--交替ProgressBar-->
+    <declare-styleable name="CustomerProgressBar">
+        <attr name="FirstColor" format="color"/>
+        <attr name="SecondColor" format="color"/>
+        <attr name="ProgressWidth" format="dimension"/>
+        <attr name="Speed" format="integer"/>
+    </declare-styleable>
+
+</resources>

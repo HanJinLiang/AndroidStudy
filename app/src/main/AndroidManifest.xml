@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.hanjinliangi.androidstudy">
+          package="com.hanjinliang.androidstudy">
 
     <application
         android:allowBackup="true"
@@ -25,6 +25,11 @@
         </activity>
         <activity android:name=".systemwidget.appbarlayout.ToolBarActivity"/>
         <activity android:name=".systemwidget.appbarlayout.AppBarLayoutActivity">
+        </activity>
+        <activity android:name=".customerviews.horizontalselectedview.HorizontalSelectedViewActivity">
+        </activity>
+        <activity android:name=".customerviews.CustomerViewStudyActivity"/>
+        <activity android:name=".customerviews.CustomerProgressBar.CustomerProgressBarActivity">
         </activity>
     </application>
 
