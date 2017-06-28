@@ -7,6 +7,9 @@ import android.view.View;
 
 import com.hanjinliang.androidstudy.R;
 import com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.CustomerProgressBarActivity;
+import com.hanjinliang.androidstudy.customerviews.EraserView.EraserViewActivity;
+import com.hanjinliang.androidstudy.customerviews.curve.CurveActivity;
+import com.hanjinliang.androidstudy.customerviews.curve.CurveView;
 import com.hanjinliang.androidstudy.customerviews.horizontalselectedview.HorizontalSelectedViewActivity;
 import com.hanjinliang.androidstudy.systemwidget.appbarlayout.AppBarLayoutActivity;
 import com.hanjinliang.androidstudy.systemwidget.appbarlayout.ToolBarActivity;
@@ -39,5 +42,19 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
         startActivity(new Intent(this, CustomerProgressBarActivity.class));
     }
 
+    /**
+     * Curve学习
+     * @param view
+     */
+    public void CurveView(View view){
+        startActivity(new Intent(this, CurveActivity.class));
+    }
+    /**
+     * EraserView学习  橡皮擦效果
+     * @param view
+     */
+    public void EraserView(View view){
+        startActivity(new Intent(this, EraserViewActivity.class));
+    }
 
 }

@@ -19,13 +19,27 @@
                     android:layout_height="50dp"
                     android:id="@+id/HorizontalSelectedView"
                     android:onClick="HorizontalSelectedView"
-                    android:text="HorizontalSelectedView"/>
+                    android:text="HorizontalSelectedView横向选择"/>
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:id="@+id/CustomerProgressBar"
                     android:onClick="CustomerProgressBar"
-                    android:text="CustomerProgressBar"/>
+                    android:text="CustomerProgressBar进度条"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/CurveView"
+                    android:onClick="CurveView"
+                    android:text="CurveView贝塞尔曲线"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/EraserView"
+                    android:onClick="EraserView"
+                    android:text="EraserView橡皮擦"/>
+
+
 
 
             </LinearLayout>

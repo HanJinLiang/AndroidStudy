@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.blankj.utilcode.util.BarUtils;
+import com.blankj.utilcode.util.Utils;
 import com.hanjinliang.androidstudy.customerviews.CustomerViewStudyActivity;
 import com.hanjinliang.androidstudy.systemwidget.SystemWidgetStudyActivity;
 
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.init(this);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

@@ -14,7 +14,7 @@
         android:layout_marginLeft="300dp"
         android:layout_marginTop="300dp"
         android:text="Hello"
-        app:layout_behavior="com.hanjinliangi.androidstudy.systemwidget.coordinatorlayout.MyBehavior"
+        app:layout_behavior="com.hanjinliang.androidstudy.systemwidget.coordinatorlayout.MyBehavior"
       />
 
     <com.hanjinliang.androidstudy.systemwidget.coordinatorlayout.TempView

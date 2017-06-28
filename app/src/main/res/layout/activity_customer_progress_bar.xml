@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/girl_bg"
     tools:context="com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.CustomerProgressBarActivity">
 
     <com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.CustomerProgressBar
-        android:layout_width="100dp"
-        android:layout_height="100dp"/>
-</android.support.constraint.ConstraintLayout>
+        android:layout_width="20dp"
+        android:layout_height="200dp"
+        app:ProgressWidth="20dp"
+        app:FirstColor="@color/colorAccent"
+        app:SecondColor="@color/colorPrimary"
+        app:Speed="10"
+        android:background="#ffffff"/>
+
+    <com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.CustomerProgressCircleView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_margin="20dp"/>
+
+</LinearLayout>

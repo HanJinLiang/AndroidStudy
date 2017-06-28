@@ -31,6 +31,10 @@
         <activity android:name=".customerviews.CustomerViewStudyActivity"/>
         <activity android:name=".customerviews.CustomerProgressBar.CustomerProgressBarActivity">
         </activity>
+        <activity android:name=".customerviews.curve.CurveActivity">
+        </activity>
+        <activity android:name=".customerviews.EraserView.EraserViewActivity">
+        </activity>
     </application>
 
 </manifest>
