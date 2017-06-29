@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hanjinliang.androidstudy.customerviews.circleimage.CircleImageViewActivity">
+
+    <com.hanjinliang.androidstudy.customerviews.circleimage.CircleImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_header"
+        android:scaleType="fitXY"/>
+</android.support.constraint.ConstraintLayout>

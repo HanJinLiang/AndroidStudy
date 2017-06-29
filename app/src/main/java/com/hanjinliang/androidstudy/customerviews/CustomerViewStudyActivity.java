@@ -8,6 +8,8 @@ import android.view.View;
 import com.hanjinliang.androidstudy.R;
 import com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.CustomerProgressBarActivity;
 import com.hanjinliang.androidstudy.customerviews.EraserView.EraserViewActivity;
+import com.hanjinliang.androidstudy.customerviews.EraserView.GuagualeViewActivity;
+import com.hanjinliang.androidstudy.customerviews.circleimage.CircleImageViewActivity;
 import com.hanjinliang.androidstudy.customerviews.curve.CurveActivity;
 import com.hanjinliang.androidstudy.customerviews.curve.CurveView;
 import com.hanjinliang.androidstudy.customerviews.horizontalselectedview.HorizontalSelectedViewActivity;
@@ -55,6 +57,21 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
      */
     public void EraserView(View view){
         startActivity(new Intent(this, EraserViewActivity.class));
+    }
+    /**
+     * GuagualeView学习  刮刮乐效果
+     * @param view
+     */
+    public void  GuagualeView(View view){
+        startActivity(new Intent(this,  GuagualeViewActivity.class));
+    }
+
+    /**
+     * CircleImageView学习  刮刮乐效果
+     * @param view
+     */
+    public void  CircleImageView(View view){
+        startActivity(new Intent(this,  CircleImageViewActivity.class));
     }
 
 }

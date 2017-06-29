@@ -38,6 +38,18 @@
                     android:id="@+id/EraserView"
                     android:onClick="EraserView"
                     android:text="EraserView橡皮擦"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/GuagualeView"
+                    android:onClick="GuagualeView"
+                    android:text="GuagualeView刮刮乐"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/CircleImageView"
+                    android:onClick="CircleImageView"
+                    android:text="CircleImageView圆形ImageView"/>
 
 
 
