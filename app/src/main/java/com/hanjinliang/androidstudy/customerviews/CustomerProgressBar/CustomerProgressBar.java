@@ -127,7 +127,6 @@ public class CustomerProgressBar extends View {
             @Override
             public void run() {
                 while (isRunning) {
-                    Log.e("startProgress","startProgress-"+mProgress);
                     try {
                         Thread.sleep(mSpeed);
                     } catch (InterruptedException e) {

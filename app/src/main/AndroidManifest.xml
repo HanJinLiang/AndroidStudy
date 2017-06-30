@@ -38,6 +38,8 @@
         <activity android:name=".customerviews.EraserView.GuagualeViewActivity"/>
         <activity android:name=".customerviews.circleimage.CircleImageViewActivity">
         </activity>
+        <activity android:name=".customerviews.radarview.RadarViewActivity">
+        </activity>
     </application>
 
 </manifest>

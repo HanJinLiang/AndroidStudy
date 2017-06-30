@@ -50,6 +50,12 @@
                     android:id="@+id/CircleImageView"
                     android:onClick="CircleImageView"
                     android:text="CircleImageView圆形ImageView"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/RadarView"
+                    android:onClick="RadarView"
+                    android:text="RadarView雷达"/>
 
 
 

@@ -171,7 +171,6 @@ public class CustomerProgressCircleView extends View {
             @Override
             public void run() {
                 while (isRunning) {
-                    Log.e("startProgress","startProgress-"+mPercent);
                     try {
                         Thread.sleep(500);
                     } catch (InterruptedException e) {

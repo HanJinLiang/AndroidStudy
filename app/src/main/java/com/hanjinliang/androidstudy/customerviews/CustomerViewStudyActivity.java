@@ -13,6 +13,7 @@ import com.hanjinliang.androidstudy.customerviews.circleimage.CircleImageViewAct
 import com.hanjinliang.androidstudy.customerviews.curve.CurveActivity;
 import com.hanjinliang.androidstudy.customerviews.curve.CurveView;
 import com.hanjinliang.androidstudy.customerviews.horizontalselectedview.HorizontalSelectedViewActivity;
+import com.hanjinliang.androidstudy.customerviews.radarview.RadarViewActivity;
 import com.hanjinliang.androidstudy.systemwidget.appbarlayout.AppBarLayoutActivity;
 import com.hanjinliang.androidstudy.systemwidget.appbarlayout.ToolBarActivity;
 import com.hanjinliang.androidstudy.systemwidget.coordinatorlayout.CoordinatorLayoutActivity;
@@ -72,6 +73,14 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
      */
     public void  CircleImageView(View view){
         startActivity(new Intent(this,  CircleImageViewActivity.class));
+    }
+
+    /**
+     * RadarView学习  l雷达
+     * @param view
+     */
+    public void  RadarView(View view){
+        startActivity(new Intent(this,  RadarViewActivity.class));
     }
 
 }
