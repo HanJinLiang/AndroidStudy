@@ -18,6 +18,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.Interpolator;
+import android.view.animation.LinearInterpolator;
 
 import com.blankj.utilcode.util.SizeUtils;
 
@@ -56,9 +57,6 @@ public class RadarView extends View {
         mRadarPaint.setStyle(Paint.Style.FILL);
         mRadarPaint.setColor(Color.GRAY);
         mRadarPaint.setStrokeWidth(SizeUtils.dp2px(1));
-
-
-
     }
 
 
@@ -95,6 +93,7 @@ public class RadarView extends View {
         super.onLayout(changed, left, top, right, bottom);
         mRadius=getWidth()/2;
         mRadarPaint.setShader(new SweepGradient(mRadius,mRadius,mStartColor,mEndColor));
+        initView();
     }
 
     @Override
@@ -112,14 +111,40 @@ public class RadarView extends View {
         //需要减去画笔的一般宽度
         canvas.drawCircle(mRadius,mRadius,mRadius-SizeUtils.dp2px(0.5f),mPaint);
 
+        canvas.save();
+        //旋转画布后再去描绘颜色  达到动态扫描效果
+        canvas.rotate(mDegrees,mRadius,mRadius);
         //画扫描前景
         canvas.drawCircle(mRadius,mRadius,mRadius-SizeUtils.dp2px(0.5f),mRadarPaint);
+        canvas.restore();
     }
 
+    public void startScan(){
+        if(mUpAnimator!=null&&!mUpAnimator.isRunning()){
+            mUpAnimator.start();
+        }
+    }
+
+    private int mDegrees=-90;
     ValueAnimator mUpAnimator;
-    private void upView(){
-            mUpAnimator= ObjectAnimator.ofFloat(this,"translationY",this.getTranslationY(),this.getTranslationY()-SizeUtils.dp2px(100));//上移100dp
-            mUpAnimator.setDuration(1000);
+
+    private void initView() {
+        mUpAnimator = ValueAnimator.ofInt(-90, 270);//从-90°开始旋转
+        mUpAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        mUpAnimator.setDuration(1000);
+        mUpAnimator.setInterpolator(new LinearInterpolator());
+        mUpAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                mDegrees = (int) animation.getAnimatedValue();
+                postInvalidate();
+            }
+        });
     }
 
+    public void stopScan() {
+        if(mUpAnimator!=null&mUpAnimator.isRunning()){
+            mUpAnimator.cancel();
+        }
+    }
 }
