@@ -40,6 +40,12 @@
         </activity>
         <activity android:name=".customerviews.radarview.RadarViewActivity">
         </activity>
+        <activity android:name=".customerviews.basestudy.patheffect.PathEffectActivity">
+        </activity>
+        <activity android:name=".customerviews.favorlayout.FavorLayoutActivity">
+        </activity>
+        <activity android:name=".customerviews.NinePhotoView.NinePhotoViewActivity">
+        </activity>
     </application>
 
 </manifest>

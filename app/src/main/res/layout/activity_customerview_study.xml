@@ -56,6 +56,25 @@
                     android:id="@+id/RadarView"
                     android:onClick="RadarView"
                     android:text="RadarView雷达"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/PathEffect"
+                    android:onClick="PathEffect"
+                    android:text="PathEffect学习"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/FavorLayout"
+                    android:onClick="FavorLayout"
+                    android:text="FavorLayout点赞layout"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/NinePhotoView"
+                    android:onClick="NinePhotoView"
+                    android:text="NinePhotoView上传图片布局"/>
 
 
 

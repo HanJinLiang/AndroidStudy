@@ -9,9 +9,12 @@ import com.hanjinliang.androidstudy.R;
 import com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.CustomerProgressBarActivity;
 import com.hanjinliang.androidstudy.customerviews.EraserView.EraserViewActivity;
 import com.hanjinliang.androidstudy.customerviews.EraserView.GuagualeViewActivity;
+import com.hanjinliang.androidstudy.customerviews.NinePhotoView.NinePhotoViewActivity;
+import com.hanjinliang.androidstudy.customerviews.basestudy.patheffect.PathEffectActivity;
 import com.hanjinliang.androidstudy.customerviews.circleimage.CircleImageViewActivity;
 import com.hanjinliang.androidstudy.customerviews.curve.CurveActivity;
 import com.hanjinliang.androidstudy.customerviews.curve.CurveView;
+import com.hanjinliang.androidstudy.customerviews.favorlayout.FavorLayoutActivity;
 import com.hanjinliang.androidstudy.customerviews.horizontalselectedview.HorizontalSelectedViewActivity;
 import com.hanjinliang.androidstudy.customerviews.radarview.RadarViewActivity;
 import com.hanjinliang.androidstudy.systemwidget.appbarlayout.AppBarLayoutActivity;
@@ -82,5 +85,30 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
     public void  RadarView(View view){
         startActivity(new Intent(this,  RadarViewActivity.class));
     }
+
+    /**
+     * PathEffect学习
+     * @param view
+     */
+    public void  PathEffect(View view){
+        startActivity(new Intent(this,  PathEffectActivity.class));
+    }
+
+    /**
+     * FavorLayout学习
+     * @param view
+     */
+    public void  FavorLayout(View view){
+        startActivity(new Intent(this,  FavorLayoutActivity.class));
+    }
+
+    /**
+     * NinePhotoView学习
+     * @param view
+     */
+    public void  NinePhotoView(View view){
+        startActivity(new Intent(this,  NinePhotoViewActivity.class));
+    }
+
 
 }
