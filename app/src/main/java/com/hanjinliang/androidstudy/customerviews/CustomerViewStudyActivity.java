@@ -9,6 +9,7 @@ import com.hanjinliang.androidstudy.R;
 import com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.CustomerProgressBarActivity;
 import com.hanjinliang.androidstudy.customerviews.EraserView.EraserViewActivity;
 import com.hanjinliang.androidstudy.customerviews.EraserView.GuagualeViewActivity;
+import com.hanjinliang.androidstudy.customerviews.NetsScoreView.NetsScoreViewActivity;
 import com.hanjinliang.androidstudy.customerviews.NinePhotoView.NinePhotoViewActivity;
 import com.hanjinliang.androidstudy.customerviews.basestudy.patheffect.PathEffectActivity;
 import com.hanjinliang.androidstudy.customerviews.circleimage.CircleImageViewActivity;
@@ -108,6 +109,13 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
      */
     public void  NinePhotoView(View view){
         startActivity(new Intent(this,  NinePhotoViewActivity.class));
+    }
+    /**
+     * NetsScoreView学习
+     * @param view
+     */
+    public void  NetsScoreView(View view){
+        startActivity(new Intent(this,  NetsScoreViewActivity.class));
     }
 
 

@@ -30,5 +30,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.blankj:utilcode:1.7.1'
     compile 'me.yifeiyuan.periscopelayout:library:1.0.0'
+    compile 'com.jph.takephoto:takephoto_library:4.0.3'
+    compile 'com.github.chrisbanes:PhotoView:2.0.0'
     testCompile 'junit:junit:4.12'
 }

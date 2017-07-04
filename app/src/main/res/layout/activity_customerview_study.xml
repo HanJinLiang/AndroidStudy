@@ -75,6 +75,12 @@
                     android:id="@+id/NinePhotoView"
                     android:onClick="NinePhotoView"
                     android:text="NinePhotoView上传图片布局"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/NetsScoreView"
+                    android:onClick="NetsScoreView"
+                    android:text="NetsScoreView网状积分控件"/>
 
 
 

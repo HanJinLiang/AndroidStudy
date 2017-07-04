@@ -19,6 +19,7 @@ import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.Utils;
 import com.hanjinliang.androidstudy.customerviews.CustomerViewStudyActivity;
 import com.hanjinliang.androidstudy.systemwidget.SystemWidgetStudyActivity;
+import com.hanjinliang.androidstudy.thirdLibs.ThirdLibActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -98,7 +99,8 @@ public class MainActivity extends AppCompatActivity
             //系统View的学习
             startActivity(new Intent(this, SystemWidgetStudyActivity.class));
         } else if (id == R.id.nav_slideshow) {
-
+            //第三方框架的学习
+            startActivity(new Intent(this, ThirdLibActivity.class));
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {

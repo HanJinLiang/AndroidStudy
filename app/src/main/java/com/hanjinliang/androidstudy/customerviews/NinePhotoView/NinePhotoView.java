@@ -3,23 +3,22 @@ package com.hanjinliang.androidstudy.customerviews.NinePhotoView;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatButton;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SizeUtils;
+import com.bumptech.glide.Glide;
 import com.hanjinliang.androidstudy.R;
 
+import java.io.File;
 import java.util.ArrayList;
-
-import static com.hanjinliang.androidstudy.R.drawable.banner;
-import static com.hanjinliang.androidstudy.R.drawable.girl_bg;
 
 /**
  * Created by HanJinLiang on 2017-07-03.
@@ -27,29 +26,25 @@ import static com.hanjinliang.androidstudy.R.drawable.girl_bg;
  * 参考http://www.jianshu.com/p/138b98095778
  */
 public class NinePhotoView extends ViewGroup {
-    public static final int MAX_PHOTO_NUMBER = 9;
-    public static final int MAX_LINE_NUMBER = 4;
-
-    private int[] constImageIds = { girl_bg, girl_bg,
-            girl_bg, girl_bg, girl_bg,
-            girl_bg, girl_bg, girl_bg,
-            banner };
+    public static final int MAX_PHOTO_NUMBER = 9;//照片最多个数
+    public static final int MAX_LINE_NUMBER = 4;//每一行最多多少个
 
     // horizontal space among children views
     int hSpace = SizeUtils.dp2px(10);
     // vertical space among children views
-    int vSpace =  SizeUtils.dp2px(10);
+    int vSpace = SizeUtils.dp2px(10);
 
     // every child view width and height.
     int childWidth = 0;
     int childHeight = 0;
 
-    // store images res id
-    ArrayList<String> mImageResArrayList = new ArrayList<String>();
+    // 照片的图片源
+    ArrayList<String> mImagePathList = new ArrayList<String>();
     private AppCompatButton addPhotoView;//添加按钮
+    private Context mContext;
 
     public NinePhotoView(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public NinePhotoView(Context context, AttributeSet attrs) {
@@ -58,7 +53,7 @@ public class NinePhotoView extends ViewGroup {
 
     public NinePhotoView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-
+        mContext = context;
 //        TypedArray t = context.obtainStyledAttributes(attrs,
 //                R.styleable.NinePhotoView, 0, 0);
 //        hSpace = t.getDimensionPixelSize(
@@ -68,10 +63,10 @@ public class NinePhotoView extends ViewGroup {
 //        t.recycle();
 
         addPhotoView = new AppCompatButton(context);
-        StateListDrawable stateListDrawable =new StateListDrawable();
+        StateListDrawable stateListDrawable = new StateListDrawable();
         // 设置选中状态
-        stateListDrawable.addState(new int[] { android.R.attr.state_pressed}, ContextCompat.getDrawable(context,R.drawable.add_photo_press));
-        stateListDrawable.addState(new int[]{},ContextCompat.getDrawable(context,R.drawable.add_photo));
+        stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, ContextCompat.getDrawable(context, R.drawable.add_photo_press));
+        stateListDrawable.addState(new int[]{}, ContextCompat.getDrawable(context, R.drawable.add_photo));
         addPhotoView.setBackgroundDrawable(stateListDrawable);
         addView(addPhotoView);
 
@@ -89,7 +84,7 @@ public class NinePhotoView extends ViewGroup {
         int rw = MeasureSpec.getSize(widthMeasureSpec);
         int rh = MeasureSpec.getSize(heightMeasureSpec);
         //计算每一个Child的宽度
-        childWidth = (rw - (MAX_LINE_NUMBER-1)* hSpace) / MAX_LINE_NUMBER;
+        childWidth = (rw - (MAX_LINE_NUMBER - 1) * hSpace) / MAX_LINE_NUMBER;
         childHeight = childWidth;
 
         int childCount = this.getChildCount();
@@ -116,7 +111,6 @@ public class NinePhotoView extends ViewGroup {
     protected void onLayout(boolean arg0, int arg1, int arg2, int arg3, int arg4) {
         int childCount = this.getChildCount();
         for (int i = 0; i < childCount; i++) {
-            final int index=i;
             final View child = this.getChildAt(i);
             LayoutParams lParams = (LayoutParams) child.getLayoutParams();
             child.layout(lParams.left, lParams.top, lParams.left + childWidth,
@@ -124,44 +118,103 @@ public class NinePhotoView extends ViewGroup {
         }
     }
 
-    public void addPhoto(int resId) {
-            final View newChild = new View(getContext());
-            newChild.setClickable(true);
-            addView(newChild,0);
-            requestLayout();
-            invalidate();
-            newChild.setBackgroundResource(resId);
-            newChild.setOnClickListener(new OnClickListener() {
+    /**
+     * 添加照片
+     * @param imgPath  照片的路径 使用Glide加载
+     *
+     */
+    public void addPhoto(final String imgPath) {
+        if (TextUtils.isEmpty(imgPath)) {
+            LogUtils.e("imgPath is null");
+            return;
+        }
+        if(mImagePathList.size()>=MAX_PHOTO_NUMBER){
+            LogUtils.e("超过最大数量"+MAX_PHOTO_NUMBER);
+            return;
+        }
+        final ImageView newChild = new ImageView(getContext());
+        newChild.setClickable(true);
+        addView(newChild, getChildCount()-1);//每次新增的插入到按钮前一个
+        requestLayout();
+        invalidate();
+        Glide.with(mContext).load(new File(imgPath)).into(newChild);
+        mImagePathList.add(imgPath);
+        newChild.setTag(imgPath);
+        newChild.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                addDeleteClick(newChild);
+                return true;
+            }
+        });
+        newChild.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addDeleteClick(newChild);
+                if (mOnClickListener != null) {
+                    mOnClickListener.onItemClick(getIndex(v), imgPath);
+                }
             }
-            });
-            if(getChildCount()==MAX_PHOTO_NUMBER+1){
-                removeView(addPhotoView);
-                return;
+        });
+        if (getChildCount() == MAX_PHOTO_NUMBER + 1) {
+            removeView(addPhotoView);
+            return;
+        }
+    }
+
+    /**
+     * 获取子View的index
+     * @param view
+     * @return
+     */
+    private int getIndex(View view){
+        for(int i=0;i<getChildCount();i++){
+            if(view==getChildAt(i)){
+                return i;
             }
+        }
+        return 0;
+    }
+
+    public void addPhotos(ArrayList<String> imgPaths) {
+        for (String imgPath : imgPaths) {
+            addPhoto(imgPath);
+        }
     }
 
 
     public void addPhotoBtnClick() {
-        final CharSequence[] items = { "Take Photo", "Photo from gallery" };
+        final CharSequence[] items = {"拍照", "相册"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setItems(items, new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
-                addPhoto(constImageIds[3]);
+                if (arg1 == 0) {
+                    if (mOnClickListener != null) {
+                        mOnClickListener.onOpenCameraClick();
+                    }
+                } else {
+                    if (mOnClickListener != null) {
+                        mOnClickListener.onTakePhotoClick();
+                    }
+                }
             }
 
         });
         builder.show();
     }
 
+    /**
+     * 获取选中照片
+     * @return
+     */
+    public ArrayList<String> getImagePathList() {
+        return mImagePathList;
+    }
 
     public void addDeleteClick(final View view) {
-        final CharSequence[] items = { "Delete Photo" };
+        final CharSequence[] items = {"删除"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setItems(items, new DialogInterface.OnClickListener() {
@@ -169,15 +222,41 @@ public class NinePhotoView extends ViewGroup {
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
                 removeView(view);
+                mImagePathList.remove(view.getTag());
                 requestLayout();
                 invalidate();
-                if(getChildCount()<MAX_PHOTO_NUMBER&&addPhotoView.getParent()==null){
-                    addView(addPhotoView,getChildCount());//添加addPhotoView
+                if (getChildCount() < MAX_PHOTO_NUMBER && addPhotoView.getParent() == null) {
+                    addView(addPhotoView, getChildCount());//添加addPhotoView
                 }
             }
 
         });
         builder.show();
+    }
+
+    OnClickListener mOnClickListener;
+
+    public void setOnClickListener(OnClickListener onClickListener) {
+        mOnClickListener = onClickListener;
+    }
+
+    public interface OnClickListener {
+        /**
+         * 相册
+         */
+        public void onTakePhotoClick();
+
+        /**
+         * 拍照
+         */
+        public void onOpenCameraClick();
+
+        /**
+         * 单个item点击
+         * @param index
+         * @param imgPath
+         */
+        public void onItemClick(int index, String imgPath);
     }
 
     public static class LayoutParams extends ViewGroup.LayoutParams {
