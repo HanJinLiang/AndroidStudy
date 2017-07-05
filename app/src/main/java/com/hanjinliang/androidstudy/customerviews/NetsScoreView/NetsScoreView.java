@@ -6,13 +6,11 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
-import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
 import com.blankj.utilcode.util.SizeUtils;
-import com.blankj.utilcode.util.Utils;
 
 
 /**
@@ -23,10 +21,9 @@ public class NetsScoreView extends View {
     private int mWidth;
     private int mHeight;
     private float mRadius;
-    private int mEdgeCount=6;//多边形边数
-    private int mMaxScore=100;
-    private float[] scores={40,58,70,20,9,39};
-
+    private int mEdgeCount=5;//多边形边数
+    private int mMaxScore=100;//最大值
+    private float[] scores={0,0,0,0,0};//分值
     private Context mContext;
     private Paint mNetsPaint;
     private Path mPath;
@@ -35,6 +32,7 @@ public class NetsScoreView extends View {
     private Paint mScoreTxtPaint;
 
     private float mTxtMaxLength;
+    private float mTxtHeight;
 
     public NetsScoreView(Context context) {
         this(context,null);
@@ -46,7 +44,9 @@ public class NetsScoreView extends View {
 
     public NetsScoreView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+
         mContext=context;
+        if (isInEditMode()) { return; }
         mNetsPaint=new Paint(Paint.ANTI_ALIAS_FLAG);
         mNetsPaint.setStyle(Paint.Style.STROKE);
         mNetsPaint.setStrokeWidth(SizeUtils.dp2px(1));
@@ -54,17 +54,17 @@ public class NetsScoreView extends View {
 
         mScoreLinePaint=new Paint(Paint.ANTI_ALIAS_FLAG);
         mScoreLinePaint.setStyle(Paint.Style.STROKE);
-        mScoreLinePaint.setStrokeWidth(SizeUtils.dp2px(1));
+        mScoreLinePaint.setStrokeWidth(dp2px(1));
         mScoreLinePaint.setColor(Color.RED);
 
         mScoreFillPaint=new Paint(Paint.ANTI_ALIAS_FLAG);
         mScoreFillPaint.setStyle(Paint.Style.FILL);
-        mScoreFillPaint.setStrokeWidth(SizeUtils.dp2px(1));
+        mScoreFillPaint.setStrokeWidth(dp2px(2));
         mScoreFillPaint.setColor(Color.argb(100,255,0,0));
 
         mScoreTxtPaint=new Paint(Paint.ANTI_ALIAS_FLAG);
         mScoreTxtPaint.setStyle(Paint.Style.FILL);
-        mScoreTxtPaint.setStrokeWidth(SizeUtils.dp2px(1));
+        mScoreTxtPaint.setStrokeWidth(dp2px(1));
         mScoreTxtPaint.setColor(Color.RED);
         mScoreTxtPaint.setTextAlign(Paint.Align.CENTER);
         mScoreTxtPaint.setTextSize(sp2px(12));
@@ -75,6 +75,20 @@ public class NetsScoreView extends View {
         mTxtMaxLength=getTxtMaxLength();
     }
 
+    public void setData(int edgeCount,float[] scores){
+        mEdgeCount=edgeCount;
+        this.scores=scores;
+        if(mEdgeCount!=scores.length){
+            try {
+                throw new Exception("变数和分数数组长度必须一致");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return;
+        }
+        invalidate();
+    }
+
     /**
      * 分数文字最大的值
      * @return
@@ -83,12 +97,40 @@ public class NetsScoreView extends View {
         Rect rect=new Rect();
         float maxLength=0;
         for(int i=0;i<mEdgeCount;i++){
-            mScoreTxtPaint.getTextBounds(scores[i]+"分",0,(scores[i]+"分").length(),rect);
+            mScoreTxtPaint.getTextBounds(getShowTxt(i),0,getShowTxt(i).length(),rect);
             if(rect.width()>maxLength){
                 maxLength=rect.width();
             }
         }
+        mTxtHeight=rect.height();
         return maxLength;
+    }
+
+    /**
+     * 根据分数获取要显示的txt
+     * @param index
+     * @return
+     */
+    private String getShowTxt(int index){
+        if(mTxtFormat==null){
+            return scores[index]+"";
+        }
+        return  mTxtFormat.originalDataFormat(index,scores[index]);
+    }
+
+    TxtFormat mTxtFormat;
+    public void setTxtFormat(TxtFormat txtFormat) {
+        //根据用户自定义format 重新计算最大宽度 以及半径
+        mTxtFormat = txtFormat;
+        mTxtMaxLength=getTxtMaxLength();
+        mRadius=mWidth/2-mTxtMaxLength;
+    }
+
+    /**
+     * 格式化显示数值
+     */
+    public interface TxtFormat{
+        public String originalDataFormat(int index,float value);
     }
 
     /**
@@ -112,7 +154,7 @@ public class NetsScoreView extends View {
         super.onLayout(changed, left, top, right, bottom);
         mWidth=getWidth();
         mHeight=getHeight();
-        mRadius=mWidth/2-mTxtMaxLength/2;
+        mRadius=mWidth/2-mTxtMaxLength;
     }
 
     @Override
@@ -122,11 +164,13 @@ public class NetsScoreView extends View {
         for(int i=1;i<=mEdgeCount;i++){
             drawPolygon(canvas,mEdgeCount,mRadius/mEdgeCount*i);
         }
-        drawCenterLine(canvas,mEdgeCount,mRadius);
+
+        drawCenterLine(canvas,mEdgeCount);
 
         drawScore(canvas,mEdgeCount);
 
         drawScoreTxt(canvas,mEdgeCount);
+        canvas.translate(-mWidth/2,-mWidth/2);
     }
 
     /**
@@ -136,40 +180,59 @@ public class NetsScoreView extends View {
      */
     private void drawScoreTxt(Canvas canvas, int edgeCount) {
         float radius=mRadius+mTxtMaxLength/2;
+        float nextAngle;
+        float nextRadians;
+        float nextPointX;
+        float nextPointY;
+
+        float averageAngle = 360 / edgeCount;
+        float offsetAngle = averageAngle > 0 && edgeCount % 2 == 0 ? averageAngle / 2 : 0;
+        for (int position = 0; position < edgeCount; position++) {
+            nextAngle = offsetAngle + (position * averageAngle);
+            nextRadians = (float) Math.toRadians(nextAngle);
+            nextPointX = (float) ( Math.sin(nextRadians) * radius);
+            nextPointY = (float) ( Math.cos(nextRadians) * radius);
+
+            canvas.drawText(getShowTxt(position),nextPointX,nextPointY+mTxtHeight/2,mScoreTxtPaint);
+        }
         for (int i=0;i<edgeCount;i++){
-            canvas.drawText(scores[i]+"分",radius*cos(360/edgeCount*i),radius*sin(360/edgeCount*i),mScoreTxtPaint);
+
         }
     }
 
+
     /**
-     *
+     *画分数覆盖图
      */
     private void drawScore(Canvas canvas, int edgeCount) {
         mPath.reset();
-        for (int i=0;i<edgeCount;i++){
-            float radius=scores[i]/mMaxScore*mRadius;
-            if (i==0){
-                mPath.moveTo(radius*cos(360/edgeCount*i),radius*sin(360/edgeCount*i));//绘制起点
+        float nextAngle;
+        float nextRadians;
+        float nextPointX;
+        float nextPointY;
+
+        float averageAngle = 360 / edgeCount;
+        float offsetAngle = averageAngle > 0 && edgeCount % 2 == 0 ? averageAngle / 2 : 0;
+        for (int position = 0; position < edgeCount; position++) {
+            float radius=scores[position]/mMaxScore*mRadius;
+            nextAngle = offsetAngle + (position * averageAngle);
+            nextRadians = (float) Math.toRadians(nextAngle);
+            nextPointX = (float) ( Math.sin(nextRadians) * radius);
+            nextPointY = (float) ( Math.cos(nextRadians) * radius);
+            canvas.drawPoint(nextPointX,nextPointY,mScoreFillPaint);
+            if(position == 0){
+                mPath.moveTo(nextPointX, nextPointY);
             }else{
-                mPath.lineTo(radius*cos(360/edgeCount*i),radius*sin(360/edgeCount*i));
+                mPath.lineTo(nextPointX, nextPointY);
             }
         }
+
         mPath.close();
         canvas.drawPath(mPath,mScoreLinePaint);
         canvas.drawPath(mPath,mScoreFillPaint);
     }
 
-    /**
-     * 画圆心到个顶点的连线
-     * @param canvas
-     * @param edgeCount
-     * @param radius
-     */
-    private void drawCenterLine(Canvas canvas, int edgeCount, float radius) {
-        for (int i=0;i<edgeCount;i++){
-            canvas.drawLine(0,0 ,radius*cos(360/edgeCount*i),radius*sin(360/edgeCount*i),mNetsPaint);
-        }
-    }
+
 
     /**
      * 画多边形
@@ -179,21 +242,51 @@ public class NetsScoreView extends View {
      */
     private void drawPolygon(Canvas canvas, int edgeCount, float radius) {
         mPath.reset();
-        for (int i=0;i<edgeCount;i++){
-            if (i==0){
-                mPath.moveTo(radius*cos(360/edgeCount*i),radius*sin(360/edgeCount*i));//绘制起点
+        float nextAngle;
+        float nextRadians;
+        float nextPointX;
+        float nextPointY;
+
+        float averageAngle = 360 / edgeCount;
+        float offsetAngle = averageAngle > 0 && edgeCount % 2 == 0 ? averageAngle / 2 : 0;
+        for (int position = 0; position < edgeCount; position++) {
+            nextAngle = offsetAngle + (position * averageAngle);
+            nextRadians = (float) Math.toRadians(nextAngle);
+            nextPointX = (float) ( Math.sin(nextRadians) * radius);
+            nextPointY = (float) ( Math.cos(nextRadians) * radius);
+
+            if(position == 0){
+                mPath.moveTo(nextPointX, nextPointY);
             }else{
-                mPath.lineTo(radius*cos(360/edgeCount*i),radius*sin(360/edgeCount*i));
+                mPath.lineTo(nextPointX, nextPointY);
             }
         }
+
         mPath.close();
         canvas.drawPath(mPath,mNetsPaint);
     }
 
-    float sin(int num){
-        return (float) Math.sin(num*Math.PI/180);
+    /**
+     * 画原点到各顶点的连线
+     * @param canvas
+     * @param edgeCount
+     */
+    private void drawCenterLine(Canvas canvas, int edgeCount) {
+        float nextAngle;
+        float nextRadians;
+        float nextPointX;
+        float nextPointY;
+
+        float averageAngle = 360 / edgeCount;
+        float offsetAngle = averageAngle > 0 && edgeCount % 2 == 0 ? averageAngle / 2 : 0;
+        for (int position = 0; position < edgeCount; position++) {
+            nextAngle = offsetAngle + (position * averageAngle);
+            nextRadians = (float) Math.toRadians(nextAngle);
+            nextPointX = (float) ( Math.sin(nextRadians) * mRadius);
+            nextPointY = (float) ( Math.cos(nextRadians) * mRadius);
+            //画圆心到个顶点的连线
+            canvas.drawLine(0, 0, nextPointX, nextPointY, mNetsPaint);
+        }
     }
-    float cos(int num){
-        return (float) Math.cos(num*Math.PI/180);
-    }
+
 }
