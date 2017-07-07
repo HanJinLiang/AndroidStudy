@@ -57,6 +57,15 @@
         </activity>
         <activity android:name=".customerviews.NetsScoreView.NetsScoreViewActivity">
         </activity>
+        <activity android:name=".customerviews.basestudy.canvas.CanvasScaleViewActivity">
+        </activity>
+        <activity android:name=".customerviews.basestudy.BaseStudyActivity"/>
+        <activity android:name=".customerviews.basestudy.canvas.CanvasRotateViewActivity">
+        </activity>
+        <activity android:name=".customerviews.basestudy.bezier.BezierHeartActivity">
+        </activity>
+        <activity android:name=".customerviews.SearchView.SearchViewActivity">
+        </activity>
     </application>
 
 </manifest>

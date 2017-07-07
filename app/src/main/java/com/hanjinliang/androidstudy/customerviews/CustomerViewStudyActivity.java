@@ -11,6 +11,8 @@ import com.hanjinliang.androidstudy.customerviews.EraserView.EraserViewActivity;
 import com.hanjinliang.androidstudy.customerviews.EraserView.GuagualeViewActivity;
 import com.hanjinliang.androidstudy.customerviews.NetsScoreView.NetsScoreViewActivity;
 import com.hanjinliang.androidstudy.customerviews.NinePhotoView.NinePhotoViewActivity;
+import com.hanjinliang.androidstudy.customerviews.SearchView.SearchViewActivity;
+import com.hanjinliang.androidstudy.customerviews.basestudy.BaseStudyActivity;
 import com.hanjinliang.androidstudy.customerviews.basestudy.patheffect.PathEffectActivity;
 import com.hanjinliang.androidstudy.customerviews.circleimage.CircleImageViewActivity;
 import com.hanjinliang.androidstudy.customerviews.curve.CurveActivity;
@@ -118,5 +120,19 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
         startActivity(new Intent(this,  NetsScoreViewActivity.class));
     }
 
+    /**
+     * 自定义View基础知识学习
+     * @param view
+     */
+    public void  BaseStudy(View view){
+        startActivity(new Intent(this,  BaseStudyActivity.class));
+    }
 
+    /**
+     * 自定义View  搜索
+     * @param view
+     */
+    public void  SearchView(View view){
+        startActivity(new Intent(this,  SearchViewActivity.class));
+    }
 }

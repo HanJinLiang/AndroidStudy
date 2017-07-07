@@ -32,5 +32,6 @@ dependencies {
     compile 'me.yifeiyuan.periscopelayout:library:1.0.0'
     compile 'com.jph.takephoto:takephoto_library:4.0.3'
     compile 'com.github.chrisbanes:PhotoView:2.0.0'
+    compile 'com.github.HanJinLiang:NetsScoreView:V1.0.1'
     testCompile 'junit:junit:4.12'
 }
