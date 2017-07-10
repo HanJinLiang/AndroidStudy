@@ -66,6 +66,12 @@
         </activity>
         <activity android:name=".customerviews.SearchView.SearchViewActivity">
         </activity>
+        <activity android:name=".customerviews.basestudy.eventdispatch.EventDispatchTestActivity">
+        </activity>
+        <activity android:name=".customerviews.basestudy.ViewDragHelper.ViewDragHelperActivity">
+        </activity>
+        <activity android:name=".systemwidget.SlidingPaneLayout.SlidingPaneLayoutActivity">
+        </activity>
     </application>
 
 </manifest>
