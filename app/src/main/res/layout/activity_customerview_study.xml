@@ -96,6 +96,20 @@
                     android:id="@+id/SearchView"
                     android:onClick="SearchView"
                     android:text="SearchView搜索框动画"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/RegionCircle"
+                    android:onClick="RegionCircle"
+                    android:text="RegionCircle区域点击"/>
+
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/CheckableLayout"
+                    android:onClick="CheckableLayout"
+                    android:text="CheckableLayout列表多选"/>
 
 
 

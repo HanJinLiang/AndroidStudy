@@ -72,6 +72,12 @@
         </activity>
         <activity android:name=".systemwidget.SlidingPaneLayout.SlidingPaneLayoutActivity">
         </activity>
+        <activity
+            android:name=".customerviews.Region.RegionCircleActivity"
+            android:hardwareAccelerated="false">
+        </activity>
+        <activity android:name=".customerviews.CheckableLinearLayout.CheckableLayoutActivity">
+        </activity>
     </application>
 
 </manifest>

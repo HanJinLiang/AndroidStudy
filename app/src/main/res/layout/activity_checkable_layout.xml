@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hanjinliang.androidstudy.customerviews.CheckableLinearLayout.CheckableLayoutActivity">
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listView"
+        android:choiceMode="multipleChoice"></ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="全选"
+            android:id="@+id/selectAll"/>
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="结果"
+            android:id="@+id/getSelected"/>
+
+    </LinearLayout>
+</RelativeLayout>

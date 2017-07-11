@@ -6,11 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.hanjinliang.androidstudy.R;
+import com.hanjinliang.androidstudy.customerviews.CheckableLinearLayout.CheckableLayoutActivity;
 import com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.CustomerProgressBarActivity;
 import com.hanjinliang.androidstudy.customerviews.EraserView.EraserViewActivity;
 import com.hanjinliang.androidstudy.customerviews.EraserView.GuagualeViewActivity;
 import com.hanjinliang.androidstudy.customerviews.NetsScoreView.NetsScoreViewActivity;
 import com.hanjinliang.androidstudy.customerviews.NinePhotoView.NinePhotoViewActivity;
+import com.hanjinliang.androidstudy.customerviews.Region.RegionCircleActivity;
 import com.hanjinliang.androidstudy.customerviews.SearchView.SearchViewActivity;
 import com.hanjinliang.androidstudy.customerviews.basestudy.BaseStudyActivity;
 import com.hanjinliang.androidstudy.customerviews.basestudy.patheffect.PathEffectActivity;
@@ -135,4 +137,23 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
     public void  SearchView(View view){
         startActivity(new Intent(this,  SearchViewActivity.class));
     }
+
+    /**
+     * 自定义View  搜索
+     * @param view
+     */
+    public void  RegionCircle(View view){
+        startActivity(new Intent(this,  RegionCircleActivity.class));
+    }
+
+
+    /**
+     *CheckableLayout  ListView多选
+     * @param view
+     */
+    public void  CheckableLayout(View view){
+        startActivity(new Intent(this,  CheckableLayoutActivity.class));
+    }
+
+
 }
