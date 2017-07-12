@@ -36,6 +36,7 @@ public class CheckableLinearLayout extends LinearLayout implements Checkable{
 
     @Override
     public void setChecked(boolean checked) {
+        //给ListView设置choiceMode后  会自动调用此方法   只需要在这个方法里面做相应的逻辑处理即可
         if(mChecked!=checked){
             mChecked=checked;
             refreshDrawableState();

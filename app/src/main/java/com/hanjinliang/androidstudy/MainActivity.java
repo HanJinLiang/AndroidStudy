@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.Utils;
 import com.hanjinliang.androidstudy.customerviews.CustomerViewStudyActivity;
+import com.hanjinliang.androidstudy.javabase.JavaBaseStudyActivity;
 import com.hanjinliang.androidstudy.systemwidget.SystemWidgetStudyActivity;
 import com.hanjinliang.androidstudy.thirdLibs.ThirdLibActivity;
 
@@ -102,7 +103,8 @@ public class MainActivity extends AppCompatActivity
             //第三方框架的学习
             startActivity(new Intent(this, ThirdLibActivity.class));
         } else if (id == R.id.nav_manage) {
-
+            //java基础学习
+            startActivity(new Intent(this, JavaBaseStudyActivity.class));
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.hanjinliang.androidstudy.customerviews.curve.CurveActivity">
 
     <com.hanjinliang.androidstudy.customerviews.curve.CurveView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-         />
+        />
 </LinearLayout>
