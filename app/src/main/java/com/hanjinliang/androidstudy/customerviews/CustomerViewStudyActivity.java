@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.hanjinliang.androidstudy.R;
+import com.hanjinliang.androidstudy.customerviews.ArcMenu.ArcMenuActivity;
 import com.hanjinliang.androidstudy.customerviews.CheckableLinearLayout.CheckableLayoutActivity;
 import com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.CustomerProgressBarActivity;
 import com.hanjinliang.androidstudy.customerviews.EraserView.EraserViewActivity;
@@ -22,6 +23,7 @@ import com.hanjinliang.androidstudy.customerviews.curve.CurveView;
 import com.hanjinliang.androidstudy.customerviews.favorlayout.FavorLayoutActivity;
 import com.hanjinliang.androidstudy.customerviews.horizontalselectedview.HorizontalSelectedViewActivity;
 import com.hanjinliang.androidstudy.customerviews.radarview.RadarViewActivity;
+import com.hanjinliang.androidstudy.customerviews.waveline.WaveLineActivity;
 import com.hanjinliang.androidstudy.systemwidget.appbarlayout.AppBarLayoutActivity;
 import com.hanjinliang.androidstudy.systemwidget.appbarlayout.ToolBarActivity;
 import com.hanjinliang.androidstudy.systemwidget.coordinatorlayout.CoordinatorLayoutActivity;
@@ -155,5 +157,20 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
         startActivity(new Intent(this,  CheckableLayoutActivity.class));
     }
 
+    /**
+     *WaveLine  波浪线
+     * @param view
+     */
+    public void  WaveLine(View view){
+        startActivity(new Intent(this,  WaveLineActivity.class));
+    }
+
+    /**
+     *AcrMenu  扇形菜单
+     * @param view
+     */
+    public void  AcrMenu(View view){
+        startActivity(new Intent(this,  ArcMenuActivity.class));
+    }
 
 }

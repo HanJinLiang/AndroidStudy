@@ -112,6 +112,20 @@
                     android:text="CheckableLayout列表多选"/>
 
 
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/WaveLine"
+                    android:onClick="WaveLine"
+                    android:text="WaveLine波浪线"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/AcrMenu"
+                    android:onClick="AcrMenu"
+                    android:text="AcrMenu扇形菜单"/>
+
+
 
 
             </LinearLayout>

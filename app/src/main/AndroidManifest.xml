@@ -83,6 +83,10 @@
         <activity android:name=".javabase.JavaBaseStudyActivity"/>
         <activity android:name=".javabase.fanxing.FanxingActivity">
         </activity>
+        <activity android:name=".customerviews.waveline.WaveLineActivity">
+        </activity>
+        <activity android:name=".customerviews.ArcMenu.ArcMenuActivity">
+        </activity>
     </application>
 
 </manifest>
