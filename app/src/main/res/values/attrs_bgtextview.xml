@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BgTextView">
+        <!--背景高度和颜色-->
+        <attr name="BgStrokeWidth" format="dimension"/>
+        <attr name="BgColor" format="color|reference"/>
+    </declare-styleable>
+</resources>

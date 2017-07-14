@@ -7,6 +7,18 @@
     android:orientation="vertical"
     android:gravity="bottom|right">
 
+
+
+    <com.hanjinliang.androidstudy.customerviews.ArcMenu.BgTextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="dasda"
+        android:gravity="left|center_vertical"
+        app:BgColor="@color/colorAccent"
+        app:BgStrokeWidth="2dp"/>
+
+
+
     <com.hanjinliang.androidstudy.customerviews.ArcMenu.ArcMenu
         android:layout_width="290dp"
         android:layout_height="290dp">
