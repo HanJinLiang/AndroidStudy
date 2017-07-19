@@ -4,20 +4,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:gravity="bottom|right">
-
-
-
     <com.hanjinliang.androidstudy.customerviews.ArcMenu.BgTextView
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:text="dasda"
+        android:layout_margin="20dp"
+        tools:text="sdasdadadasdasdasd"
         android:gravity="left|center_vertical"
         app:BgColor="@color/colorAccent"
-        app:BgStrokeWidth="2dp"/>
-
-
+        app:BgStrokeWidth="2dp"
+        app:LeftBottomRadius="70dp"
+        app:RightBottomRadius="70dp"
+        app:RightTopRadius="70dp"
+        app:LeftTopRadius="70dp"
+        app:DrawRight="true"
+        app:DrawBottom="false"
+        app:DrawLeft="true"
+        app:DrawTop="false"/>
 
     <com.hanjinliang.androidstudy.customerviews.ArcMenu.ArcMenu
         android:layout_width="290dp"

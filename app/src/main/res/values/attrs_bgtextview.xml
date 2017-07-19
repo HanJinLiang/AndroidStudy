@@ -4,5 +4,14 @@
         <!--背景高度和颜色-->
         <attr name="BgStrokeWidth" format="dimension"/>
         <attr name="BgColor" format="color|reference"/>
+        <attr name="Radius" format="dimension"/>
+        <attr name="LeftTopRadius" format="dimension"/>
+        <attr name="LeftBottomRadius" format="dimension"/>
+        <attr name="RightTopRadius" format="dimension"/>
+        <attr name="RightBottomRadius" format="dimension"/>
+        <attr name="DrawLeft" format="boolean"/>
+        <attr name="DrawRight" format="boolean"/>
+        <attr name="DrawTop" format="boolean"/>
+        <attr name="DrawBottom" format="boolean"/>
     </declare-styleable>
 </resources>
