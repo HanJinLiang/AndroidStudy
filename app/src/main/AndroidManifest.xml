@@ -87,6 +87,10 @@
         </activity>
         <activity android:name=".customerviews.ArcMenu.ArcMenuActivity">
         </activity>
+        <activity android:name=".customerviews.HealthIndexView.HealthIndexViewActivity">
+        </activity>
+        <activity android:name=".customerviews.LineView.LineViewActivity">
+        </activity>
     </application>
 
 </manifest>

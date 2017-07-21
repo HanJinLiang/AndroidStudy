@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="HealthIndexView">
+        //上下外部padding
+        <attr name="OutingPadding" format="dimension"/>
+        //色块上下padding
+        <attr name="InnerPadding" format="dimension"/>
+        //色块高度
+        <attr name="ColorBlockHeight" format="dimension"/>
+        //字体颜色
+        <attr name="TextColor" format="color|reference"/>
+        //字体大小
+        <attr name="TextSize" format="dimension"/>
+    </declare-styleable>
+</resources>

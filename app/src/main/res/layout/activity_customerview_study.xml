@@ -124,6 +124,18 @@
                     android:id="@+id/AcrMenu"
                     android:onClick="AcrMenu"
                     android:text="AcrMenu扇形菜单"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/HealthIndexView"
+                    android:onClick="HealthIndexView"
+                    android:text="HealthIndexView"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/LineView"
+                    android:onClick="LineView"
+                    android:text="LineView"/>
 
 
 

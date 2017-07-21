@@ -14,15 +14,15 @@
         tools:text="sdasdadadasdasdasd"
         android:gravity="left|center_vertical"
         app:BgColor="@color/colorAccent"
-        app:BgStrokeWidth="2dp"
-        app:LeftBottomRadius="70dp"
-        app:RightBottomRadius="70dp"
-        app:RightTopRadius="70dp"
-        app:LeftTopRadius="70dp"
+        app:BgStrokeWidth="20dp"
+        app:LeftBottomRadius="0dp"
+        app:RightBottomRadius="0dp"
+        app:RightTopRadius="0dp"
+        app:LeftTopRadius="0dp"
         app:DrawRight="true"
-        app:DrawBottom="false"
+        app:DrawBottom="true"
         app:DrawLeft="true"
-        app:DrawTop="false"/>
+        app:DrawTop="true"/>
 
     <com.hanjinliang.androidstudy.customerviews.ArcMenu.ArcMenu
         android:layout_width="290dp"

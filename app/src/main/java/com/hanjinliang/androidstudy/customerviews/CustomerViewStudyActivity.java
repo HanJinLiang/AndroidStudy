@@ -11,6 +11,8 @@ import com.hanjinliang.androidstudy.customerviews.CheckableLinearLayout.Checkabl
 import com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.CustomerProgressBarActivity;
 import com.hanjinliang.androidstudy.customerviews.EraserView.EraserViewActivity;
 import com.hanjinliang.androidstudy.customerviews.EraserView.GuagualeViewActivity;
+import com.hanjinliang.androidstudy.customerviews.HealthIndexView.HealthIndexViewActivity;
+import com.hanjinliang.androidstudy.customerviews.LineView.LineViewActivity;
 import com.hanjinliang.androidstudy.customerviews.NetsScoreView.NetsScoreViewActivity;
 import com.hanjinliang.androidstudy.customerviews.NinePhotoView.NinePhotoViewActivity;
 import com.hanjinliang.androidstudy.customerviews.Region.RegionCircleActivity;
@@ -171,6 +173,22 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
      */
     public void  AcrMenu(View view){
         startActivity(new Intent(this,  ArcMenuActivity.class));
+    }
+
+    /**
+     *HealthIndexView
+     * @param view
+     */
+    public void  HealthIndexView(View view){
+        startActivity(new Intent(this,  HealthIndexViewActivity.class));
+    }
+
+    /**
+     *LineView
+     * @param view
+     */
+    public void  LineView(View view){
+        startActivity(new Intent(this,  LineViewActivity.class));
     }
 
 }

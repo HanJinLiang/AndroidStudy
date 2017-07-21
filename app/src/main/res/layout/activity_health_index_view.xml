@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+   <com.hanjinliang.androidstudy.customerviews.HealthIndexView.HealthIndexView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/HealthIndexView1"
+       app:ColorBlockHeight="10dp"
+       app:InnerPadding="5dp"
+       app:OutingPadding="10dp"
+       app:TextColor="#ff0000"
+       app:TextSize="18sp"/>
+
+   <View
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:background="#afafaf"/>
+
+   <com.hanjinliang.androidstudy.customerviews.HealthIndexView.HealthIndexView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/HealthIndexView2"
+       app:ColorBlockHeight="15dp"
+       app:InnerPadding="20dp"
+       app:OutingPadding="10dp"
+       app:TextColor="#ff0000"
+       app:TextSize="14sp"/>/>
+   <View
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:background="#afafaf"/>
+
+
+   <com.hanjinliang.androidstudy.customerviews.HealthIndexView.HealthIndexView
+       android:layout_width="match_parent"
+       android:layout_height="200dp"
+       android:id="@+id/HealthIndexView3"/>
+   <View
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:background="#afafaf"/>
+
+
+   <com.hanjinliang.androidstudy.customerviews.HealthIndexView.HealthIndexView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/HealthIndexView4"/>
+   <View
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:background="#afafaf"/>
+
+</LinearLayout>
