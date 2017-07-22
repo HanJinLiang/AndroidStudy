@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LineView">
+        //上下外部padding
+        <attr name="XYPadding" format="dimension"/>
+        //线的颜色
+        <attr name="LineColor" format="color|reference"/>
+        //是否填充
+        <attr name="isFill" format="boolean"/>
+        //每一屏显示的个数
+        <attr name="ScreenCount" format="integer"/>
+        //X轴字体大小
+        <attr name="XTextSize" format="dimension"/>
+        //X轴字体颜色
+        <attr name="XTextColor" format="boolean"/>
+        //是否画XY坐标线
+        <attr name="isDrawXYLine" format="boolean"/>
+        //Value点的半径
+        <attr name="PointRadius" format="dimension"/>
+    </declare-styleable>
+</resources>

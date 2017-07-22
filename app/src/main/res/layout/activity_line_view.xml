@@ -9,5 +9,13 @@
 <com.hanjinliang.androidstudy.customerviews.LineView.LineView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#afafaf"/>
+    android:background="@android:color/white"
+    android:id="@+id/mLineView"/>
+
+    <com.hanjinliang.androidstudy.customerviews.LineView.LineView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/white"
+        android:id="@+id/mLineView2"/>
 </LinearLayout>
