@@ -8,10 +8,6 @@ import com.hanjinliang.androidstudy.R;
 
 public class HealthIndexViewActivity extends AppCompatActivity {
 
-    private String[] mHealthValues=new String[]{"10.0%","17.0%","21.0%","25.0%"};
-    private int[] mIndexColors=new int[]{Color.parseColor("#cd5ebb"),Color.parseColor("#0acb08"),Color.parseColor("#c7e97c"),Color.parseColor("#ff0000"),Color.parseColor("#c10000")};
-    private String[] mDescTexts=new String[]{"偏低","健康","警戒","偏胖","重度肥胖"};
-
     HealthIndexView mHealthIndexView1;
     HealthIndexView mHealthIndexView2;
     HealthIndexView mHealthIndexView3;
@@ -25,12 +21,11 @@ public class HealthIndexViewActivity extends AppCompatActivity {
         mHealthIndexView3= (HealthIndexView) findViewById(R.id.HealthIndexView3);
         mHealthIndexView4= (HealthIndexView) findViewById(R.id.HealthIndexView4);
 
-        mHealthIndexView1.setData(new String[]{"10.0%","21.0%","25.0%"},new int[]{Color.parseColor("#cd5ebb"),Color.parseColor("#0acb08"),Color.parseColor("#c7e97c"),Color.parseColor("#ff0000")},new String[]{"偏低","健康","警戒","偏胖"});
+        mHealthIndexView1.setDataInt(new String[]{"10.0%","21.0%","25.0%"},new int[]{Color.parseColor("#cd5ebb"),Color.parseColor("#0acb08"),Color.parseColor("#c7e97c"),Color.parseColor("#ff0000")},new String[]{"偏低","健康","警戒","偏胖"});
 
-        mHealthIndexView2.setData(new String[]{"1519"},new int[]{Color.parseColor("#ffc100"),Color.parseColor("#0acb08")},new String[]{"偏低","达标"});
+        mHealthIndexView2.setDataRes(new String[]{"1519"},new int[]{R.color.colorAccent,R.color.colorPrimary},new String[]{"偏低","达标"});
 
-        mHealthIndexView3.setData(new String[]{"10.0%", "25.0%"},new int[]{ Color.parseColor("#0acb08"),Color.parseColor("#c7e97c"),Color.parseColor("#ff0000")},new String[]{"偏低","健康", "偏胖"});
+        mHealthIndexView3.setDataInt(new String[]{"10.0%", "25.0%"},new int[]{ Color.parseColor("#0acb08"),Color.parseColor("#c7e97c"),Color.parseColor("#ff0000")},new String[]{"偏低","健康", "偏胖"});
 
-        mHealthIndexView4.setData(mHealthValues,mIndexColors,mDescTexts);
     }
 }

@@ -2,12 +2,16 @@ package com.hanjinliang.androidstudy.customerviews.HealthIndexView;
 
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -25,7 +29,7 @@ public class HealthIndexView extends View {
     private final String TAG=getClass().getSimpleName();
     private Context mContext;
     private String[] mHealthValues;
-    private int[] mIndexColors;
+    private int[] mIndexColors;//ColorRes
     private String[] mDescTexts;
 
     private float mInnerPadding ;//文字和颜色上下的边距
@@ -81,12 +85,12 @@ public class HealthIndexView extends View {
     private void measureText(){
         Rect rect=new Rect();
         for(int i=0;i<mHealthValues.length;i++){
-            mPaintText.getTextBounds(mHealthValues[0],0,mHealthValues[0].length(),rect);
+            mPaintText.getTextBounds(mHealthValues[i],0,mHealthValues[i].length(),rect);
             mUpTextHeight=Math.max(mUpTextHeight,rect.height());
         }
 
         for(int i=0;i<mDescTexts.length;i++){
-            mPaintText.getTextBounds(mHealthValues[0],0,mDescTexts[0].length(),rect);
+            mPaintText.getTextBounds(mDescTexts[i],0,mDescTexts[i].length(),rect);
             mDownTextHeight=Math.max(mDownTextHeight,rect.height());
         }
     }
@@ -137,6 +141,9 @@ public class HealthIndexView extends View {
      * @param canvas
      */
     private void drawValueText(Canvas canvas) {
+        if(mHealthValues==null){
+            return;
+        }
         //FIXME 需要修正 垂直居中
         float baseLine=mOutPadding+mUpTextHeight;
         for(int i=0;i<mHealthValues.length;i++){
@@ -149,6 +156,9 @@ public class HealthIndexView extends View {
      * @param canvas
      */
     private void drawColorBlock(Canvas canvas) {
+        if(mIndexColors==null){
+            return;
+        }
         for(int i=0;i<mIndexColors.length;i++){
             mPaintColor.setColor(mIndexColors[i]);
             canvas.drawRect(i*mItemWidth,mUpTextHeight+mInnerPadding+mOutPadding,(i+1)*mItemWidth,mUpTextHeight+mInnerPadding+mColorHeight+mOutPadding,mPaintColor);
@@ -162,6 +172,9 @@ public class HealthIndexView extends View {
      * @param canvas
      */
     private void drawDescText(Canvas canvas) {
+        if(mDescTexts==null){
+            return;
+        }
         //FIXME 需要修正 垂直居中
         float baseLine=mOutPadding+mUpTextHeight+mInnerPadding*2+mDownTextHeight+mColorHeight;
         for(int i=0;i<mDescTexts.length;i++){
@@ -193,16 +206,30 @@ public class HealthIndexView extends View {
     /**
      * 设置数据源
      * @param healthValues  上面的值
-     * @param indexColors   颜色数组
+     * @param @ColorRes indexColorsId   颜色数组
      * @param descTexts     描述文字
      */
-    public void setData(String[] healthValues,int[] indexColors,String[] descTexts){
-        if(indexColors.length!=descTexts.length||indexColors.length<2||healthValues.length+1!=indexColors.length){
+    public void setDataRes(String[] healthValues,@Nullable @ColorRes int[] indexColorsId, String[] descTexts){
+        int[] indexColorsInt=new int[indexColorsId.length];
+        for(int i=0;i<indexColorsInt.length;i++){
+            indexColorsInt[i]=ContextCompat.getColor(mContext,indexColorsId[i]);
+        }
+        setDataInt(healthValues,indexColorsInt,descTexts);
+    }
+
+    /**
+     * 设置数据源
+     * @param healthValues  上面的值
+     * @param @ColorInt indexColorsInt   颜色数组
+     * @param descTexts     描述文字
+     */
+    public void setDataInt(String[] healthValues,@Nullable @ColorInt int[] indexColorsInt, String[] descTexts){
+        if(indexColorsInt.length!=descTexts.length||indexColorsInt.length<2||healthValues.length+1!=indexColorsInt.length){
             Log.d(TAG, "setData: 数据不符合规范");
             return;
         }
         mHealthValues=healthValues;
-        mIndexColors=indexColors;
+        mIndexColors=indexColorsInt;
         mDescTexts=descTexts;
         measureText();
         invalidate();
