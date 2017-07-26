@@ -91,6 +91,8 @@
         </activity>
         <activity android:name=".customerviews.LineView.LineViewActivity">
         </activity>
+        <activity android:name=".customerviews.flowlayout.FlowLayoutActivity">
+        </activity>
     </application>
 
 </manifest>

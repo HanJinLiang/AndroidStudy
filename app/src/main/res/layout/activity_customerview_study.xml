@@ -137,6 +137,13 @@
                     android:onClick="LineView"
                     android:text="LineView"/>
 
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/FlowLayout"
+                    android:onClick="FlowLayout"
+                    android:text="FlowLayout"/>
+
 
 
 

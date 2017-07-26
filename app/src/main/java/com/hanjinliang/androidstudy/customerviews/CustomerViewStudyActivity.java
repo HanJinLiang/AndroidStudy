@@ -23,6 +23,7 @@ import com.hanjinliang.androidstudy.customerviews.circleimage.CircleImageViewAct
 import com.hanjinliang.androidstudy.customerviews.curve.CurveActivity;
 import com.hanjinliang.androidstudy.customerviews.curve.CurveView;
 import com.hanjinliang.androidstudy.customerviews.favorlayout.FavorLayoutActivity;
+import com.hanjinliang.androidstudy.customerviews.flowlayout.FlowLayoutActivity;
 import com.hanjinliang.androidstudy.customerviews.horizontalselectedview.HorizontalSelectedViewActivity;
 import com.hanjinliang.androidstudy.customerviews.radarview.RadarViewActivity;
 import com.hanjinliang.androidstudy.customerviews.waveline.WaveLineActivity;
@@ -189,6 +190,14 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
      */
     public void  LineView(View view){
         startActivity(new Intent(this,  LineViewActivity.class));
+    }
+
+    /**
+     *FlowLayout
+     * @param view
+     */
+    public void  FlowLayout(View view){
+        startActivity(new Intent(this,  FlowLayoutActivity.class));
     }
 
 }
