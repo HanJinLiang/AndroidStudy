@@ -17,5 +17,7 @@
         <attr name="isDrawXYLine" format="boolean"/>
         //Value点的半径
         <attr name="PointRadius" format="dimension"/>
+        //Value的最大值
+        <attr name="MaxValue" format="integer"/>
     </declare-styleable>
 </resources>

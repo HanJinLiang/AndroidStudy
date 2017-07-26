@@ -7,6 +7,8 @@ import android.widget.Toast;
 import com.hanjinliang.androidstudy.R;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class LineViewActivity extends AppCompatActivity {
     LineView mLineView;
@@ -34,7 +36,7 @@ public class LineViewActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"点击"+index,Toast.LENGTH_SHORT).show();
             }
         });
-        ArrayList<WeightData> mData2=new ArrayList<WeightData>();
+        final ArrayList<WeightData> mData2=new ArrayList<WeightData>();
         mData2.add(new WeightData("12:00",60));
         mData2.add(new WeightData("13:00",20));
         mData2.add(new WeightData("14:00",20));

@@ -13,11 +13,13 @@ import android.graphics.Shader;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.hanjinliang.androidstudy.R;
 
 import java.util.ArrayList;
@@ -39,6 +41,9 @@ public class LineView extends View {
     private float mXItemWidth;//X轴每一个宽度
     private float mPadding;//距离屏幕边距Padding
     private float mWidth,mHeight;//控件宽高
+    //最大值
+    private int mMax;//默认最大值为100
+
     //数据源
     private ArrayList<WeightData> mData=new ArrayList<WeightData>();
 
@@ -51,14 +56,12 @@ public class LineView extends View {
     //线的颜色
     private int mLineColor;
 
-    private int mMax=100;
     //点的半径
     private float mPointRadius;
     //是否是填充
     private boolean isFill;
     //是否画XY坐标线
     private boolean isDrawXY;
-
 
     //X轴字体大小
     private float mXTextSize;
@@ -91,6 +94,7 @@ public class LineView extends View {
 
         mXTextSize=ta.getDimension(R.styleable.LineView_XTextSize, TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,12,context.getResources().getDisplayMetrics()));
         mXTextColor=ta.getColor(R.styleable.LineView_XTextColor,Color.parseColor("#f56e4f"));
+        mMax=ta.getInteger(R.styleable.LineView_MaxValue,100);
         ta.recycle();
 
         //坐标画笔
@@ -126,12 +130,6 @@ public class LineView extends View {
         mSelectedPaint.setColor(Color.GREEN);
     }
 
-
-
-    public void setData(ArrayList<WeightData> data) {
-        mData=data;
-        invalidate();
-    }
     /**
      * 分析数据
      */
@@ -139,7 +137,7 @@ public class LineView extends View {
         mDataPointFs.clear();
         for(int i=0;i<mData.size();i++){
             float height=(mHeight-mPadding-mRect.height())/mMax*mData.get(i).getValue();
-            mDataPointFs.add(new PointF(i*mXItemWidth+mOffset,-height));
+            mDataPointFs.add(new PointF(i*mXItemWidth,-height));
         }
 
         mPath.reset();
@@ -164,6 +162,7 @@ public class LineView extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        LogUtils.e("onMeasure");
         int widthMode=MeasureSpec.getMode(widthMeasureSpec);
         int widthSize=MeasureSpec.getSize(widthMeasureSpec);
 
@@ -189,6 +188,7 @@ public class LineView extends View {
     private Rect mRect=new Rect();
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        LogUtils.e("onSizeChanged");
         super.onSizeChanged(w, h, oldw, oldh);
         mWidth=w;
         mHeight=h;
@@ -197,14 +197,14 @@ public class LineView extends View {
         // FIXME 随便测量拿到X轴文字高度  不够精确
         mXPaint.getTextBounds("text测试",0,"text测试".length(),mRect);
         mPathFillPaint.setShader(new LinearGradient(0,-mHeight,0,0,mLineColor,Color.TRANSPARENT, Shader.TileMode.CLAMP));
+        parseData();
     }
-
+    Path mTempPath=new Path();
     @Override
     protected void onDraw(Canvas canvas) {
+        LogUtils.e("onDraw");
         //平移到原点
         canvas.translate(mPadding,mHeight-mPadding-mRect.height());
-
-        parseData();
         if(isDrawXY) {
             //X轴
             canvas.drawLine(0, 0, mWidth - mPadding, 0, mPaintCoord);
@@ -216,23 +216,25 @@ public class LineView extends View {
             canvas.drawText(mData.get(i).getDesc(),mXItemWidth*i+mOffset,mRect.height(),mXPaint);
         }
         //画曲线
-        canvas.drawPath(mPath, mPathPaint);
+        mPath.offset(mOffset,0,mTempPath);
+        canvas.drawPath(mTempPath, mPathPaint);
         if(isFill) {
             //画曲线
-            canvas.drawPath(mFillPath, mPathFillPaint);
+            mFillPath.offset(mOffset,0,mTempPath);
+            canvas.drawPath(mTempPath, mPathFillPaint);
         }
 
         //x轴点的值
         for (int i = 0; i < mDataPointFs.size(); i++) {
-            canvas.drawCircle(mDataPointFs.get(i).x, mDataPointFs.get(i).y, mPointRadius, mPointPaint);
+            canvas.drawCircle(mDataPointFs.get(i).x+mOffset, mDataPointFs.get(i).y, mPointRadius, mPointPaint);
             mSelectedPaint.setColor(Color.WHITE);
-            canvas.drawCircle(mDataPointFs.get(i).x, mDataPointFs.get(i).y, mPointRadius-mPointPaint.getStrokeWidth()/2, mSelectedPaint);
+            canvas.drawCircle(mDataPointFs.get(i).x+mOffset, mDataPointFs.get(i).y, mPointRadius-mPointPaint.getStrokeWidth()/2, mSelectedPaint);
 
             if(mSelectedPoint==i){
                 mSelectedPaint.setColor(mLineColor);
-                canvas.drawCircle(mDataPointFs.get(i).x, mDataPointFs.get(i).y, mPointRadius, mSelectedPaint);
+                canvas.drawCircle(mDataPointFs.get(i).x+mOffset, mDataPointFs.get(i).y, mPointRadius, mSelectedPaint);
                 mSelectedPaint.setColor(Color.parseColor("#80f56e4f"));
-                canvas.drawCircle(mDataPointFs.get(i).x, mDataPointFs.get(i).y, mPointRadius*2, mSelectedPaint);
+                canvas.drawCircle(mDataPointFs.get(i).x+mOffset, mDataPointFs.get(i).y, mPointRadius*2, mSelectedPaint);
             }
         }
     }
@@ -275,8 +277,9 @@ public class LineView extends View {
                     break;
                 }
                 mOffset+=moveX-downX;
+                //滑动的边界控制
                 //左滑动
-                if(moveX<downX&&(mDataPointFs.get(mDataPointFs.size()-1).x+(moveX-downX))<=mWidth-mPadding*2){
+                if(moveX<downX&&(mDataPointFs.get(mDataPointFs.size()-1).x+mOffset)<=mWidth-mPadding*2){
                     if(mData.size()<=mScreenCount){
                         mOffset=0;
                     }else{
@@ -284,16 +287,15 @@ public class LineView extends View {
                     }
                 }
                 //右滑动
-                if(moveX>downX&&(mDataPointFs.get(0).x+moveX-downX)>=0){
+                if(moveX>downX&&(mDataPointFs.get(0).x+mOffset)>=0){
                     mOffset=0;
                 }
-
                 downX=moveX;
-                invalidate();
+                postInvalidate();
                 break;
             case MotionEvent.ACTION_UP:
                 checkClickPoint(event.getX(),event.getY());
-                invalidate();
+                postInvalidate();
                 break;
         }
         return super.onTouchEvent(event);
@@ -305,7 +307,7 @@ public class LineView extends View {
 
         for(int i=0;i<mDataPointFs.size();i++){
             //mPointRadius*2是为了扩大点击事件的范围
-            if(Math.abs(upX-mDataPointFs.get(i).x)<mPointRadius*2&&Math.abs(upY-mDataPointFs.get(i).y)<mPointRadius*2){
+            if(Math.abs(upX-(mDataPointFs.get(i).x+mOffset))<mPointRadius*2&&Math.abs(upY-mDataPointFs.get(i).y)<mPointRadius*2){
                 if(mOnPointClickListener!=null){
                     mOnPointClickListener.onPointClickListener(i);
                 }
@@ -314,6 +316,10 @@ public class LineView extends View {
             }
         }
     }
+
+    /**
+     * 点击监听
+     */
     OnPointClickListener mOnPointClickListener;
 
     public void setOnPointClickListener(OnPointClickListener onPointClickListener) {
@@ -322,5 +328,82 @@ public class LineView extends View {
 
     public interface OnPointClickListener{
         public void onPointClickListener(int index);
+    }
+
+    //------------------------公开的一些方法-------------------------------------
+    /**
+     * 设置数据源
+     * @param data
+     */
+    public void setData(ArrayList<WeightData> data) {
+        LogUtils.e("setData");
+        mData=data;
+        mOffset=0;
+        parseData();
+        postInvalidate();
+    }
+
+    /**
+     * 设置一个屏幕显示的个数
+     * @param screenCount
+     */
+    public void setScreenCount(int screenCount) {
+        mScreenCount = screenCount;
+    }
+
+    /**
+     * 设置XY轴的Padding
+     * @param padding
+     */
+    public void setPadding(float padding) {
+        mPadding = padding;
+    }
+
+    /**
+     * 设置数据源的最大值
+     * @param max
+     */
+    public void setMax(int max) {
+        mMax = max;
+    }
+
+    /**
+     * 是都填充
+     * @param isFill
+     */
+    public void setFill(boolean isFill) {
+        this.isFill = isFill;
+    }
+
+    /**
+     * 是否绘制XY轴
+     * @param drawXY
+     */
+    public void setDrawXY(boolean drawXY) {
+        isDrawXY = drawXY;
+    }
+
+    /**
+     * 字体大小
+     * @param XTextSize
+     */
+    public void setXTextSize(float XTextSize) {
+        mXTextSize = XTextSize;
+    }
+
+    /**
+     * 字体颜色
+     * @param XTextColor
+     */
+    public void setXTextColor(int XTextColor) {
+        mXTextColor = XTextColor;
+    }
+
+    /**
+     * 设置选中的点
+     * @param selectedPoint
+     */
+    public void setSelectedPoint(int selectedPoint) {
+        mSelectedPoint = selectedPoint;
     }
 }
