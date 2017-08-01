@@ -93,6 +93,8 @@
         </activity>
         <activity android:name=".customerviews.flowlayout.FlowLayoutActivity">
         </activity>
+        <activity android:name=".customerviews.WeightView.WeightProgressViewActivity">
+        </activity>
     </application>
 
 </manifest>

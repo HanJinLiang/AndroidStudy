@@ -144,6 +144,13 @@
                     android:onClick="FlowLayout"
                     android:text="FlowLayout"/>
 
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/WeightProgressView"
+                    android:onClick="WeightProgressView"
+                    android:text="WeightProgressView"/>
+
 
 
 

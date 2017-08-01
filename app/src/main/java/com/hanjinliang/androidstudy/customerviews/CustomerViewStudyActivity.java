@@ -17,6 +17,7 @@ import com.hanjinliang.androidstudy.customerviews.NetsScoreView.NetsScoreViewAct
 import com.hanjinliang.androidstudy.customerviews.NinePhotoView.NinePhotoViewActivity;
 import com.hanjinliang.androidstudy.customerviews.Region.RegionCircleActivity;
 import com.hanjinliang.androidstudy.customerviews.SearchView.SearchViewActivity;
+import com.hanjinliang.androidstudy.customerviews.WeightView.WeightProgressViewActivity;
 import com.hanjinliang.androidstudy.customerviews.basestudy.BaseStudyActivity;
 import com.hanjinliang.androidstudy.customerviews.basestudy.patheffect.PathEffectActivity;
 import com.hanjinliang.androidstudy.customerviews.circleimage.CircleImageViewActivity;
@@ -198,6 +199,16 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
      */
     public void  FlowLayout(View view){
         startActivity(new Intent(this,  FlowLayoutActivity.class));
+    }
+
+
+
+    /**
+     *FlowLayout
+     * @param view
+     */
+    public void  WeightProgressView(View view){
+        startActivity(new Intent(this,  WeightProgressViewActivity.class));
     }
 
 }
