@@ -68,13 +68,15 @@ public class WeightProgressView extends View {
         }
 
         int height;
-        if(heightMode==MeasureSpec.EXACTLY){//MatchParent
+        //如果是放在相对布局  就是给的是200dp 走的都是AT_MOST  而且会多次调用onMeasure 参数不一样
+        if(heightMode==MeasureSpec.EXACTLY||heightMode==MeasureSpec.AT_MOST){//MatchParent
             height=heightSize;
         }else{
             height=dip2px(200);//默认值
         }
 
-        setMeasuredDimension(Math.max(width,height),Math.max(width,height));//为保证是圆形的   取最大值
+        int finalWidth=Math.min(width,height);
+        setMeasuredDimension(finalWidth,finalWidth);//为保证是圆形的   取最小值
     }
 
     @Override
