@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PathMeasure;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.Shader;
@@ -21,6 +22,7 @@ import android.view.WindowManager;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.hanjinliang.androidstudy.R;
+import com.hanjinliang.androidstudy.customerviews.CheckableLinearLayout.MyAdapter;
 
 import java.util.ArrayList;
 
@@ -79,6 +81,8 @@ public class LineView extends View {
 
     public LineView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        //关闭硬件加速
+        this.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         setFocusable(true);
         setClickable(true);
         mContext=context;
@@ -224,6 +228,8 @@ public class LineView extends View {
             canvas.drawPath(mTempPath, mPathFillPaint);
         }
 
+
+
         //x轴点的值
         for (int i = 0; i < mDataPointFs.size(); i++) {
             canvas.drawCircle(mDataPointFs.get(i).x+mOffset, mDataPointFs.get(i).y, mPointRadius, mPointPaint);
@@ -294,6 +300,14 @@ public class LineView extends View {
                 postInvalidate();
                 break;
             case MotionEvent.ACTION_UP:
+                //滑动到左右的监听
+                if(mOnLineViewListener!=null){
+                    if(mOffset==0){//滑动到左边
+                        mOnLineViewListener.onScrollMaxLeft();
+                    }else if(mOffset==-(mData.size()-mScreenCount-1)*mXItemWidth){//滑动到右边
+                        mOnLineViewListener.onScrollMaxRight();
+                    }
+                }
                 checkClickPoint(event.getX(),event.getY());
                 postInvalidate();
                 break;
@@ -304,44 +318,89 @@ public class LineView extends View {
     private void checkClickPoint(float upX, float upY) {
         upX=upX-mPadding;
         upY=upY-(mHeight-mPadding-mRect.height());
+        parseData();
 
         for(int i=0;i<mDataPointFs.size();i++){
             //mPointRadius*2是为了扩大点击事件的范围
             if(Math.abs(upX-(mDataPointFs.get(i).x+mOffset))<mPointRadius*2&&Math.abs(upY-mDataPointFs.get(i).y)<mPointRadius*2){
-                if(mOnPointClickListener!=null){
-                    mOnPointClickListener.onPointClickListener(i);
-                }
                 mSelectedPoint=i;
+                if(mOnLineViewListener!=null){
+                    mOnLineViewListener.onPointClickListener(i);
+                }
                 return ;
             }
         }
     }
 
     /**
-     * 点击监听
+     * 事件监听
      */
-    OnPointClickListener mOnPointClickListener;
+    OnLineViewListener mOnLineViewListener;
 
-    public void setOnPointClickListener(OnPointClickListener onPointClickListener) {
-        mOnPointClickListener = onPointClickListener;
-    }
-
-    public interface OnPointClickListener{
+    public interface OnLineViewListener{
+        /**
+         * 点击监听
+         * @param index
+         */
         public void onPointClickListener(int index);
+
+        /**
+         * 滑动到最右边
+         */
+        public void onScrollMaxRight();
+        /**
+         * 滑动到最左边
+         */
+        public void onScrollMaxLeft();
     }
 
     //------------------------公开的一些方法-------------------------------------
+
+    public void setOnPointClickListener(OnLineViewListener onPointClickListener) {
+        mOnLineViewListener = onPointClickListener;
+    }
     /**
      * 设置数据源
      * @param data
      */
     public void setData(ArrayList<WeightData> data) {
-        LogUtils.e("setData");
-        mData=data;
+        mData.clear();
+        mData.addAll(data);
         mOffset=0;
         parseData();
         postInvalidate();
     }
+
+    /**
+     * 删除数据源
+     * @param position
+     */
+    public void removeData(int position) {
+        if(mData==null||position<0||position>=mData.size()){
+            return;
+        }
+        if(position==mSelectedPoint){//删除的如果是当前选中的 选中的index重置
+            mSelectedPoint=-1;
+        }else if(position>mSelectedPoint){//删除的在选中的后面 选中位置不变
+
+        }else{//删除的在选中的前面 选中位置不变
+            mSelectedPoint--;//删除一个选中个数索引减一
+        }
+        mData.remove(position);
+        parseData();
+        postInvalidate();
+    }
+
+
+    /**
+     * 添加数据源
+     * @param data
+     */
+    public void addMoreData(ArrayList<WeightData> data) {
+        parseData();
+        postInvalidate();
+    }
+
 
     /**
      * 设置一个屏幕显示的个数
@@ -405,5 +464,9 @@ public class LineView extends View {
      */
     public void setSelectedPoint(int selectedPoint) {
         mSelectedPoint = selectedPoint;
+    }
+
+    public int getSelectedPoint() {
+        return mSelectedPoint;
     }
 }

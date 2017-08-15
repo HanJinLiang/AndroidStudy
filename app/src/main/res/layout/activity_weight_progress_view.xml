@@ -23,10 +23,11 @@
         android:text="开始"
         android:onClick="btn_start"
          />
+
     <Button
+        android:id="@+id/btn_stop"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="结束"
         android:onClick="btn_stop"
-        android:id="@+id/btn_stop"/>
+        android:text="结束"/>
 </LinearLayout>
