@@ -1,19 +1,9 @@
 package com.hanjinliang.androidstudy.customerviews.SelectLayout;
 
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.DragEvent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.blankj.utilcode.util.ScreenUtils;
-import com.blankj.utilcode.util.SizeUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.hanjinliang.androidstudy.R;
 
@@ -28,7 +18,6 @@ public class SelectLayoutActivity extends AppCompatActivity {
 
         layout_container= (SelectLayout) findViewById(R.id.layout_container);
 
-        layout_container.setMoveScrollable(false);
         layout_container.setOnSelectChangedListener(new SelectLayout.OnSelectChangedListener() {
             @Override
             public void onSelectChange(SelectLayout.CurrentSelect current) {
@@ -46,6 +35,13 @@ public class SelectLayoutActivity extends AppCompatActivity {
                 ToastUtils.showShort("选中被点击");
             }
         });
+//        layout_container.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                layout_container.setCurrentSelect(SelectLayout.CurrentSelect.left);
+//            }
+//        },1000);
+
     }
 
 

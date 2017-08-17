@@ -30,9 +30,9 @@
            android:layout_height="100dp"
            android:id="@+id/space"/>
        <TextView
-           android:layout_width="100dp"
-           android:layout_height="100dp"
-           android:background="@drawable/round_bg"
+           android:layout_width="70dp"
+           android:layout_height="70dp"
+           android:background="@drawable/round_bg2"
            android:id="@+id/viewCenter"
            android:text="中"
            android:gravity="center"/>
@@ -43,7 +43,7 @@
        <TextView
            android:layout_width="70dp"
            android:layout_height="70dp"
-           android:background="@drawable/round_bg"
+           android:background="@drawable/round_bg3"
            android:id="@+id/viewRight"
            android:text="右"
            android:gravity="center"/>

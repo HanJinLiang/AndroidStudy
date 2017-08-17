@@ -8,8 +8,10 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.hanjinliang.androidstudy.R;
 
 /**
@@ -27,12 +29,13 @@ public class SelectLayout extends LinearLayout implements View.OnClickListener {
     private float mMinWidth;//小视图宽度
     private float mMaxWidth;//大视图宽度
     private float mSpaceWidth;//大小视图中间间隔
-    private float mBigScale;//放大的比例
-    private float mSmallScale;//缩小的比例
 
     private int mAnimTime=500;//动画时长
 
     private boolean isMoveScrollable=true;//是否相应滑动事件
+
+    private float mScale=0.3f;//缩放的比例
+
     /**
      * 当前选中的
      */
@@ -74,13 +77,15 @@ public class SelectLayout extends LinearLayout implements View.OnClickListener {
      */
     private void initSize() {
         mMinWidth=viewLeft.getMeasuredWidth();
-        mMaxWidth=viewCenter.getMeasuredWidth();
-        mSpaceWidth=space.getMeasuredWidth();
+        mMaxWidth=mMinWidth*(1+mScale);
+        mSpaceWidth=space.getMeasuredWidth()-mMinWidth*mScale/2;
 
-        //方法缩放比例差值  小80 大100  (100-80)/80 mScale值为0.25
-        mBigScale=(mMaxWidth-mMinWidth)/mMinWidth;
-        //缩小比例差值  小80 大100  (100-80)/100 mScale值为0.2
-        mSmallScale=(mMaxWidth-mMinWidth)/mMaxWidth;
+        viewCenter.setScaleX(1+mScale);
+        viewCenter.setScaleY(1+mScale);
+
+        if(mMaxWidth>getMeasuredHeight()){//缩放法高度大于Layout高度  重新设置高度 自适应
+            setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,(int)mMaxWidth));
+        }
     }
 
     /**
@@ -161,33 +166,33 @@ public class SelectLayout extends LinearLayout implements View.OnClickListener {
             return;
         }
         if(i==1){//左边的
-            if(currentSelect== CurrentSelect.center) {//中间的是中间
+            if(currentSelect== CurrentSelect.center) {//左边到中间
                 ObjectAnimator animator1 = ObjectAnimator.ofFloat(viewLeft, "translationX", 0, mMinWidth/2+mMaxWidth/2+mSpaceWidth);
-                ObjectAnimator animator2 = ObjectAnimator.ofFloat(viewLeft, "scaleX", 1, 1+mBigScale);
-                ObjectAnimator animator3 = ObjectAnimator.ofFloat(viewLeft, "scaleY", 1, 1+mBigScale);
+                ObjectAnimator animator2 = ObjectAnimator.ofFloat(viewLeft, "scaleX", 1, 1+mScale);
+                ObjectAnimator animator3 = ObjectAnimator.ofFloat(viewLeft, "scaleY", 1, 1+mScale);
 
                 ObjectAnimator animator4 = ObjectAnimator.ofFloat(viewCenter, "translationX",0, mMinWidth/2+mMaxWidth/2+mSpaceWidth);
-                ObjectAnimator animator5 = ObjectAnimator.ofFloat(viewCenter, "scaleX", 1,1-mSmallScale);
-                ObjectAnimator animator6 = ObjectAnimator.ofFloat(viewCenter, "scaleY", 1, 1-mSmallScale);
+                ObjectAnimator animator5 = ObjectAnimator.ofFloat(viewCenter, "scaleX", 1+mScale,1f);
+                ObjectAnimator animator6 = ObjectAnimator.ofFloat(viewCenter, "scaleY", 1+mScale,1f);
 
                 ObjectAnimator animator7 = ObjectAnimator.ofFloat(viewRight, "translationX",0, -(mMinWidth+mMaxWidth+mSpaceWidth*2));
 
-                playAnim(CurrentSelect.left,animator1, animator2, animator3, animator4, animator5, animator6, animator7);
+                playAnim(CurrentSelect.left,animator1, animator2, animator3,animator4, animator5, animator6,animator7);
             }else if(currentSelect==CurrentSelect.left){//中间就是点击的  没有反应
                 //选中点击回调
                 if(isClick&&mOnSelectChangedListener!=null){
                     mOnSelectChangedListener.onSelectClick();
                 }
-            }else if(currentSelect== CurrentSelect.right){//中间的是右边的
+            }else if(currentSelect== CurrentSelect.right){//右边到中间
                 ObjectAnimator animator1 = ObjectAnimator.ofFloat(viewLeft, "translationX", mMinWidth+mMaxWidth+mSpaceWidth*2,mMinWidth/2+mMaxWidth/2+mSpaceWidth);
-                ObjectAnimator animator2 = ObjectAnimator.ofFloat(viewLeft, "scaleX", 1, 1+mBigScale);
-                ObjectAnimator animator3 = ObjectAnimator.ofFloat(viewLeft, "scaleY", 1, 1+mBigScale);
+                ObjectAnimator animator2 = ObjectAnimator.ofFloat(viewLeft, "scaleX", 1, 1+mScale);
+                ObjectAnimator animator3 = ObjectAnimator.ofFloat(viewLeft, "scaleY", 1, 1+mScale);
 
                 ObjectAnimator animator4 = ObjectAnimator.ofFloat(viewCenter, "translationX",-(mMinWidth/2+mMaxWidth/2+mSpaceWidth), mMinWidth/2+mMaxWidth/2+mSpaceWidth);
 
                 ObjectAnimator animator7 = ObjectAnimator.ofFloat(viewRight, "translationX",-(mMinWidth/2+mMaxWidth/2+mSpaceWidth), -(mMinWidth+mMaxWidth+mSpaceWidth*2));
-                ObjectAnimator animator5 = ObjectAnimator.ofFloat(viewRight, "scaleX", 1+mBigScale, 1f);
-                ObjectAnimator animator6 = ObjectAnimator.ofFloat(viewRight, "scaleY", 1+mBigScale, 1f);
+                ObjectAnimator animator5 = ObjectAnimator.ofFloat(viewRight, "scaleX", 1+mScale, 1f);
+                ObjectAnimator animator6 = ObjectAnimator.ofFloat(viewRight, "scaleY", 1+mScale, 1f);
 
                 playAnim(CurrentSelect.left,animator1, animator2, animator3, animator4, animator5, animator6, animator7);
             }
@@ -200,12 +205,12 @@ public class SelectLayout extends LinearLayout implements View.OnClickListener {
             }else if(currentSelect== CurrentSelect.left){//本身在右边显示  移动到中间
 
                 ObjectAnimator animator1 = ObjectAnimator.ofFloat(viewLeft, "translationX", mMinWidth/2+mMaxWidth/2+mSpaceWidth,0);
-                ObjectAnimator animator2 = ObjectAnimator.ofFloat(viewLeft, "scaleX", 1+mBigScale, 1.0f);
-                ObjectAnimator animator3 = ObjectAnimator.ofFloat(viewLeft, "scaleY", 1+mBigScale, 1.0f);
+                ObjectAnimator animator2 = ObjectAnimator.ofFloat(viewLeft, "scaleX", 1+mScale, 1.0f);
+                ObjectAnimator animator3 = ObjectAnimator.ofFloat(viewLeft, "scaleY", 1+mScale, 1.0f);
 
                 ObjectAnimator animator4 = ObjectAnimator.ofFloat(viewCenter, "translationX", mMinWidth/2+mMaxWidth/2+mSpaceWidth,0);
-                ObjectAnimator animator5 = ObjectAnimator.ofFloat(viewCenter, "scaleX", 1-mSmallScale,1);
-                ObjectAnimator animator6 = ObjectAnimator.ofFloat(viewCenter, "scaleY", 1-mSmallScale,1);
+                ObjectAnimator animator5 = ObjectAnimator.ofFloat(viewCenter, "scaleX",1,1+mScale);
+                ObjectAnimator animator6 = ObjectAnimator.ofFloat(viewCenter, "scaleY", 1,1+mScale);
 
                 ObjectAnimator animator7 = ObjectAnimator.ofFloat(viewRight, "translationX", -(mMinWidth+mMaxWidth+mSpaceWidth*2),0);
 
@@ -214,39 +219,39 @@ public class SelectLayout extends LinearLayout implements View.OnClickListener {
                 ObjectAnimator animator1 = ObjectAnimator.ofFloat(viewLeft, "translationX", mMinWidth+mMaxWidth+mSpaceWidth*2,0);
 
                 ObjectAnimator animator4 = ObjectAnimator.ofFloat(viewCenter, "translationX", -(mMinWidth/2+mMaxWidth/2+mSpaceWidth),0);
-                ObjectAnimator animator5 = ObjectAnimator.ofFloat(viewCenter, "scaleX", 1-mSmallScale,1);
-                ObjectAnimator animator6 = ObjectAnimator.ofFloat(viewCenter, "scaleY", 1-mSmallScale,1);
+                ObjectAnimator animator5 = ObjectAnimator.ofFloat(viewCenter, "scaleX",1,1+mScale);
+                ObjectAnimator animator6 = ObjectAnimator.ofFloat(viewCenter, "scaleY",1,1+mScale);
 
                 ObjectAnimator animator7 = ObjectAnimator.ofFloat(viewRight, "translationX", -(mMinWidth/2+mMaxWidth/2+mSpaceWidth),0);
-                ObjectAnimator animator2 = ObjectAnimator.ofFloat(viewRight, "scaleX", 1+mBigScale, 1.0f);
-                ObjectAnimator animator3 = ObjectAnimator.ofFloat(viewRight, "scaleY", 1+mBigScale, 1.0f);
+                ObjectAnimator animator2 = ObjectAnimator.ofFloat(viewRight, "scaleX", 1+mScale, 1.0f);
+                ObjectAnimator animator3 = ObjectAnimator.ofFloat(viewRight, "scaleY", 1+mScale, 1.0f);
 
                 playAnim(CurrentSelect.center,animator1, animator2, animator3, animator4, animator5, animator6, animator7);
             }
         }else if(i==3){//右边的
-            if(currentSelect== CurrentSelect.center) {//中间的是中间  移动到中间
+            if(currentSelect== CurrentSelect.center) {//本身显示在右  移动到中间
                 ObjectAnimator animator1 = ObjectAnimator.ofFloat(viewLeft, "translationX", 0,mMinWidth+mMaxWidth+mSpaceWidth*2);
 
                 ObjectAnimator animator2 = ObjectAnimator.ofFloat(viewCenter, "translationX", 0,-(mMinWidth/2+mMaxWidth/2+mSpaceWidth));
-                ObjectAnimator animator3 = ObjectAnimator.ofFloat(viewCenter, "scaleX", 1,1-mSmallScale);
-                ObjectAnimator animator4 = ObjectAnimator.ofFloat(viewCenter, "scaleY", 1,1-mSmallScale);
+                ObjectAnimator animator3 = ObjectAnimator.ofFloat(viewCenter, "scaleX", 1+mScale,1f);
+                ObjectAnimator animator4 = ObjectAnimator.ofFloat(viewCenter, "scaleY", 1+mScale,1f);
 
                 ObjectAnimator animator5 = ObjectAnimator.ofFloat(viewRight, "translationX", 0,-(mMinWidth/2+mMaxWidth/2+mSpaceWidth));
-                ObjectAnimator animator6 = ObjectAnimator.ofFloat(viewRight, "scaleX", 1,1+mBigScale);
-                ObjectAnimator animator7 = ObjectAnimator.ofFloat(viewRight, "scaleY", 1,1+mBigScale);
+                ObjectAnimator animator6 = ObjectAnimator.ofFloat(viewRight, "scaleX", 1,1+mScale);
+                ObjectAnimator animator7 = ObjectAnimator.ofFloat(viewRight, "scaleY", 1,1+mScale);
 
                 playAnim(CurrentSelect.right,animator1, animator2, animator3, animator4, animator5, animator6, animator7);
-            }else if(currentSelect== CurrentSelect.left){//本身在右边显示  左边移动到中间
+            }else if(currentSelect== CurrentSelect.left){//本身在左显示  左边移动到中间
                 ObjectAnimator animator1 = ObjectAnimator.ofFloat(viewLeft, "translationX",mMinWidth/2+mMaxWidth/2+mSpaceWidth,mMinWidth+mMaxWidth+mSpaceWidth*2);
-                ObjectAnimator animator2 = ObjectAnimator.ofFloat(viewLeft, "scaleX", 1+mBigScale,1f);
-                ObjectAnimator animator3 = ObjectAnimator.ofFloat(viewLeft, "scaleY", 1+mBigScale,1f);
+                ObjectAnimator animator2 = ObjectAnimator.ofFloat(viewLeft, "scaleX", 1+mScale,1f);
+                ObjectAnimator animator3 = ObjectAnimator.ofFloat(viewLeft, "scaleY", 1+mScale,1f);
 
                 ObjectAnimator animator4 = ObjectAnimator.ofFloat(viewCenter, "translationX", mMinWidth/2+mMaxWidth/2+mSpaceWidth,-(mMinWidth/2+mMaxWidth/2+mSpaceWidth));
 
 
                 ObjectAnimator animator5 = ObjectAnimator.ofFloat(viewRight, "translationX", -(mMinWidth+mMaxWidth+mSpaceWidth*2),-(mMinWidth/2+mMaxWidth/2+mSpaceWidth));
-                ObjectAnimator animator6 = ObjectAnimator.ofFloat(viewRight, "scaleX", 1,1+mBigScale);
-                ObjectAnimator animator7 = ObjectAnimator.ofFloat(viewRight, "scaleY", 1,1+mBigScale);
+                ObjectAnimator animator6 = ObjectAnimator.ofFloat(viewRight, "scaleX", 1,1+mScale);
+                ObjectAnimator animator7 = ObjectAnimator.ofFloat(viewRight, "scaleY", 1,1+mScale);
 
                 playAnim(CurrentSelect.right,animator1, animator2, animator3, animator4, animator5, animator6, animator7);
             }else if(currentSelect==CurrentSelect.right){//本身在左边显示  移动到中间
@@ -276,6 +281,22 @@ public class SelectLayout extends LinearLayout implements View.OnClickListener {
             @Override
             public void onAnimationEnd(Animator animation) {
                 currentSelect = select;
+                removeView(viewLeft);
+                removeView(viewCenter);
+                removeView(viewRight);
+                if(currentSelect==SelectLayout.CurrentSelect.left){
+                    addView(viewRight,1);
+                    addView(viewLeft,3);
+                    addView(viewCenter,5);
+                }else if(currentSelect==SelectLayout.CurrentSelect.center){
+                    addView(viewLeft,1);
+                    addView(viewCenter,3);
+                    addView(viewRight,5);
+                }else if(currentSelect==SelectLayout.CurrentSelect.right){
+                    addView(viewCenter,1);
+                    addView(viewRight,3);
+                    addView(viewLeft,5);
+                }
                 isAniming=false;
                 //选中状态更改回调
                 if(mOnSelectChangedListener!=null){
