@@ -310,4 +310,34 @@ public class SelectLayout extends LinearLayout implements View.OnClickListener {
         public void onSelectChange(CurrentSelect current);
         public void onSelectClick();
     }
+
+    /**
+     * 设置动画时间
+     * @param animTime
+     */
+    public void setAnimTime(int animTime) {
+        mAnimTime = animTime;
+    }
+
+    /**
+     * 是否能够滑动
+     * @param moveScrollable
+     */
+    public void setMoveScrollable(boolean moveScrollable) {
+        isMoveScrollable = moveScrollable;
+    }
+
+    /**
+     * 设置当前选中项
+     * @param currentSelect
+     */
+    public void setCurrentSelect(CurrentSelect currentSelect) {
+        if(currentSelect==CurrentSelect.left){
+            onItemClick(false,1);
+        }else if(currentSelect==CurrentSelect.center){
+            onItemClick(false,2);
+        }else if(currentSelect==CurrentSelect.right){
+            onItemClick(false,3);
+        }
+    }
 }

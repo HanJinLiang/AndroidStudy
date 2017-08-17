@@ -28,7 +28,7 @@ public class SelectLayoutActivity extends AppCompatActivity {
 
         layout_container= (SelectLayout) findViewById(R.id.layout_container);
 
-
+        layout_container.setMoveScrollable(false);
         layout_container.setOnSelectChangedListener(new SelectLayout.OnSelectChangedListener() {
             @Override
             public void onSelectChange(SelectLayout.CurrentSelect current) {
