@@ -29,7 +29,6 @@ import java.util.ArrayList;
 /**
  * Created by HanJinLiang on 2017-07-21.
  */
-
 public class LineView extends View {
     Context mContext;
     Paint mPaintCoord;//坐标画笔

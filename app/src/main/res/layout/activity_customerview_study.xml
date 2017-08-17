@@ -152,6 +152,15 @@
                     android:text="WeightProgressView"/>
 
 
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/SelectLayout"
+                    android:onClick="SelectLayout"
+                    android:text="SelectLayout"/>
+
+
+
 
 
             </LinearLayout>

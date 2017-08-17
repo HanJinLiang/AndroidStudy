@@ -95,6 +95,8 @@
         </activity>
         <activity android:name=".customerviews.WeightView.WeightProgressViewActivity">
         </activity>
+        <activity android:name=".customerviews.SelectLayout.SelectLayoutActivity">
+        </activity>
     </application>
 
 </manifest>
