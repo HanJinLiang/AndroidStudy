@@ -10,47 +10,39 @@
    <com.hanjinliang.androidstudy.customerviews.SelectLayout.SelectLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:orientation="horizontal"
        android:gravity="center"
        android:id="@+id/layout_container">
-       <Space
-           android:layout_width="0dp"
-           android:layout_weight="1"
-           android:layout_height="100dp"/>
+
        <TextView
            android:layout_width="70dp"
            android:layout_height="70dp"
            android:background="@drawable/round_bg"
            android:id="@+id/viewLeft"
            android:text="左"
-           android:gravity="center"/>
-       <Space
-           android:layout_width="0dp"
-           android:layout_weight="1"
-           android:layout_height="100dp"
-           android:id="@+id/space"/>
-       <TextView
-           android:layout_width="70dp"
-           android:layout_height="70dp"
-           android:background="@drawable/round_bg2"
-           android:id="@+id/viewCenter"
-           android:text="中"
-           android:gravity="center"/>
-       <Space
-           android:layout_width="0dp"
-           android:layout_weight="1"
-           android:layout_height="100dp"/>
+           android:gravity="center"
+           android:layout_centerVertical="true"
+           android:layout_toLeftOf="@+id/viewCenter"/>
+
+
        <TextView
            android:layout_width="70dp"
            android:layout_height="70dp"
            android:background="@drawable/round_bg3"
            android:id="@+id/viewRight"
            android:text="右"
-           android:gravity="center"/>
-       <Space
-           android:layout_width="0dp"
-           android:layout_weight="1"
-           android:layout_height="100dp"/>
+           android:gravity="center"
+           android:layout_centerVertical="true"
+           android:layout_toRightOf="@+id/viewCenter"/>
+
+       <TextView
+           android:layout_width="70dp"
+           android:layout_height="70dp"
+           android:background="@drawable/round_bg2"
+           android:id="@+id/viewCenter"
+           android:text="中"
+           android:layout_centerInParent="true"
+           android:gravity="center"
+        />
 
    </com.hanjinliang.androidstudy.customerviews.SelectLayout.SelectLayout>
 </LinearLayout>

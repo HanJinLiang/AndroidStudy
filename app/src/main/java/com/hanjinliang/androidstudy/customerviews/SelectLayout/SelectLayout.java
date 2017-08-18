@@ -4,38 +4,41 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
-import com.blankj.utilcode.util.ToastUtils;
+import com.blankj.utilcode.util.SizeUtils;
 import com.hanjinliang.androidstudy.R;
 
 /**
  * Created by HanJinLiang on 2017-08-16.
  * 选择容器
  */
-public class SelectLayout extends LinearLayout implements View.OnClickListener {
-    private boolean isAniming=false;//是否在动画中
+public class SelectLayout extends RelativeLayout implements View.OnClickListener {
     View viewLeft;
     View viewCenter;
     View viewRight;
 
-    View space;
-
     private float mMinWidth;//小视图宽度
     private float mMaxWidth;//大视图宽度
-    private float mSpaceWidth;//大小视图中间间隔
 
     private int mAnimTime=500;//动画时长
-
     private boolean isMoveScrollable=true;//是否相应滑动事件
-
     private float mScale=0.3f;//缩放的比例
+    private float mSpaceScale=0.2f;//中间间隔和两边小的比例
 
+    //内部计算用
+    private float mSpaceWidth;//中间间隔边距
+    private boolean isAniming=false;//是否在动画中
+
+    private boolean isEnable=true;//是否可用
     /**
      * 当前选中的
      */
@@ -55,9 +58,13 @@ public class SelectLayout extends LinearLayout implements View.OnClickListener {
 
     public SelectLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setClickable(true);
-        setFocusable(true);
-
+        //自定义属性的获取
+        TypedArray ta=context.obtainStyledAttributes(attrs, R.styleable.SelectLayout,defStyleAttr,0);
+        isMoveScrollable=ta.getBoolean(R.styleable.SelectLayout_isMoveScrollable,true);
+        mScale=ta.getFloat(R.styleable.SelectLayout_scale,0.3f);
+        mSpaceScale=ta.getFloat(R.styleable.SelectLayout_spaceScale,0.2f);
+        mAnimTime=ta.getInt(R.styleable.SelectLayout_spaceScale,500);
+        ta.recycle();
     }
 
     @Override
@@ -76,16 +83,25 @@ public class SelectLayout extends LinearLayout implements View.OnClickListener {
      * 初始化View大小 缩放比例
      */
     private void initSize() {
+        //两边小的宽度
         mMinWidth=viewLeft.getMeasuredWidth();
+        //按照比例设置间距
+        mSpaceWidth=mMinWidth*mSpaceScale;
+        //中间放大的宽度
         mMaxWidth=mMinWidth*(1+mScale);
-        mSpaceWidth=space.getMeasuredWidth()-mMinWidth*mScale/2;
-
+        //默认中间一个View放大
         viewCenter.setScaleX(1+mScale);
         viewCenter.setScaleY(1+mScale);
 
         if(mMaxWidth>getMeasuredHeight()){//缩放法高度大于Layout高度  重新设置高度 自适应
-            setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,(int)mMaxWidth));
+            setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,(int)mMaxWidth));
         }
+
+        //设置中间布局margin
+        LayoutParams params= (LayoutParams) viewCenter.getLayoutParams();
+        params.leftMargin= (int) (mSpaceWidth+mMinWidth*mScale/2);//间距加上放大的边距
+        params.rightMargin= (int) (mSpaceWidth+mMinWidth*mScale/2);
+        viewCenter.setLayoutParams(params);
     }
 
     /**
@@ -95,7 +111,6 @@ public class SelectLayout extends LinearLayout implements View.OnClickListener {
         viewLeft=findViewById(R.id.viewLeft);
         viewCenter=findViewById(R.id.viewCenter);
         viewRight=findViewById(R.id.viewRight);
-        space=findViewById(R.id.space);
 
         viewLeft.setOnClickListener(this);
         viewCenter.setOnClickListener(this);
@@ -162,11 +177,18 @@ public class SelectLayout extends LinearLayout implements View.OnClickListener {
      * @param i  1是左边  2是右边
      */
     private void onItemClick(boolean isClick,int i) {
+        if(!isEnable){//不可用
+            return;
+        }
         if(isAniming){
             return;
         }
         if(i==1){//左边的
             if(currentSelect== CurrentSelect.center) {//左边到中间
+                viewRight.bringToFront();
+                viewCenter.bringToFront();
+                viewLeft.bringToFront();
+
                 ObjectAnimator animator1 = ObjectAnimator.ofFloat(viewLeft, "translationX", 0, mMinWidth/2+mMaxWidth/2+mSpaceWidth);
                 ObjectAnimator animator2 = ObjectAnimator.ofFloat(viewLeft, "scaleX", 1, 1+mScale);
                 ObjectAnimator animator3 = ObjectAnimator.ofFloat(viewLeft, "scaleY", 1, 1+mScale);
@@ -184,6 +206,10 @@ public class SelectLayout extends LinearLayout implements View.OnClickListener {
                     mOnSelectChangedListener.onSelectClick();
                 }
             }else if(currentSelect== CurrentSelect.right){//右边到中间
+                viewCenter.bringToFront();
+                viewRight.bringToFront();
+                viewLeft.bringToFront();
+
                 ObjectAnimator animator1 = ObjectAnimator.ofFloat(viewLeft, "translationX", mMinWidth+mMaxWidth+mSpaceWidth*2,mMinWidth/2+mMaxWidth/2+mSpaceWidth);
                 ObjectAnimator animator2 = ObjectAnimator.ofFloat(viewLeft, "scaleX", 1, 1+mScale);
                 ObjectAnimator animator3 = ObjectAnimator.ofFloat(viewLeft, "scaleY", 1, 1+mScale);
@@ -203,6 +229,9 @@ public class SelectLayout extends LinearLayout implements View.OnClickListener {
                     mOnSelectChangedListener.onSelectClick();
                 }
             }else if(currentSelect== CurrentSelect.left){//本身在右边显示  移动到中间
+                viewRight.bringToFront();
+                viewLeft.bringToFront();
+                viewCenter.bringToFront();
 
                 ObjectAnimator animator1 = ObjectAnimator.ofFloat(viewLeft, "translationX", mMinWidth/2+mMaxWidth/2+mSpaceWidth,0);
                 ObjectAnimator animator2 = ObjectAnimator.ofFloat(viewLeft, "scaleX", 1+mScale, 1.0f);
@@ -216,6 +245,10 @@ public class SelectLayout extends LinearLayout implements View.OnClickListener {
 
                 playAnim(CurrentSelect.center,animator1, animator2, animator3, animator4, animator5, animator6, animator7);
             }else if(currentSelect== CurrentSelect.right){//本身在左边    移动到中间
+                viewLeft.bringToFront();
+                viewRight.bringToFront();
+                viewCenter.bringToFront();
+
                 ObjectAnimator animator1 = ObjectAnimator.ofFloat(viewLeft, "translationX", mMinWidth+mMaxWidth+mSpaceWidth*2,0);
 
                 ObjectAnimator animator4 = ObjectAnimator.ofFloat(viewCenter, "translationX", -(mMinWidth/2+mMaxWidth/2+mSpaceWidth),0);
@@ -230,6 +263,10 @@ public class SelectLayout extends LinearLayout implements View.OnClickListener {
             }
         }else if(i==3){//右边的
             if(currentSelect== CurrentSelect.center) {//本身显示在右  移动到中间
+                viewLeft.bringToFront();
+                viewCenter.bringToFront();
+                viewRight.bringToFront();
+
                 ObjectAnimator animator1 = ObjectAnimator.ofFloat(viewLeft, "translationX", 0,mMinWidth+mMaxWidth+mSpaceWidth*2);
 
                 ObjectAnimator animator2 = ObjectAnimator.ofFloat(viewCenter, "translationX", 0,-(mMinWidth/2+mMaxWidth/2+mSpaceWidth));
@@ -242,6 +279,10 @@ public class SelectLayout extends LinearLayout implements View.OnClickListener {
 
                 playAnim(CurrentSelect.right,animator1, animator2, animator3, animator4, animator5, animator6, animator7);
             }else if(currentSelect== CurrentSelect.left){//本身在左显示  左边移动到中间
+                viewCenter.bringToFront();
+                viewLeft.bringToFront();
+                viewRight.bringToFront();
+
                 ObjectAnimator animator1 = ObjectAnimator.ofFloat(viewLeft, "translationX",mMinWidth/2+mMaxWidth/2+mSpaceWidth,mMinWidth+mMaxWidth+mSpaceWidth*2);
                 ObjectAnimator animator2 = ObjectAnimator.ofFloat(viewLeft, "scaleX", 1+mScale,1f);
                 ObjectAnimator animator3 = ObjectAnimator.ofFloat(viewLeft, "scaleY", 1+mScale,1f);
@@ -281,22 +322,6 @@ public class SelectLayout extends LinearLayout implements View.OnClickListener {
             @Override
             public void onAnimationEnd(Animator animation) {
                 currentSelect = select;
-                removeView(viewLeft);
-                removeView(viewCenter);
-                removeView(viewRight);
-                if(currentSelect==SelectLayout.CurrentSelect.left){
-                    addView(viewRight,1);
-                    addView(viewLeft,3);
-                    addView(viewCenter,5);
-                }else if(currentSelect==SelectLayout.CurrentSelect.center){
-                    addView(viewLeft,1);
-                    addView(viewCenter,3);
-                    addView(viewRight,5);
-                }else if(currentSelect==SelectLayout.CurrentSelect.right){
-                    addView(viewCenter,1);
-                    addView(viewRight,3);
-                    addView(viewLeft,5);
-                }
                 isAniming=false;
                 //选中状态更改回调
                 if(mOnSelectChangedListener!=null){
@@ -360,5 +385,13 @@ public class SelectLayout extends LinearLayout implements View.OnClickListener {
         }else if(currentSelect==CurrentSelect.right){
             onItemClick(false,3);
         }
+    }
+
+    public boolean isEnable() {
+        return isEnable;
+    }
+
+    public void setEnable(boolean enable) {
+        isEnable = enable;
     }
 }

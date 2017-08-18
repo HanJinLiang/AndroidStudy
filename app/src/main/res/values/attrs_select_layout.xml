@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SelectLayout">
+        <!--大小球中间间隔和小球的缩放比例-->
+        <attr name="spaceScale" format="float"/>
+        <!--大小球的缩放比例-->
+        <attr name="scale" format="float"/>
+        <!--是否相应滑动事件-->
+        <attr name="isMoveScrollable" format="boolean"/>
+        <!--动画时长-->
+        <attr name="animTime" format="integer"/>
+    </declare-styleable>
+</resources>
