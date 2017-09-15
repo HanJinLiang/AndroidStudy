@@ -97,6 +97,8 @@
         </activity>
         <activity android:name=".customerviews.SelectLayout.SelectLayoutActivity">
         </activity>
+        <activity android:name=".thirdLibs.MPChart.MPChartDemoActivity">
+        </activity>
     </application>
 
 </manifest>
