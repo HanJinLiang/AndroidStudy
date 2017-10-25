@@ -99,6 +99,7 @@
         </activity>
         <activity android:name=".thirdLibs.MPChart.MPChartDemoActivity">
         </activity>
+        <activity android:name=".systemwidget.Sensor.SensorTestActivity"/>
     </application>
 
 </manifest>
