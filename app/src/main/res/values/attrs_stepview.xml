@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--仿物流进度条-->
+    <declare-styleable name="StepView">
+        <attr name="LineFinishedColor" format="color|reference"/>
+        <attr name="LineUnfinishedColor" format="color|reference"/>
+        <attr name="LinePadding" format="dimension"/>
+        <attr name="DescribeTextColor" format="color|reference"/>
+        <attr name="DescribeTextSize" format="dimension"/>
+        <!--方向-->
+        <attr name="Direction" >
+            <enum name="horizontal" value="1" />
+            <enum name="vertical" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

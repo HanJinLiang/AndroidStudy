@@ -100,6 +100,8 @@
         <activity android:name=".thirdLibs.MPChart.MPChartDemoActivity">
         </activity>
         <activity android:name=".systemwidget.Sensor.SensorTestActivity"/>
+        <activity android:name=".customerviews.stepview.StepViewActivity">
+        </activity>
     </application>
 
 </manifest>

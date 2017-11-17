@@ -28,6 +28,7 @@ import com.hanjinliang.androidstudy.customerviews.favorlayout.FavorLayoutActivit
 import com.hanjinliang.androidstudy.customerviews.flowlayout.FlowLayoutActivity;
 import com.hanjinliang.androidstudy.customerviews.horizontalselectedview.HorizontalSelectedViewActivity;
 import com.hanjinliang.androidstudy.customerviews.radarview.RadarViewActivity;
+import com.hanjinliang.androidstudy.customerviews.stepview.StepViewActivity;
 import com.hanjinliang.androidstudy.customerviews.waveline.WaveLineActivity;
 import com.hanjinliang.androidstudy.systemwidget.appbarlayout.AppBarLayoutActivity;
 import com.hanjinliang.androidstudy.systemwidget.appbarlayout.ToolBarActivity;
@@ -218,6 +219,14 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
      */
     public void  SelectLayout(View view){
         startActivity(new Intent(this,  SelectLayoutActivity.class));
+    }
+
+    /**
+     *StepView
+     * @param view
+     */
+    public void  StepView(View view){
+        startActivity(new Intent(this,  StepViewActivity.class));
     }
 
 
