@@ -18,11 +18,11 @@ public class StepViewActivity extends AppCompatActivity {
 
         ArrayList<StepViewBean> datas=new ArrayList<>();
         datas.add(new StepViewBean("出厂了吗", ContextCompat.getDrawable(this,R.drawable.round_step_finished),true));
-        datas.add(new StepViewBean("到达", ContextCompat.getDrawable(this,R.drawable.round_step_finished),true));
-        datas.add(new StepViewBean("浇筑", ContextCompat.getDrawable(this,R.drawable.round_step_finished),true));
+        datas.add(new StepViewBean("到达了", ContextCompat.getDrawable(this,R.drawable.round_step_finished),true));
+        datas.add(new StepViewBean("浇筑一定", ContextCompat.getDrawable(this,R.drawable.round_step_finished),true));
         datas.add(new StepViewBean("签收", ContextCompat.getDrawable(this,R.drawable.round_step_unfinished),false));
         datas.add(new StepViewBean("回厂", ContextCompat.getDrawable(this,R.drawable.round_step_unfinished),false));
-        datas.add(new StepViewBean("排队", ContextCompat.getDrawable(this,R.drawable.round_step_unfinished),false));
+        datas.add(new StepViewBean("开始准备排队", ContextCompat.getDrawable(this,R.drawable.round_step_unfinished),false));
 
         mStepView.initData(datas);
     }

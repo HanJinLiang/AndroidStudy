@@ -102,6 +102,10 @@
         <activity android:name=".systemwidget.Sensor.SensorTestActivity"/>
         <activity android:name=".customerviews.stepview.StepViewActivity">
         </activity>
+        <activity android:name=".customerviews.NumView.NumViewActivity">
+        </activity>
+        <activity android:name=".systemwidget.ConstraintLayout.ConstraintLayoutActivity">
+        </activity>
     </application>
 
 </manifest>

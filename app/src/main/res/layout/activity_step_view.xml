@@ -14,12 +14,16 @@
         <!--&gt;-->
 
     <!--</com.hanjinliang.androidstudy.customerviews.stepview.StepView>-->
-
-    <com.hanjinliang.androidstudy.customerviews.stepview.CustomStepView
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp" >
+    <com.hanjinliang.androidstudy.customerviews.stepview.CustomStepView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/stepView"
-        >
+       >
 
     </com.hanjinliang.androidstudy.customerviews.stepview.CustomStepView>
+    </HorizontalScrollView>
 </LinearLayout>

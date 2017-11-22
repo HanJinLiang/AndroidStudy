@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="NumView">
+        <!--外圈宽度-->
+        <attr name="OutCircleWidth" format="dimension"/>
+        <!--外圈颜色-->
+        <attr name="OutCircleColor" format="color|reference"/>
+        <!--文字距离外圈的距离-->
+        <attr name="NumInnerPadding" format="dimension"/>
+        <!--文字颜色-->
+        <attr name="NumTextColor" format="color|reference"/>
+        <!--文字大小-->
+        <attr name="NumTextSize" format="dimension"/>
+        <!--里圈颜色-->
+        <attr name="InnerCircleColor" format="color|reference"/>
+    </declare-styleable>
+</resources>

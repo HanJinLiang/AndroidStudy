@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.hanjinliang.androidstudy.R;
+import com.hanjinliang.androidstudy.systemwidget.ConstraintLayout.ConstraintLayoutActivity;
 import com.hanjinliang.androidstudy.systemwidget.Sensor.SensorTestActivity;
 import com.hanjinliang.androidstudy.systemwidget.SlidingPaneLayout.SlidingPaneLayoutActivity;
 import com.hanjinliang.androidstudy.systemwidget.appbarlayout.AppBarLayoutActivity;
@@ -23,7 +24,7 @@ public class SystemWidgetStudyActivity extends ListActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            String[] pArray={" CoordinatorLayout学习","Toolbar学习","AppBarLayout学习","SlidingPaneLayout学习","重力感应器"};
+            String[] pArray={" CoordinatorLayout学习","Toolbar学习","AppBarLayout学习","SlidingPaneLayout学习","重力感应器","ConstraintLayoutActivity"};
             setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, pArray));//绑定数据源
         }
 
@@ -46,6 +47,8 @@ public class SystemWidgetStudyActivity extends ListActivity {
                 case 4://
                     start(SensorTestActivity.class);
                     break;
+                case 5://
+                    start(ConstraintLayoutActivity.class);
             }
         }
 

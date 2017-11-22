@@ -166,6 +166,14 @@
                     android:onClick="StepView"
                     android:text="StepView"/>
 
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/NumView"
+                    android:onClick="NumView"
+                    android:text="NumView"/>
+
+
 
 
             </LinearLayout>

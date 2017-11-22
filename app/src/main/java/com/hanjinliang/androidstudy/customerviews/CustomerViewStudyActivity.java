@@ -15,6 +15,7 @@ import com.hanjinliang.androidstudy.customerviews.HealthIndexView.HealthIndexVie
 import com.hanjinliang.androidstudy.customerviews.LineView.LineViewActivity;
 import com.hanjinliang.androidstudy.customerviews.NetsScoreView.NetsScoreViewActivity;
 import com.hanjinliang.androidstudy.customerviews.NinePhotoView.NinePhotoViewActivity;
+import com.hanjinliang.androidstudy.customerviews.NumView.NumViewActivity;
 import com.hanjinliang.androidstudy.customerviews.Region.RegionCircleActivity;
 import com.hanjinliang.androidstudy.customerviews.SearchView.SearchViewActivity;
 import com.hanjinliang.androidstudy.customerviews.SelectLayout.SelectLayoutActivity;
@@ -227,6 +228,14 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
      */
     public void  StepView(View view){
         startActivity(new Intent(this,  StepViewActivity.class));
+    }
+
+    /**
+     *StepView
+     * @param view
+     */
+    public void  NumView(View view){
+        startActivity(new Intent(this,  NumViewActivity.class));
     }
 
 
