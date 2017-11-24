@@ -15,6 +15,7 @@ import com.hanjinliang.androidstudy.systemwidget.SlidingPaneLayout.SlidingPaneLa
 import com.hanjinliang.androidstudy.systemwidget.appbarlayout.AppBarLayoutActivity;
 import com.hanjinliang.androidstudy.systemwidget.appbarlayout.ToolBarActivity;
 import com.hanjinliang.androidstudy.systemwidget.coordinatorlayout.CoordinatorLayoutActivity;
+import com.hanjinliang.androidstudy.systemwidget.eventpatch.EventPatchActivity;
 
 /**
  * 系统组件
@@ -24,7 +25,8 @@ public class SystemWidgetStudyActivity extends ListActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            String[] pArray={" CoordinatorLayout学习","Toolbar学习","AppBarLayout学习","SlidingPaneLayout学习","重力感应器","ConstraintLayoutActivity"};
+            String[] pArray={" CoordinatorLayout学习","Toolbar学习","AppBarLayout学习","SlidingPaneLayout学习","重力感应器","ConstraintLayoutActivity"
+            ,"滑动事件冲突"};
             setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, pArray));//绑定数据源
         }
 
@@ -49,6 +51,8 @@ public class SystemWidgetStudyActivity extends ListActivity {
                     break;
                 case 5://
                     start(ConstraintLayoutActivity.class);
+                case 6://
+                    start(EventPatchActivity.class);
             }
         }
 
