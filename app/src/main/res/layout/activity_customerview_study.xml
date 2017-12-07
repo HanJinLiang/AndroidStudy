@@ -172,9 +172,15 @@
                     android:id="@+id/NumView"
                     android:onClick="NumView"
                     android:text="NumView"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/PieChart"
+                    android:onClick="PieChart"
+                    android:text="PieChart"/>
 
 
-
+                PieChart
 
             </LinearLayout>
         </ScrollView>
