@@ -21,6 +21,7 @@ import com.hanjinliang.androidstudy.customerviews.Region.RegionCircleActivity;
 import com.hanjinliang.androidstudy.customerviews.SearchView.SearchViewActivity;
 import com.hanjinliang.androidstudy.customerviews.SelectLayout.SelectLayoutActivity;
 import com.hanjinliang.androidstudy.customerviews.WeightView.WeightProgressViewActivity;
+import com.hanjinliang.androidstudy.customerviews.banner.BannerActivity;
 import com.hanjinliang.androidstudy.customerviews.basestudy.BaseStudyActivity;
 import com.hanjinliang.androidstudy.customerviews.basestudy.patheffect.PathEffectActivity;
 import com.hanjinliang.androidstudy.customerviews.circleimage.CircleImageViewActivity;
@@ -247,5 +248,12 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
         startActivity(new Intent(this,  PieChartActivity.class));
     }
 
+    /**
+     *RecyclerViewBanner
+     * @param view
+     */
+    public void  RecyclerViewBanner(View view){
+        startActivity(new Intent(this,  BannerActivity.class));
+    }
 
 }

@@ -110,6 +110,8 @@
         </activity>
         <activity android:name=".customerviews.PieChart.PieChartActivity">
         </activity>
+        <activity android:name=".customerviews.banner.BannerActivity">
+        </activity>
     </application>
 
 </manifest>

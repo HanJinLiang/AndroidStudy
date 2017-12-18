@@ -36,5 +36,6 @@ dependencies {
     compile 'com.github.chrisbanes:PhotoView:2.0.0'
     compile 'com.github.HanJinLiang:NetsScoreView:V1.0.1'
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+    compile 'com.github.bumptech.glide:glide:3.6.1'
     testCompile 'junit:junit:4.12'
 }

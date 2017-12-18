@@ -19,6 +19,13 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:id="@+id/RecyclerViewBanner"
+                    android:onClick="RecyclerViewBanner"
+                    android:text="RecyclerViewBanner"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:id="@+id/BaseStudy"
                     android:onClick="BaseStudy"
                     android:text="BaseStudy自定义View基础"/>
