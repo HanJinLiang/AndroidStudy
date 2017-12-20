@@ -10,11 +10,13 @@ import android.graphics.RectF;
 import android.graphics.Region;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.SizeUtils;
+import com.blankj.utilcode.util.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +29,7 @@ public class PieChartView extends View {
     ArrayList<PieBeans> mDatas=new ArrayList<>();
     HashMap<String,Path> mPaths=new HashMap<>();
     private int mCircleRadius;
+    private int mLineInnerWidth;
     private int mLineWidth;
     private int mTextPaddingWidth;
     private Paint mPiePaint;
@@ -42,11 +45,6 @@ public class PieChartView extends View {
 
     public PieChartView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
-        mCircleRadius= SizeUtils.dp2px(50);
-        mLineWidth=mCircleRadius/2;
-        mTextPaddingWidth=SizeUtils.dp2px(2);
-
         mPiePaint=new Paint(Paint.ANTI_ALIAS_FLAG);
         mPiePaint.setColor(Color.RED);
         mPiePaint.setStyle(Paint.Style.FILL);
@@ -58,8 +56,8 @@ public class PieChartView extends View {
         mTextPaint =new Paint(Paint.ANTI_ALIAS_FLAG);
         mTextPaint.setColor(Color.BLACK);
         mTextPaint.setStyle(Paint.Style.FILL);
-//        mTextPaint.setTextAlign(Paint.Align.CENTER);
-        mTextPaint.setTextSize(SizeUtils.sp2px(12));
+        mTextPaint.setTextSize(sp2px(12));
+
     }
     RectF mRectF;
     Rect mRect;
@@ -67,6 +65,11 @@ public class PieChartView extends View {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
+        mCircleRadius=Math.min(w,h)/4;//圆半径 为宽高较小的 2/3
+        mLineWidth=mCircleRadius/3;
+        mLineInnerWidth=mCircleRadius/20;
+        mTextPaddingWidth=dp2px(2);
+
         mRectF =new RectF(w/2-mCircleRadius,h/2-mCircleRadius,w/2+mCircleRadius,h/2+mCircleRadius);
         mRect =new Rect(w/2-mCircleRadius,h/2-mCircleRadius,w/2+mCircleRadius,h/2+mCircleRadius);
     }
@@ -82,16 +85,17 @@ public class PieChartView extends View {
     }
     float mTotalPercent;
     Path mPath;
+    private int mTempCircleRadius;
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawColor(Color.GRAY);
-        mTotalPercent=0;
+        mTotalPercent=mOffsetAngle;
         for(int i=0;i<mDatas.size();i++){
             if(mClickIndex==i){
-                mCircleRadius= SizeUtils.dp2px(53);
+                mTempCircleRadius=mCircleRadius*21/20;
             }else{
-                mCircleRadius= SizeUtils.dp2px(50);
+                mTempCircleRadius=mCircleRadius;
             }
             PieBeans pieBeans=mDatas.get(i);
             mPiePaint.setColor(pieBeans.getColor());
@@ -99,7 +103,7 @@ public class PieChartView extends View {
                 mPaths.put(pieBeans.getText(),new Path());
             }
 
-            mRectF.set(getWidth()/2-mCircleRadius,getHeight()/2-mCircleRadius,getWidth()/2+mCircleRadius,getHeight()/2+mCircleRadius);
+            mRectF.set(getWidth()/2-mTempCircleRadius,getHeight()/2-mTempCircleRadius,getWidth()/2+mTempCircleRadius,getHeight()/2+mTempCircleRadius);
             mPath=mPaths.get(pieBeans.getText());
             mPath.reset();
             mPath.moveTo(mRectF.centerX(), mRectF.centerY());
@@ -114,47 +118,46 @@ public class PieChartView extends View {
             float top = fontMetrics.top;//为基线到字体上边框的距离,即上图中的top
             float bottom = fontMetrics.bottom;//为基线到字体下边框的距离,即上图中的bottom
 
+            double angle=(mTotalPercent+pieBeans.getPercent()*1.8)%360;
+            if(angle<90) {//右下
+                float inLineY = (float) (Math.sin(Math.toRadians(angle)) * (mTempCircleRadius-mLineInnerWidth));
+                float inLineX = (float) (Math.cos(Math.toRadians(angle)) * (mTempCircleRadius-mLineInnerWidth));
 
-            if(mTotalPercent+pieBeans.getPercent()*1.8<90) {//右下
-
-                float inLineY = (float) (Math.sin(Math.toRadians(mTotalPercent + pieBeans.getPercent() * 1.8)) * mCircleRadius * 9 / 10);
-                float inLineX = (float) (Math.cos(Math.toRadians(mTotalPercent + pieBeans.getPercent() * 1.8)) * mCircleRadius * 9 / 10);
-
-                float outLineY = (float) (Math.sin(Math.toRadians(mTotalPercent + pieBeans.getPercent() * 1.8)) * mCircleRadius * 11 / 10);
-                float outLineX = (float) (Math.cos(Math.toRadians(mTotalPercent + pieBeans.getPercent() * 1.8))* mCircleRadius * 11 / 10);
+                float outLineY = (float) (Math.sin(Math.toRadians(angle)) *(mTempCircleRadius+mLineInnerWidth));
+                float outLineX = (float) (Math.cos(Math.toRadians(angle))*(mTempCircleRadius+mLineInnerWidth));
 
                 canvas.drawLine(inLineX+ mRectF.centerX(), inLineY+ mRectF.centerY(), outLineX+ mRectF.centerX(), outLineY+ mRectF.centerY(), mLinePaint);
                 canvas.drawLine(outLineX+ mRectF.centerX(), outLineY+ mRectF.centerY(), outLineX+ mRectF.centerX()+mLineWidth, outLineY+ mRectF.centerY(), mLinePaint);
                 canvas.drawText(pieBeans.getText(),outLineX+ mRectF.centerX()+mLineWidth+mTextPaddingWidth, outLineY+ mRectF.centerY()- top/2 - bottom/2,mTextPaint);
-            }else if(mTotalPercent+pieBeans.getPercent()*1.8>=90&&mTotalPercent+pieBeans.getPercent()*1.8<180){//左下
-                float inLineY = (float) (Math.cos(Math.toRadians(mTotalPercent + pieBeans.getPercent() * 1.8-90)) * mCircleRadius * 9 / 10);
-                float inLineX = (float) (Math.sin(Math.toRadians(mTotalPercent + pieBeans.getPercent() * 1.8-90)) * mCircleRadius * 9 / 10);
+            }else if(angle>=90&&angle<180){//左下
+                float inLineY = (float) (Math.cos(Math.toRadians(angle-90)) * (mTempCircleRadius-mLineInnerWidth));
+                float inLineX = (float) (Math.sin(Math.toRadians(angle-90)) *  (mTempCircleRadius-mLineInnerWidth));
 
-                float outLineY = (float) (Math.cos(Math.toRadians(mTotalPercent + pieBeans.getPercent() * 1.8-90)) * mCircleRadius * 11 / 10);
-                float outLineX = (float) (Math.sin(Math.toRadians(mTotalPercent + pieBeans.getPercent() * 1.8-90))* mCircleRadius * 11 / 10);
+                float outLineY = (float) (Math.cos(Math.toRadians(angle-90)) *(mTempCircleRadius+mLineInnerWidth));
+                float outLineX = (float) (Math.sin(Math.toRadians(angle-90))*(mTempCircleRadius+mLineInnerWidth));
 
 
                 canvas.drawLine(mRectF.centerX()-inLineX, inLineY+ mRectF.centerY(), mRectF.centerX()-outLineX, outLineY+ mRectF.centerY(), mLinePaint);
                 canvas.drawLine(mRectF.centerX()-outLineX, outLineY+ mRectF.centerY(), mRectF.centerX()-outLineX-mLineWidth, outLineY+ mRectF.centerY() , mLinePaint);
                 canvas.drawText(pieBeans.getText(), mRectF.centerX()-outLineX-mLineWidth-textWidth-mTextPaddingWidth, outLineY+ mRectF.centerY() - top/2 - bottom/2,mTextPaint);
 
-            }else if(mTotalPercent+pieBeans.getPercent()*1.8>=180&&mTotalPercent+pieBeans.getPercent()*1.8<270){//左上
-                float inLineY = (float) (Math.sin(Math.toRadians(mTotalPercent + pieBeans.getPercent() * 1.8-180)) * mCircleRadius * 9 / 10);
-                float inLineX = (float) (Math.cos(Math.toRadians(mTotalPercent + pieBeans.getPercent() * 1.8-180)) * mCircleRadius * 9 / 10);
+            }else if(angle>=180&&angle<270){//左上
+                float inLineY = (float) (Math.sin(Math.toRadians(angle-180)) *  (mTempCircleRadius-mLineInnerWidth));
+                float inLineX = (float) (Math.cos(Math.toRadians(angle-180)) * (mTempCircleRadius-mLineInnerWidth));
 
-                float outLineY = (float) (Math.sin(Math.toRadians(mTotalPercent + pieBeans.getPercent() * 1.8-180)) * mCircleRadius * 11 / 10);
-                float outLineX = (float) (Math.cos(Math.toRadians(mTotalPercent + pieBeans.getPercent() * 1.8-180))* mCircleRadius * 11 / 10);
+                float outLineY = (float) (Math.sin(Math.toRadians(angle-180)) *(mTempCircleRadius+mLineInnerWidth));
+                float outLineX = (float) (Math.cos(Math.toRadians(angle-180))*(mTempCircleRadius+mLineInnerWidth));
 
                 canvas.drawLine(mRectF.centerX()-inLineX, mRectF.centerY()-inLineY, mRectF.centerX()-outLineX, mRectF.centerY()-outLineY, mLinePaint);
                 canvas.drawLine(mRectF.centerX()-outLineX, mRectF.centerY()-outLineY, mRectF.centerX()-outLineX-mLineWidth, mRectF.centerY()-outLineY, mLinePaint);
                 canvas.drawText(pieBeans.getText(), mRectF.centerX()-outLineX-mLineWidth-textWidth-mTextPaddingWidth, mRectF.centerY()-outLineY - top/2 - bottom/2,mTextPaint);
 
-            }else if(mTotalPercent+pieBeans.getPercent()*1.8>=270&&mTotalPercent+pieBeans.getPercent()*1.8<360){//右上
-                float inLineY = (float) (Math.cos(Math.toRadians(mTotalPercent + pieBeans.getPercent() * 1.8-270)) * mCircleRadius * 9 / 10);
-                float inLineX = (float) (Math.sin(Math.toRadians(mTotalPercent + pieBeans.getPercent() * 1.8-270)) * mCircleRadius * 9 / 10);
+            }else if(angle>=270&&angle<360){//右上
+                float inLineY = (float) (Math.cos(Math.toRadians(angle-270)) *  (mTempCircleRadius-mLineInnerWidth));
+                float inLineX = (float) (Math.sin(Math.toRadians(angle-270)) * (mTempCircleRadius-mLineInnerWidth));
 
-                float outLineY = (float) (Math.cos(Math.toRadians(mTotalPercent + pieBeans.getPercent() * 1.8-270)) * mCircleRadius * 11 / 10);
-                float outLineX = (float) (Math.sin(Math.toRadians(mTotalPercent + pieBeans.getPercent() * 1.8-270))* mCircleRadius * 11 / 10);
+                float outLineY = (float) (Math.cos(Math.toRadians(angle-270)) * (mTempCircleRadius+mLineInnerWidth));
+                float outLineX = (float) (Math.sin(Math.toRadians(angle-270))*(mTempCircleRadius+mLineInnerWidth));
 
                 canvas.drawLine(inLineX+ mRectF.centerX(), mRectF.centerY()-inLineY, outLineX+ mRectF.centerX(), mRectF.centerY()-outLineY, mLinePaint);
                 canvas.drawLine(outLineX+ mRectF.centerX(), mRectF.centerY()-outLineY, outLineX+ mRectF.centerX()+mLineWidth, mRectF.centerY()-outLineY , mLinePaint);
@@ -169,40 +172,31 @@ public class PieChartView extends View {
     }
 
     int mClickIndex=-1;
+
+    GestureDetector gestureDetector;
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
-        switch (event.getAction()){
-            case MotionEvent.ACTION_DOWN:
-                return true;
-            case MotionEvent.ACTION_UP:
-                float x=event.getX();
-                float y=event.getY();
-//                //点击位置x坐标与圆心的x坐标的距离
-//                float distanceX = Math.abs(mRectF.centerX()-x);
-//                //点击位置y坐标与圆心的y坐标的距离
-//                float distanceY = Math.abs(mRectF.centerY()-y);
-//                //点击位置与圆心的直线距离
-//                int distanceZ = (int) Math.sqrt(Math.pow(distanceX,2)+Math.pow(distanceY,2));
-//
-//                if(distanceZ<mCircleRadius){
-//                    //点击的在圆里面
-//                    LogUtils.e("点击的在圆里面");
-//                    clickX=x;
-//                    clickY=y;
-//
+        //使用手势检测
+        if(gestureDetector==null){
+            gestureDetector=new GestureDetector(getContext(),onGestureListener);
+        }
+        return gestureDetector.onTouchEvent(event);
+//        switch (event.getAction()){
+//            case MotionEvent.ACTION_DOWN:
+//                return true;
+//            case MotionEvent.ACTION_UP:
+//                float x=event.getX();
+//                float y=event.getY();
+//                int index=clickIndex((int)x,(int)y);
+//                if(index!=-1){
+//                    mClickIndex=index;
 //                    invalidate();
 //                }
-                int index=clickIndex((int)x,(int)y);
-                if(index!=-1){
-                    mClickIndex=index;
-                    invalidate();
-                }
-                break;
-        }
-        return super.onTouchEvent(event);
+//                break;
+//        }
+//        return super.onTouchEvent(event);
     }
-    Region mRegion=new Region();
+    Region mRegion=new Region();//区域
     public int clickIndex(int x,int y){
         for(int i=0;i<mDatas.size();i++){
             mRegion.setPath(mPaths.get(mDatas.get(i).getText()),new Region(mRect));
@@ -212,5 +206,123 @@ public class PieChartView extends View {
             }
         }
         return -1;
+    }
+
+    /**
+     * dp转成px
+     * @param dipValue
+     * @return
+     */
+    private   int dp2px( float dipValue) {
+        float scale = getContext().getResources().getDisplayMetrics().density;
+        return (int) (dipValue * scale + 0.5f);
+    }
+
+    private float mOffsetAngle=0;//旋转角度
+    private float mAngleSpeed=2;//旋转速度
+    /**
+     * sp转px
+     *
+     * @param spValue sp值
+     * @return px值
+     */
+    public int sp2px(float spValue) {
+        final float fontScale = getContext().getResources().getDisplayMetrics().scaledDensity;
+        return (int) (spValue * fontScale + 0.5f);
+    }
+
+    private GestureDetector.OnGestureListener onGestureListener = new GestureDetector.OnGestureListener() {
+        @Override
+        public boolean onDown(MotionEvent e) {//手指轻触屏幕的一瞬间，由一个ACTION_DOWN触发
+            LogUtils.e("轻触一下");
+            return true;
+        }
+
+        @Override
+        public void onShowPress(MotionEvent e) {//手指轻触屏幕，尚未松开或拖动，由一个ACTION_DOWN触发
+            LogUtils.e("轻触未松开");
+        }
+
+        @Override
+        public boolean onSingleTapUp(MotionEvent e) {//手指离开屏幕，伴随一个ACTION_UP触发，单击行为
+            LogUtils.e("单击");
+              int index=clickIndex((int)e.getX(),(int)e.getY());
+                if(index!=-1&&mClickIndex!=index){
+                    mClickIndex=index;
+                    if(mOnPieItemClickListener!=null){//点击选中回调
+                        mOnPieItemClickListener.OnPieItemClickListener(mClickIndex,mDatas.get(mClickIndex));
+                    }
+                    invalidate();
+                }
+            return true;
+        }
+
+        @Override
+        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {//手指按下屏幕并拖动
+            // 由一个由一个ACTION_DOWN，多个ACTION_MOVE触发，是拖动行为
+            LogUtils.e("distanceX="+distanceX+"---distanceY="+distanceY);
+            //滑动的点是否在圆内 两点间的直线距离
+           double distance=Math.abs( Math.sqrt(Math.pow((mRectF.centerX()-e2.getX()),2)+Math.pow((mRectF.centerY()-e2.getY()),2)));
+           if(distance<=mCircleRadius){
+               //在圆内
+               LogUtils.e("在圆内拖动");
+               if(Math.abs(distanceX)>Math.abs(distanceY)){//水平方向
+                   if(e2.getY()<mRectF.centerY()){//上半部分
+                        if(distanceX<0){//右滑动
+                            mOffsetAngle+=mAngleSpeed;
+                        }else{//左滑动
+                            mOffsetAngle-=mAngleSpeed;
+                        }
+                   }else{//下半部分
+                       if(distanceX<0){//右滑动
+                           mOffsetAngle-=mAngleSpeed;
+                       }else{//左滑动
+                           mOffsetAngle+=mAngleSpeed;
+                       }
+                   }
+               }else{//竖直方向
+                   if(e2.getX()<mRectF.centerX()){//左边部分
+                       if(distanceY<0){//下滑滑动
+                           mOffsetAngle-=mAngleSpeed;
+                       }else{//上滑动
+                           mOffsetAngle+=mAngleSpeed;
+                       }
+                   }else{//右边部分
+                       if(distanceY<0){//下滑滑动
+                           mOffsetAngle+=mAngleSpeed;
+                       }else{//上滑动
+                           mOffsetAngle-=mAngleSpeed;
+                       }
+                   }
+               }
+               if(mOffsetAngle<0){//如果小于0  转化为正的角度
+                   mOffsetAngle=360+mOffsetAngle%360;
+               }
+               invalidate();
+               return true;
+           }
+            return false;
+        }
+
+        @Override
+        public void onLongPress(MotionEvent e) {//长按
+            LogUtils.e("长按");
+        }
+
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            //按下屏幕，快速滑动后松开，由一个由一个ACTION_DOWN，多个ACTION_MOVE，一个ACTION_UP触发
+            LogUtils.e("快速滑动");
+            return false;
+        }
+    };
+
+    private OnPieItemClickListener mOnPieItemClickListener;
+    public interface OnPieItemClickListener{
+        public void OnPieItemClickListener(int index,PieBeans pieBeans);
+    }
+
+    public void setOnPieItemClickListener(OnPieItemClickListener onPieItemClickListener) {
+        mOnPieItemClickListener = onPieItemClickListener;
     }
 }
