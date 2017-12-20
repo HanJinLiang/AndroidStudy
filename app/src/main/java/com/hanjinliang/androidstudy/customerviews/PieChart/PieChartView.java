@@ -26,12 +26,13 @@ import java.util.HashMap;
  */
 
 public class PieChartView extends View {
-    ArrayList<PieBeans> mDatas=new ArrayList<>();
-    HashMap<String,Path> mPaths=new HashMap<>();
-    private int mCircleRadius;
-    private int mLineInnerWidth;
-    private int mLineWidth;
-    private int mTextPaddingWidth;
+    ArrayList<PieBeans> mDatas=new ArrayList<>();//数据源
+    HashMap<String,Path> mPaths=new HashMap<>();//存放所有的扇形Path
+    private int mCircleRadius;//默认的饼状图的半径
+    private int mLineInnerWidth;//线条在饼状图内部的长度
+    private int mLineWidth;//指示线的宽度
+    private int mTextPaddingWidth;//文字距离指示线的宽度
+
     private Paint mPiePaint;
     private Paint mLinePaint;
     private Paint mTextPaint;
@@ -89,17 +90,18 @@ public class PieChartView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        //绘制背景色
         canvas.drawColor(Color.GRAY);
         mTotalPercent=mOffsetAngle;
         for(int i=0;i<mDatas.size();i++){
-            if(mClickIndex==i){
+            if(mClickIndex==i){//是被点击的  半径变大
                 mTempCircleRadius=mCircleRadius*21/20;
             }else{
                 mTempCircleRadius=mCircleRadius;
             }
             PieBeans pieBeans=mDatas.get(i);
-            mPiePaint.setColor(pieBeans.getColor());
-            if(mPaths.get(pieBeans.getText())==null){
+            mPiePaint.setColor(pieBeans.getColor());//设置颜色
+            if(mPaths.get(pieBeans.getText())==null){//初始化Path
                 mPaths.put(pieBeans.getText(),new Path());
             }
 
@@ -126,8 +128,11 @@ public class PieChartView extends View {
                 float outLineY = (float) (Math.sin(Math.toRadians(angle)) *(mTempCircleRadius+mLineInnerWidth));
                 float outLineX = (float) (Math.cos(Math.toRadians(angle))*(mTempCircleRadius+mLineInnerWidth));
 
+                //指示线 折现部分
                 canvas.drawLine(inLineX+ mRectF.centerX(), inLineY+ mRectF.centerY(), outLineX+ mRectF.centerX(), outLineY+ mRectF.centerY(), mLinePaint);
+                //指示线 直线部分
                 canvas.drawLine(outLineX+ mRectF.centerX(), outLineY+ mRectF.centerY(), outLineX+ mRectF.centerX()+mLineWidth, outLineY+ mRectF.centerY(), mLinePaint);
+                //指示 文字部分
                 canvas.drawText(pieBeans.getText(),outLineX+ mRectF.centerX()+mLineWidth+mTextPaddingWidth, outLineY+ mRectF.centerY()- top/2 - bottom/2,mTextPaint);
             }else if(angle>=90&&angle<180){//左下
                 float inLineY = (float) (Math.cos(Math.toRadians(angle-90)) * (mTempCircleRadius-mLineInnerWidth));
@@ -165,14 +170,15 @@ public class PieChartView extends View {
 
             }
 
+            //累计总的角度
             mTotalPercent+=(pieBeans.getPercent()*3.6f);
-
         }
 
     }
 
+    //被点击的索引
     int mClickIndex=-1;
-
+    //手势检测器
     GestureDetector gestureDetector;
     @Override
     public boolean onTouchEvent(MotionEvent event) {
