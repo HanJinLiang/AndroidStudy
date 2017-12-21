@@ -252,14 +252,14 @@ public class PieChartView extends View {
         @Override
         public boolean onSingleTapUp(MotionEvent e) {//手指离开屏幕，伴随一个ACTION_UP触发，单击行为
             LogUtils.e("单击");
-              int index=clickIndex((int)e.getX(),(int)e.getY());
-                if(index!=-1&&mClickIndex!=index){
-                    mClickIndex=index;
-                    if(mOnPieItemClickListener!=null){//点击选中回调
-                        mOnPieItemClickListener.OnPieItemClickListener(mClickIndex,mDatas.get(mClickIndex));
-                    }
-                    invalidate();
+            int index = clickIndex((int) e.getX(), (int) e.getY());
+            if (index != -1 && mClickIndex != index) {
+                mClickIndex = index;
+                if (mOnPieItemClickListener != null) {//点击选中回调
+                    mOnPieItemClickListener.OnPieItemClickListener(mClickIndex, mDatas.get(mClickIndex));
                 }
+                invalidate();
+            }
             return true;
         }
 

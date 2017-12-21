@@ -112,6 +112,12 @@
         </activity>
         <activity android:name=".customerviews.banner.BannerActivity">
         </activity>
+        <activity android:name=".systemwidget.viewpager.ViewPagerStudyActivity">
+        </activity>
+        <activity android:name=".systemwidget.viewpager.ViewPagerBaseActivity">
+        </activity>
+        <activity android:name=".systemwidget.viewpager.ViewPagerFragmentActivity">
+        </activity>
     </application>
 
 </manifest>
