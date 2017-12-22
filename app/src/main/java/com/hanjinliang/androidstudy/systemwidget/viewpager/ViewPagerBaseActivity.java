@@ -7,14 +7,19 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.SizeUtils;
 import com.hanjinliang.androidstudy.R;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 /**
@@ -26,15 +31,51 @@ public class ViewPagerBaseActivity extends AppCompatActivity {
     ArrayList<View> mViews=new ArrayList<>();
     ViewPager mViewPager;
     TextView mBannerTitle;
+    RelativeLayout mLayout_root;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pager_base);
+        mLayout_root= (RelativeLayout) findViewById(R.id.layout_root);
         mViewPager= (ViewPager) findViewById(R.id.viewPager);
         mBannerTitle= (TextView) findViewById(R.id.bannerTitle);
         initView();
-        handler.sendEmptyMessageDelayed(1, 3000);
+        handler.sendEmptyMessageDelayed(1, 2000);
+
+        mViewPager.setPageTransformer(false,new MyPagerTransformer());
+        //mViewPager.setPageTransformer(false,new ZoomOutPageTransformer());
+
+        mViewPager.setOffscreenPageLimit(3);
+        mViewPager.setPageMargin(SizeUtils.dp2px(10));
+
+        setPagerScrollTime();
+
+        //解决ViewPager旁边不现实问题
+        mLayout_root.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                mViewPager.dispatchTouchEvent(event);
+                return true;
+            }
+        });
     }
+
+    /**
+     * 设置ViewPager动画执行时间
+     */
+    private void setPagerScrollTime() {
+        try {
+            Field filed=ViewPager.class.getDeclaredField("mScroller");
+            filed.setAccessible(true);
+            FixedSpeedScroller mScroller=new FixedSpeedScroller(this,new AccelerateInterpolator());
+            filed.set(mViewPager,mScroller);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
     private int count=1;
     private Handler handler=new Handler(){
         @Override
@@ -45,7 +86,7 @@ public class ViewPagerBaseActivity extends AppCompatActivity {
                }
                mViewPager.setCurrentItem(count++);
            }
-            handler.sendEmptyMessageDelayed(1, 3000);
+            handler.sendEmptyMessageDelayed(1, 2000);
         }
     };
 
@@ -101,7 +142,7 @@ public class ViewPagerBaseActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                LogUtils.e(position);
+                //LogUtils.e(position);
                 count=position;
                 if(position==0){
                     mBannerTitle.setText("当前广告位---"+mPics.length);
@@ -115,9 +156,10 @@ public class ViewPagerBaseActivity extends AppCompatActivity {
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                if(state!=ViewPager.SCROLL_STATE_IDLE){
-                    return;//没有停止  直接返回
-                }
+                //混引起 快速滑动 最后一张会卡住的bug
+//                if(state!=ViewPager.SCROLL_STATE_IDLE){
+//                    return;//没有停止  直接返回
+//                }
 
                 if(count==0){//第一张
                     mViewPager.setCurrentItem(mViews.size()-2,false);
