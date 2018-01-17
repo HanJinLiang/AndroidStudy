@@ -1,6 +1,8 @@
 package com.hanjinliang.androidstudy.customerviews.CustomerProgressBar;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
+import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -23,6 +25,11 @@ public class CircleBar extends View {
     private int mProgress;
     private int mMaxProgress = 100;// 默认最大值
 
+    int mCircleColor;
+    int mCircleBgColor;
+    private float mCircleRatio=0.05f;//圆环宽度占比
+    private boolean mIsDrawValue=false;
+
     public CircleBar(Context context) {
         this(context,null);
     }
@@ -37,22 +44,32 @@ public class CircleBar extends View {
     }
     int baseLineY;
     private void init(Context context) {
+        //关闭硬件加速
+        setLayerType( LAYER_TYPE_SOFTWARE , null);
+
+        //圆的颜色
+        mCircleColor=Color.parseColor("#30E1A6");
+
+        //圆的背景颜色
+        mCircleBgColor=Color.parseColor("#F2F2F2");
+
+
         mColorWheelPaint = new Paint();
-        mColorWheelPaint.setColor(Color.parseColor("#46C0EA"));//设置画笔颜色
+        mColorWheelPaint.setColor(mCircleColor);//设置画笔颜色
         mColorWheelPaint.setStyle(Paint.Style.STROKE);// 空心,只绘制轮廓线
         mColorWheelPaint.setStrokeCap(Paint.Cap.ROUND);// 圆角画笔
         mColorWheelPaint.setAntiAlias(true);// 去锯齿
 
 
         mDefaultWheelPaint = new Paint();
-        mDefaultWheelPaint.setColor(Color.parseColor("#F2F2F2"));//背景色
+        mDefaultWheelPaint.setColor(mCircleBgColor);//背景色
         mDefaultWheelPaint.setStyle(Paint.Style.STROKE);
         mDefaultWheelPaint.setStrokeCap(Paint.Cap.ROUND);
         mDefaultWheelPaint.setAntiAlias(true);
 
         mTextPaint = new Paint();
         mTextPaint.setStyle(Paint.Style.FILL);
-        mTextPaint.setColor(Color.RED);//超出效果
+        mTextPaint.setColor(mCircleColor);//百分比
         mTextPaint.setAntiAlias(true);
         mTextPaint.setTextSize( sp2px(context,16));//字体大小
         mTextPaint.setTextAlign(Paint.Align.CENTER);
@@ -80,8 +97,9 @@ public class CircleBar extends View {
          */
         canvas.drawArc(mColorWheelRectangle, 0, 359, false, mDefaultWheelPaint);
         canvas.drawArc(mColorWheelRectangle, 270, mSweepAnglePer, false, mColorWheelPaint);
-
-        canvas.drawText(mProgress+"%",getWidth()/2,baseLineY,mTextPaint);
+        if(mIsDrawValue) {
+            canvas.drawText(mProgress + "%", getWidth() / 2, baseLineY, mTextPaint);
+        }
 
     }
 
@@ -91,31 +109,32 @@ public class CircleBar extends View {
         int width = getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec);
         int min = Math.min(width, height);// 获取View最短边的长度
         setMeasuredDimension(min, min);// 强制改View为以最短边为长度的正方形
-        circleStrokeWidth = Textscale(50, min);// 圆弧的宽度
-        mColorWheelRectangle.set(circleStrokeWidth , circleStrokeWidth , min - circleStrokeWidth , min - circleStrokeWidth);// 设置矩形
-        mColorWheelPaint.setStrokeWidth(circleStrokeWidth);
-        mDefaultWheelPaint.setStrokeWidth(circleStrokeWidth - Textscale(2, min));
-        mDefaultWheelPaint.setShadowLayer(Textscale(10, min), 0, 0, Color.rgb(127, 127, 127));// 设置阴影
+    }
 
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        initCircleWidth();
         //文字
         Paint.FontMetrics fontMetrics = mTextPaint.getFontMetrics();
         float top = fontMetrics.top;//为基线到字体上边框的距离,即上图中的top
         float bottom = fontMetrics.bottom;//为基线到字体下边框的距离,即上图中的bottom
 
         //保证文字垂直居中
-        baseLineY = (int) (getHeight()/2- top/2 - bottom/2);//基线中间点的y轴计算公式
+        baseLineY = (int) (mColorWheelRectangle.centerY()- top/2 - bottom/2);//基线中间点的y轴计算公式
     }
 
-
     /**
-     * 根据控件的大小改变绝对位置的比例
-     *
-     * @param n
-     * @param m
-     * @return
+     * 设置圆环的宽度
      */
-    public float Textscale(float n, float m) {
-        return n / 500 * m;
+    private void initCircleWidth() {
+        circleStrokeWidth = getWidth()*mCircleRatio;// 圆弧的宽度
+        mColorWheelRectangle.set(circleStrokeWidth , circleStrokeWidth , getWidth() - circleStrokeWidth , getWidth() - circleStrokeWidth);// 设置矩形
+        mColorWheelPaint.setStrokeWidth(circleStrokeWidth);
+        mDefaultWheelPaint.setStrokeWidth(circleStrokeWidth);
+        //mColorWheelPaint.setShadowLayer(circleStrokeWidth, 0, 0,mCircleColor);// 设置阴影
+
+        mColorWheelPaint.setMaskFilter(new BlurMaskFilter(circleStrokeWidth/2, BlurMaskFilter.Blur.SOLID));//设置发光效果
     }
 
     /**
@@ -123,10 +142,69 @@ public class CircleBar extends View {
      * @param progress
      */
     public void update(int progress) {
-        mProgress=progress;
-        mSweepAnglePer = mProgress * 360 / mMaxProgress;
+        update(progress,false);
+    }
+    ValueAnimator valueAnimator;
+    /**
+     * 更新进度
+     * @param progress
+     */
+    public void update(int progress,boolean isNeedAnim) {
+        update(progress,isNeedAnim,1000);
+    }
+
+    /**
+     * 更新进度
+     * @param progress
+     */
+    public void update(int progress,boolean isNeedAnim,long duration) {
+        if(isNeedAnim){//需要动画
+            valueAnimator= ValueAnimator.ofInt(0,progress).setDuration(duration);
+            valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    mProgress= (int) animation.getAnimatedValue();
+                    mSweepAnglePer = mProgress * 360 / mMaxProgress;
+                    postInvalidate();
+                }
+            });
+            valueAnimator.start();
+        }else{
+            if(valueAnimator!=null&&valueAnimator.isRunning()){//取消动画
+                valueAnimator.cancel();
+            }
+            mProgress=progress;
+            mSweepAnglePer = mProgress * 360 / mMaxProgress;
+            postInvalidate();
+        }
+    }
+
+    /**
+     * 设置画笔颜色
+     * @param circleColor
+     */
+    public void setCircleColor(int circleColor) {
+        mCircleColor = circleColor;
+        mColorWheelPaint.setColor(mCircleColor);
         postInvalidate();
     }
 
+    /**
+     * 设置圆环宽度占比
+     * @param circleRatio
+     */
+    public void setCircleRatio(float circleRatio) {
+        mCircleRatio = circleRatio;
+        initCircleWidth();
+        postInvalidate();
+    }
 
+    /**
+     * 设置是否绘制中间文字  默认不绘制
+     * @param drawValue
+     */
+    public void setDrawValue(boolean drawValue) {
+        mIsDrawValue = drawValue;
+        postInvalidate();
+    }
 }

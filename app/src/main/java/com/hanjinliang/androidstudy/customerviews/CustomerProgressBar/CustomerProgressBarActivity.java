@@ -37,7 +37,7 @@ public class CustomerProgressBarActivity extends BaseActivity {
             public void onClick(View v) {
                 //
                 CircleBar circleBar=findView(R.id.CircleBar);
-                circleBar.update(new Random().nextInt(100));
+                circleBar.update(new Random().nextInt(100),true);
             }
         });
     }

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hanjinliang.androidstudy.customerviews.DashLine.DashLineActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.hanjinliang.androidstudy.customerviews.DashLine.DashLineView
+            android:layout_width="100dp"
+            android:layout_height="10dp"
+            android:layout_margin="10dp"
+            app:LineDirection="horizontal"
+            app:DashLength="10dp"
+            app:FullLength="10dp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        >
+        <com.hanjinliang.androidstudy.customerviews.DashLine.DashLineView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            app:LineDirection="vertical"
+            app:DashLength="10dp"
+            app:FullLength="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        >
+        <com.hanjinliang.androidstudy.customerviews.DashLine.DashLineView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            app:LineDirection="vertical"
+            app:DashLength="2dp"
+            app:FullLength="5dp"
+            app:DashLineColor="@color/colorPrimary"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        >
+        <com.hanjinliang.androidstudy.customerviews.DashLine.DashLineView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:LineDirection="horizontal"
+            app:DashLength="2dp"
+            app:FullLength="5dp"
+            app:DashLineColor="@color/colorPrimary"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        >
+        <com.hanjinliang.androidstudy.customerviews.DashLine.DashLineView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:LineDirection="horizontal"
+            app:DashLength="2dp"
+            app:FullLength="5dp"
+            app:DashLineColor="@color/colorPrimary"/>
+    </LinearLayout>
+</LinearLayout>

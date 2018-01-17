@@ -9,6 +9,7 @@ import com.hanjinliang.androidstudy.R;
 import com.hanjinliang.androidstudy.customerviews.ArcMenu.ArcMenuActivity;
 import com.hanjinliang.androidstudy.customerviews.CheckableLinearLayout.CheckableLayoutActivity;
 import com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.CustomerProgressBarActivity;
+import com.hanjinliang.androidstudy.customerviews.DashLine.DashLineActivity;
 import com.hanjinliang.androidstudy.customerviews.EraserView.EraserViewActivity;
 import com.hanjinliang.androidstudy.customerviews.EraserView.GuagualeViewActivity;
 import com.hanjinliang.androidstudy.customerviews.HealthIndexView.HealthIndexViewActivity;
@@ -254,6 +255,13 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
      */
     public void  RecyclerViewBanner(View view){
         startActivity(new Intent(this,  BannerActivity.class));
+    }
+    /**
+     *DashLineView  虚线View
+     * @param view
+     */
+    public void  DashLineView(View view){
+        startActivity(new Intent(this,  DashLineActivity.class));
     }
 
 }

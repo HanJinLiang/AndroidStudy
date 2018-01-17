@@ -118,6 +118,8 @@
         </activity>
         <activity android:name=".systemwidget.viewpager.ViewPagerFragmentActivity">
         </activity>
+        <activity android:name=".customerviews.DashLine.DashLineActivity">
+        </activity>
     </application>
 
 </manifest>

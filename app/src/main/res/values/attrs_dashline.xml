@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--虚线-->
+    <declare-styleable name="DashLineView">
+        <attr name="DashLineColor" format="color|reference"/>
+        <!--实线宽度-->
+        <attr name="FullLength" format="dimension"/>
+        <!--虚线宽度-->
+        <attr name="DashLength" format="dimension"/>
+        <!--方向-->
+        <attr name="LineDirection" >
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+    </declare-styleable>
+</resources>

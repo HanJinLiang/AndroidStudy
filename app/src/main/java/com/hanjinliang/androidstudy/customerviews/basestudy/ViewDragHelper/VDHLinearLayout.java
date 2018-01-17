@@ -46,7 +46,7 @@ public class VDHLinearLayout extends LinearLayout {
         dragHelper = ViewDragHelper.create(this, 1.0f, new ViewDragHelper.Callback() {
             @Override
             public boolean tryCaptureView(View child, int pointerId) {
-                return child == dragBtn; // 只处理dragBtn
+                return child == dragBtn||child == bottomView; // 只处理dragBtn
             }
 
             @Override
