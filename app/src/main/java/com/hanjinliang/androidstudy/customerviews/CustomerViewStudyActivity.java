@@ -24,6 +24,7 @@ import com.hanjinliang.androidstudy.customerviews.WeightView.WeightProgressViewA
 import com.hanjinliang.androidstudy.customerviews.banner.BannerActivity;
 import com.hanjinliang.androidstudy.customerviews.basestudy.BaseStudyActivity;
 import com.hanjinliang.androidstudy.customerviews.basestudy.patheffect.PathEffectActivity;
+import com.hanjinliang.androidstudy.customerviews.calendar.CalendarDemoActivity;
 import com.hanjinliang.androidstudy.customerviews.circleimage.CircleImageViewActivity;
 import com.hanjinliang.androidstudy.customerviews.curve.CurveActivity;
 import com.hanjinliang.androidstudy.customerviews.curve.CurveView;
@@ -48,6 +49,14 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customerview_study);
     }
 
+
+    /**
+     * 自定义日历学习
+     * @param view
+     */
+    public void CalendarView(View view){
+        startActivity(new Intent(this, CalendarDemoActivity.class));
+    }
     /**
      * HorizontalSelectedView学习
      * @param view

@@ -118,6 +118,8 @@
         </activity>
         <activity android:name=".systemwidget.viewpager.ViewPagerFragmentActivity">
         </activity>
+        <activity android:name=".customerviews.calendar.CalendarDemoActivity">
+        </activity>
     </application>
 
 </manifest>
