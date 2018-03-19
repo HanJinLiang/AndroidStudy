@@ -21,6 +21,12 @@
                     android:id="@+id/DashLineView"
                     android:onClick="DashLineView"
                     android:text="DashLineView"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/CalendarView"
+                    android:onClick="CalendarView"
+                    android:text="自定义日历"/>
 
                 <Button
                     android:layout_width="match_parent"

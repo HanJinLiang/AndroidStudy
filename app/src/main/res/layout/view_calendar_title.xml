@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+    >
+<TextView
+    android:layout_width="100dp"
+    android:layout_height="50dp"
+    android:text="上个月"
+    android:gravity="center"
+    android:id="@+id/calendar_title_pre_month"
+    android:background="#afafaf"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="50dp"
+        android:text="2018-03"
+        android:gravity="center"
+        android:id="@+id/calendar_title_current_month"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="下个月"
+        android:gravity="center"
+        android:background="#afafaf"
+        android:id="@+id/calendar_title_next_month"/>
+</LinearLayout>
