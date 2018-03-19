@@ -120,6 +120,10 @@
         </activity>
         <activity android:name=".customerviews.DashLine.DashLineActivity">
         </activity>
+        <activity android:name=".customerviews.timeselect.DateTimePickerDemoActivity">
+        </activity>
+        <activity android:name=".customerviews.TimeTextView.TimeTextViewActivity">
+        </activity>
         <activity android:name=".customerviews.calendar.CalendarDemoActivity">
         </activity>
     </application>

@@ -21,6 +21,7 @@ import com.hanjinliang.androidstudy.customerviews.PieChart.PieChartActivity;
 import com.hanjinliang.androidstudy.customerviews.Region.RegionCircleActivity;
 import com.hanjinliang.androidstudy.customerviews.SearchView.SearchViewActivity;
 import com.hanjinliang.androidstudy.customerviews.SelectLayout.SelectLayoutActivity;
+import com.hanjinliang.androidstudy.customerviews.TimeTextView.TimeTextViewActivity;
 import com.hanjinliang.androidstudy.customerviews.WeightView.WeightProgressViewActivity;
 import com.hanjinliang.androidstudy.customerviews.banner.BannerActivity;
 import com.hanjinliang.androidstudy.customerviews.basestudy.BaseStudyActivity;
@@ -34,6 +35,7 @@ import com.hanjinliang.androidstudy.customerviews.flowlayout.FlowLayoutActivity;
 import com.hanjinliang.androidstudy.customerviews.horizontalselectedview.HorizontalSelectedViewActivity;
 import com.hanjinliang.androidstudy.customerviews.radarview.RadarViewActivity;
 import com.hanjinliang.androidstudy.customerviews.stepview.StepViewActivity;
+import com.hanjinliang.androidstudy.customerviews.timeselect.DateTimePickerDemoActivity;
 import com.hanjinliang.androidstudy.customerviews.waveline.WaveLineActivity;
 import com.hanjinliang.androidstudy.systemwidget.appbarlayout.AppBarLayoutActivity;
 import com.hanjinliang.androidstudy.systemwidget.appbarlayout.ToolBarActivity;
@@ -272,5 +274,19 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
     public void  DashLineView(View view){
         startActivity(new Intent(this,  DashLineActivity.class));
     }
+    /**
+     *DashLineView  虚线View
+     * @param view
+     */
+    public void  DateTimePickerDemo(View view){
+        startActivity(new Intent(this,  DateTimePickerDemoActivity.class));
+    }
 
+    /**
+     *TimeTextView  计时效果的TextView
+     * @param view
+     */
+    public void  TimeTextView(View view){
+        startActivity(new Intent(this,  TimeTextViewActivity.class));
+    }
 }

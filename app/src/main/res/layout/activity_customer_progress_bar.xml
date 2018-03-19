@@ -3,61 +3,94 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/girl_bg"
+    android:orientation="vertical"
     tools:context="com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.CustomerProgressBarActivity">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+            <com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.MyProgressDetailView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/MyProgressDetailView1"/>
+            <com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.MyProgressDetailView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/MyProgressDetailView2"/>
+            <com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.MyProgressDetailView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/MyProgressDetailView3"/>
+
+            <com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.MyProgressView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/MyProgressView1"/>
+            <com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.MyProgressView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/MyProgressView2"/>
+            <com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.MyProgressView
+                android:layout_width="200dp"
+                android:layout_height="1dp"
+                android:id="@+id/MyProgressView3"/>
+            <com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.MyProgressView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:id="@+id/MyProgressView4"/>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="10dp">
+
                 <com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.CircleBar
+                    android:id="@+id/CircleBar"
                     android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:id="@+id/CircleBar"/>
+                    android:layout_height="80dp"/>
 
                 <Button
+                    android:id="@+id/CircleBarBtn"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:text="开始"
-                    android:id="@+id/CircleBarBtn"/>
+                    android:text="开始"/>
             </LinearLayout>
-    <com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.ProgressRing
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_margin="10dp" />
 
-    <com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.CustomerProgressBar
-        android:layout_width="10dp"
-        android:layout_height="100dp"
-        app:ProgressWidth="20dp"
-        app:FirstColor="@color/colorAccent"
-        app:SecondColor="@color/colorPrimary"
-        app:Speed="10"
-        android:background="#ffffff"/>
+            <com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.ProgressRing
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_margin="10dp"/>
 
-    <com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.CustomerProgressCircleView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="10dp"/>
+            <com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.CustomerProgressBar
+                android:layout_width="10dp"
+                android:layout_height="100dp"
+                android:background="#ffffff"
+                app:FirstColor="@color/colorAccent"
+                app:ProgressWidth="20dp"
+                app:SecondColor="@color/colorPrimary"
+                app:Speed="10"/>
 
-    <com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.CustomerLoadingView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="200dp"
-        android:id="@+id/CustomerLoadingView"/>
+            <com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.CustomerProgressCircleView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"/>
+
+            <com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.CustomerLoadingView
+                android:id="@+id/CustomerLoadingView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="200dp"/>
 
 
         </LinearLayout>

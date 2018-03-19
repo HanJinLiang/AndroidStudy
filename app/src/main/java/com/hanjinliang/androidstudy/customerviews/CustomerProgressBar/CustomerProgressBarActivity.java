@@ -1,5 +1,6 @@
 package com.hanjinliang.androidstudy.customerviews.CustomerProgressBar;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
@@ -40,5 +41,30 @@ public class CustomerProgressBarActivity extends BaseActivity {
                 circleBar.update(new Random().nextInt(100),true);
             }
         });
+
+
+        MyProgressView myProgressView1=findView(R.id.MyProgressView1);
+        myProgressView1.setColor(Color.RED);
+        myProgressView1.setPercent(88);
+        MyProgressView myProgressView2=findView(R.id.MyProgressView2);
+        myProgressView2.setColor(Color.RED);
+        myProgressView2.setPercent(67);
+        MyProgressView myProgressView3=findView(R.id.MyProgressView3);
+        myProgressView3.setColor(Color.RED);
+        myProgressView3.setPercent(48);
+        MyProgressView myProgressView4=findView(R.id.MyProgressView4);
+        myProgressView4.setColor(Color.RED);
+        myProgressView4.setPercent(0);
+
+        MyProgressDetailView myProgressDetailView1=findView(R.id.MyProgressDetailView1);
+        myProgressDetailView1.setPercent(0);
+
+        MyProgressDetailView myProgressDetailView2=findView(R.id.MyProgressDetailView2);
+        myProgressDetailView2.setPercent(60);
+        myProgressDetailView2.setColor(Color.GREEN);
+
+        MyProgressDetailView myProgressDetailView3=findView(R.id.MyProgressDetailView3);
+        myProgressDetailView3.setPercent(98);
+
     }
 }

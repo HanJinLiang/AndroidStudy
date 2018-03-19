@@ -75,4 +75,19 @@
             app:FullLength="5dp"
             app:DashLineColor="@color/colorPrimary"/>
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        >
+        <com.hanjinliang.androidstudy.customerviews.DashLine.DashLineView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:LineDirection="horizontal"
+            app:DashLength="2dp"
+            app:FullLength="5dp"
+            app:DashLineColor="@color/colorPrimary"
+            />
+    </RelativeLayout>
 </LinearLayout>

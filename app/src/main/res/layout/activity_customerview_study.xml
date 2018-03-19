@@ -18,6 +18,19 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:id="@+id/TimeTextView"
+                    android:onClick="TimeTextView"
+                    android:text="TimeTextView计时效果"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/DateTimePicker"
+                    android:onClick="DateTimePickerDemo"
+                    android:text="DateTimePicker"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:id="@+id/DashLineView"
                     android:onClick="DashLineView"
                     android:text="DashLineView"/>
