@@ -126,6 +126,8 @@
         </activity>
         <activity android:name=".customerviews.calendar.CalendarDemoActivity">
         </activity>
+        <activity android:name=".customerviews.LoadingView.CircleLoadingViewActivity">
+        </activity>
     </application>
 
 </manifest>

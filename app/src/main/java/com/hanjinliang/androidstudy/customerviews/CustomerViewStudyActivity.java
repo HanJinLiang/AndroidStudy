@@ -14,6 +14,7 @@ import com.hanjinliang.androidstudy.customerviews.EraserView.EraserViewActivity;
 import com.hanjinliang.androidstudy.customerviews.EraserView.GuagualeViewActivity;
 import com.hanjinliang.androidstudy.customerviews.HealthIndexView.HealthIndexViewActivity;
 import com.hanjinliang.androidstudy.customerviews.LineView.LineViewActivity;
+import com.hanjinliang.androidstudy.customerviews.LoadingView.CircleLoadingViewActivity;
 import com.hanjinliang.androidstudy.customerviews.NetsScoreView.NetsScoreViewActivity;
 import com.hanjinliang.androidstudy.customerviews.NinePhotoView.NinePhotoViewActivity;
 import com.hanjinliang.androidstudy.customerviews.NumView.NumViewActivity;
@@ -52,7 +53,13 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customerview_study);
     }
 
-
+    /**
+     * 自定义日历学习
+     * @param view
+     */
+    public void LoadingView(View view){
+        startActivity(new Intent(this, CircleLoadingViewActivity.class));
+    }
     /**
      * 自定义日历学习
      * @param view
