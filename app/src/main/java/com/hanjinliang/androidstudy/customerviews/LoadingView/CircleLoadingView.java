@@ -7,7 +7,6 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 /**
@@ -19,10 +18,10 @@ import android.view.View;
 public class CircleLoadingView extends View {
 
     Paint mCirclePaint;
-    int mCircleGap=dip2px(10);//圆环之间的间隙
-    int[] mCircleColors=new int[]{Color.parseColor("#61b6f6"),Color.parseColor("#a7c57b")
-            ,Color.parseColor("#4572ed"),Color.parseColor("#daa030")};
-    int mCircleWidth=dip2px(5);//弧形宽度
+    int mCircleGap=dip2px(8);//圆环之间的间隙
+    int[] mCircleColors=new int[]{Color.parseColor("#30a0da"),Color.parseColor("#ed7245")
+            ,Color.parseColor("#7bc5a7"),Color.parseColor("#f6b661")};
+    int mCircleWidth=dip2px(2);//弧形宽度
 
     int[] mCircleStartAngle=new int[]{80,135,-90,90 };//开始的角度
     int[] mCircleSweepAngle=new int[]{315,270,270,315 };//扫过的角度
@@ -48,7 +47,7 @@ public class CircleLoadingView extends View {
         mCirclePaint=new Paint(Paint.ANTI_ALIAS_FLAG);
         mCirclePaint.setStyle(Paint.Style.STROKE);
         mCirclePaint.setStrokeWidth(mCircleWidth);
-       // mCirclePaint.setStrokeCap(Paint.Cap.ROUND);
+        mCirclePaint.setStrokeCap(Paint.Cap.ROUND);
     }
 
 
@@ -65,11 +64,9 @@ public class CircleLoadingView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         for(int i=0;i<mCircleColors.length;i++) {
-            //if(i!=0){continue;}
             mCirclePaint.setColor(mCircleColors[i]);
             float rectStartX=i*(mCircleWidth+mCircleGap)+mCircleWidth/2;
-            float rectEndX=getWidth() -i*(mCircleGap+mCircleWidth)-mCircleWidth/2+1;
-            Log.e("onDraw","mCircleWidth="+mCircleWidth+"--getWidth()="+getWidth()+"--rectStartX="+rectStartX+"--rectEndX="+rectEndX);
+            float rectEndX=getWidth() -i*(mCircleGap+mCircleWidth)-mCircleWidth/2;
             //画弧形
             canvas.drawArc(new RectF(rectStartX,rectStartX,rectEndX,rectEndX)
             ,mCircleStartAngle[i]+(i%2==0?-mOffsetAngle:mOffsetAngle),mCircleSweepAngle[i],false,mCirclePaint);
@@ -77,6 +74,10 @@ public class CircleLoadingView extends View {
     }
 
     private boolean isLoading;
+
+    /**
+     * 开始加载
+     */
     public void loading(){
             if(isLoading){
                 return;
@@ -102,10 +103,20 @@ public class CircleLoadingView extends View {
             }).start();
     }
 
+    /**
+     * 结束加载
+     */
     public void finish(){
         mOffsetAngle=0;
         isLoading=false;
         postInvalidate();
     }
 
+    /**
+     * 设置速度
+     * @param speed
+     */
+    public void setSpeed(int speed) {
+        mSpeed = speed;
+    }
 }

@@ -5,18 +5,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context="com.hanjinliang.androidstudy.customerviews.LoadingView.CircleLoadingViewActivity">
 
     <com.hanjinliang.androidstudy.customerviews.LoadingView.CircleLoadingView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/CircleLoadingView"
-         />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/CircleLoadingView"
         android:id="@+id/Start"
         android:text="Start"
@@ -28,5 +33,17 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Start"
         android:id="@+id/End"
-        android:text="End"/>
+        android:text="End"
+        app:layout_constraintRight_toRightOf="parent"/>
+    <SeekBar
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/End"
+        android:id="@+id/Speed"
+        android:text="End"
+        android:progress="3"
+        android:max="10"
+        app:layout_constraintRight_toRightOf="parent"/>
+
 </android.support.constraint.ConstraintLayout>

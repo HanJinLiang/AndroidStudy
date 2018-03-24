@@ -3,6 +3,7 @@ package com.hanjinliang.androidstudy.customerviews.LoadingView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.SeekBar;
 
 import com.hanjinliang.androidstudy.R;
 
@@ -25,5 +26,22 @@ public class CircleLoadingViewActivity extends AppCompatActivity {
                 circleLoadingView.finish();
             }
         });
+        ((SeekBar)findViewById(R.id.Speed)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                circleLoadingView.setSpeed(progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
     }
 }
