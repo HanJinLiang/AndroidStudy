@@ -67,6 +67,7 @@ public class CircleLoadingView extends View {
             mCirclePaint.setColor(mCircleColors[i]);
             float rectStartX=i*(mCircleWidth+mCircleGap)+mCircleWidth/2;
             float rectEndX=getWidth() -i*(mCircleGap+mCircleWidth)-mCircleWidth/2;
+            mOffsetAngle+=i;//调整速度 每一个圈速度不一样
             //画弧形
             canvas.drawArc(new RectF(rectStartX,rectStartX,rectEndX,rectEndX)
             ,mCircleStartAngle[i]+(i%2==0?-mOffsetAngle:mOffsetAngle),mCircleSweepAngle[i],false,mCirclePaint);
