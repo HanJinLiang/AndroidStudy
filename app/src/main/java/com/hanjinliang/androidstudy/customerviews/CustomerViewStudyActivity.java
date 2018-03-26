@@ -38,6 +38,7 @@ import com.hanjinliang.androidstudy.customerviews.radarview.RadarViewActivity;
 import com.hanjinliang.androidstudy.customerviews.stepview.StepViewActivity;
 import com.hanjinliang.androidstudy.customerviews.timeselect.DateTimePickerDemoActivity;
 import com.hanjinliang.androidstudy.customerviews.waveline.WaveLineActivity;
+import com.hanjinliang.androidstudy.customerviews.wheelpicker.WheelPickerDemoActivity;
 import com.hanjinliang.androidstudy.systemwidget.appbarlayout.AppBarLayoutActivity;
 import com.hanjinliang.androidstudy.systemwidget.appbarlayout.ToolBarActivity;
 import com.hanjinliang.androidstudy.systemwidget.coordinatorlayout.CoordinatorLayoutActivity;
@@ -51,6 +52,16 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customerview_study);
+    }
+
+
+
+    /**
+     * WheelPicker
+     * @param view
+     */
+    public void WheelPicker(View view){
+        startActivity(new Intent(this, WheelPickerDemoActivity.class));
     }
 
     /**

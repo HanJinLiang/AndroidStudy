@@ -18,6 +18,13 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:id="@+id/WheelPicker"
+                    android:onClick="WheelPicker"
+                    android:text="WheelPicker"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:id="@+id/LoadingView"
                     android:onClick="LoadingView"
                     android:text="LoadingView"/>
