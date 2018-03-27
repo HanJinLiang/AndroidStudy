@@ -18,7 +18,7 @@ public class WheelPickerDemoActivity extends AppCompatActivity {
         wheelPicker.setDataList(Arrays.asList("张一","张二","张三","张四","张五","张六","张七","张八","张九"));
         wheelPicker.setCyclic(false);
         wheelPicker.setShowCurtainBorder(false);
-        wheelPicker.setIndicatorText("名字");
+        //wheelPicker.setIndicatorText("名字");
         wheelPicker.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -29,5 +29,9 @@ public class WheelPickerDemoActivity extends AppCompatActivity {
         wheelPicker.setTextGradual(true);
 
 
+        final MyWheelPicker myWheelPicker=findViewById(R.id.MyWheelPicker);
+
+        myWheelPicker.setDataList(Arrays.asList("张一","张二","张三","张四","张五","张六","张七","张八","张九"));
+        myWheelPicker.setIndicatorText("名字");
     }
 }
