@@ -130,6 +130,8 @@
         </activity>
         <activity android:name=".customerviews.wheelpicker.WheelPickerDemoActivity">
         </activity>
+        <activity android:name=".customerviews.Scroller.ScrollerTestActivity">
+        </activity>
     </application>
 
 </manifest>

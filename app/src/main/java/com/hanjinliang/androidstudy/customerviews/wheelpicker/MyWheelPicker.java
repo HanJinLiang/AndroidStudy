@@ -6,10 +6,13 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.VelocityTracker;
 import android.view.View;
+import android.widget.Scroller;
 
 import java.util.List;
 
@@ -50,14 +53,23 @@ public class MyWheelPicker<T> extends View {
     private Rect mSelectedRect;
 
     /**
-     * 第一块绘制文字的Y值
+     * 没选中绘制文字的Y值
      */
-    private float mFirstBlockDrawTextY;
+    private float mUnSelectedBlockDrawTextY;
+    /**
+     * 选中绘制文字的Y值
+     */
+    private float mSelectedBlockDrawTextY;
 
     /**
      * 中间选中的区块的绘制Y
      */
     private float mCenterItemDrawnY;
+
+    /**
+     * 指示绘制Y
+     */
+    private float mIndicatorDrawnY;
 
 
     /**
@@ -127,7 +139,7 @@ public class MyWheelPicker<T> extends View {
         mTextColor=Color.BLACK;
         mTextSelectedColor=Color.BLUE;
         mTextSize=sp2px(12);
-        mTextSelectedSize=sp2px(16);
+        mTextSelectedSize=sp2px(18);
 
         mIndicatorColor=Color.BLACK;
         mIndicatorSize=sp2px(12);
@@ -148,6 +160,8 @@ public class MyWheelPicker<T> extends View {
 
         computeTextSize();
         computeMinMaxOffset();
+
+        mScroller=new Scroller(getContext());
     }
 
     /**
@@ -165,8 +179,14 @@ public class MyWheelPicker<T> extends View {
         //取较大的字体
         mPaint.setTextSize(Math.max(mTextSize,mTextSelectedSize));
         mItemHeight= (int) (mPaint.getFontMetrics().bottom-mPaint.getFontMetrics().top+mItemPadding);
-        mFirstBlockDrawTextY=mItemHeight/2-(mPaint.getFontMetrics().bottom+mPaint.getFontMetrics().top)/2;
-        mCenterItemDrawnY=mFirstBlockDrawTextY+mHalfCount*mItemHeight;
+        mPaint.setTextSize(mTextSize);
+        mUnSelectedBlockDrawTextY=mItemHeight/2-(mPaint.getFontMetrics().bottom+mPaint.getFontMetrics().top)/2;
+        mPaint.setTextSize(mTextSelectedSize);
+        mSelectedBlockDrawTextY=mItemHeight/2-(mPaint.getFontMetrics().bottom+mPaint.getFontMetrics().top)/2;
+        mCenterItemDrawnY=mSelectedBlockDrawTextY+mHalfCount*mItemHeight;
+
+        mPaint.setTextSize(mIndicatorSize);
+        mIndicatorDrawnY=mItemHeight/2-(mPaint.getFontMetrics().bottom+mPaint.getFontMetrics().top)/2+mHalfCount*mItemHeight;
     }
 
     @Override
@@ -204,7 +224,6 @@ public class MyWheelPicker<T> extends View {
         mPaint.setColor(mSelectedBgColor);
         canvas.drawRect(mSelectedRect,mPaint);
 
-
         int mOffsetCount=-mOffsetY/mItemHeight;
 
         for(int i=mOffsetCount-mHalfCount-1;i<=mOffsetCount+mHalfCount+1;i++){
@@ -221,17 +240,15 @@ public class MyWheelPicker<T> extends View {
                     continue;
                 }
             }
-            if(i==mOffsetCount){//选中的
-                mPaint.setColor(mTextSelectedColor);
-                mPaint.setTextSize(mTextSelectedSize);
-            }else{
-                mPaint.setColor(mTextColor);
-                mPaint.setTextSize(mTextSize);
-            }
+
 
             //每一项的绘制基线
-            float itemDrawY=(mHalfCount+i)*mItemHeight+mFirstBlockDrawTextY+mOffsetY;
-
+            float itemDrawY;
+            if(i==mOffsetCount){//选中的 自己大小
+                itemDrawY=(mHalfCount+i)*mItemHeight+mSelectedBlockDrawTextY+mOffsetY;
+            }else{
+                itemDrawY=(mHalfCount+i)*mItemHeight+mUnSelectedBlockDrawTextY+mOffsetY;
+            }
 
 
             //颜色渐变  先绘制渐变色 不然颜色会被覆盖
@@ -270,13 +287,29 @@ public class MyWheelPicker<T> extends View {
             mPaint.setTextAlign(Paint.Align.LEFT);
             mPaint.setTextSize(mIndicatorSize);
             mPaint.setColor(mIndicatorColor);
-            canvas.drawText(mIndicatorText,mContentRect.centerX(),mCenterItemDrawnY,mPaint);
+            canvas.drawText(mIndicatorText,mContentRect.centerX()+ (int) mPaint.measureText(mDataList.get(0).toString())/2+mItemPadding,mIndicatorDrawnY,mPaint);
         }
     }
+    VelocityTracker mTracker;
+    Scroller mScroller;
+    private int mMinFling;
+    private int mMaxFling;
 
+    Handler mHandler=new Handler();
+
+    Runnable mScrollerRunable=new Runnable() {
+        @Override
+        public void run() {
+
+        }
+    };
     float mLastDownY;
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if(mTracker==null){
+            mTracker=VelocityTracker.obtain();
+        }
+        mTracker.addMovement(event);
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 mLastDownY=event.getY();
@@ -288,6 +321,12 @@ public class MyWheelPicker<T> extends View {
                 postInvalidate();
                 break;
             case MotionEvent.ACTION_UP:
+                mTracker.computeCurrentVelocity(1000,12000);
+
+                float yVelocity=mTracker.getYVelocity();
+                mScroller.fling(0,mOffsetY,0, (int) yVelocity,0,0,mMinFling,mMaxFling);
+                //通过线程
+                mHandler.post(mScrollerRunable);
                 int remainder=Math.abs(mOffsetY%mItemHeight);
                 if(remainder!=0){//移动的距离不是整数
                     if(remainder>mItemHeight/2){//超过了一半

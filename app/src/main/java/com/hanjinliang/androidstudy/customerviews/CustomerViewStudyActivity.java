@@ -20,6 +20,7 @@ import com.hanjinliang.androidstudy.customerviews.NinePhotoView.NinePhotoViewAct
 import com.hanjinliang.androidstudy.customerviews.NumView.NumViewActivity;
 import com.hanjinliang.androidstudy.customerviews.PieChart.PieChartActivity;
 import com.hanjinliang.androidstudy.customerviews.Region.RegionCircleActivity;
+import com.hanjinliang.androidstudy.customerviews.Scroller.ScrollerTestActivity;
 import com.hanjinliang.androidstudy.customerviews.SearchView.SearchViewActivity;
 import com.hanjinliang.androidstudy.customerviews.SelectLayout.SelectLayoutActivity;
 import com.hanjinliang.androidstudy.customerviews.TimeTextView.TimeTextViewActivity;
@@ -55,6 +56,13 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * WheelPicker
+     * @param view
+     */
+    public void ScrollerTest(View view){
+        startActivity(new Intent(this, ScrollerTestActivity.class));
+    }
 
     /**
      * WheelPicker
