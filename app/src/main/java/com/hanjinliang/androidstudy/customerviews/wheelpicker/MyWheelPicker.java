@@ -14,6 +14,7 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.widget.Scroller;
 
+
 import java.util.List;
 
 /**
@@ -121,6 +122,13 @@ public class MyWheelPicker<T> extends View {
      */
     private int mIndicatorSize;
 
+    /**
+     * 是否在滑动时候  手动停止了
+     */
+    private boolean isAbortFling;
+    private OnItemSelectedListener<T> mOnItemSelectedListener;
+
+
     public MyWheelPicker(Context context) {
         this(context,null);
     }
@@ -142,7 +150,7 @@ public class MyWheelPicker<T> extends View {
         mTextSelectedSize=sp2px(18);
 
         mIndicatorColor=Color.BLACK;
-        mIndicatorSize=sp2px(12);
+        mIndicatorSize=sp2px(14);
 
         mLinearGradient=new LinearGradient(mTextColor,mTextSelectedColor);
 
@@ -159,7 +167,7 @@ public class MyWheelPicker<T> extends View {
         mItemPadding=dp2px(20);
 
         computeTextSize();
-        computeMinMaxOffset();
+
 
         mScroller=new Scroller(getContext());
     }
@@ -170,6 +178,10 @@ public class MyWheelPicker<T> extends View {
     private void computeMinMaxOffset() {
         mMaxOffset=mIsCyclic?Integer.MAX_VALUE:mItemHeight*(mDataList.size()-1);
         mMinOffset=mIsCyclic?Integer.MIN_VALUE:0;
+
+        //fling的极限距离
+        mMinFling=mIsCyclic?Integer.MIN_VALUE:-mItemHeight*(mDataList.size()-1);
+        mMaxFling=mIsCyclic?Integer.MAX_VALUE:0;
     }
 
     /**
@@ -179,7 +191,9 @@ public class MyWheelPicker<T> extends View {
         //取较大的字体
         mPaint.setTextSize(Math.max(mTextSize,mTextSelectedSize));
         mItemHeight= (int) (mPaint.getFontMetrics().bottom-mPaint.getFontMetrics().top+mItemPadding);
-        mPaint.setTextSize(mTextSize);
+        //会导致动画有一个闪的效果
+        //  mPaint.setTextSize(mTextSize);
+        mPaint.setTextSize(mTextSelectedSize);
         mUnSelectedBlockDrawTextY=mItemHeight/2-(mPaint.getFontMetrics().bottom+mPaint.getFontMetrics().top)/2;
         mPaint.setTextSize(mTextSelectedSize);
         mSelectedBlockDrawTextY=mItemHeight/2-(mPaint.getFontMetrics().bottom+mPaint.getFontMetrics().top)/2;
@@ -273,12 +287,10 @@ public class MyWheelPicker<T> extends View {
             //字体渐变
             if(Math.abs(itemDrawY-mCenterItemDrawnY)<mItemHeight){//距离在一项之间
                 float sizeRatio=1-Math.abs(itemDrawY-mCenterItemDrawnY)/mItemHeight;
-
                 mPaint.setTextSize(Math.min(mTextSelectedSize,mTextSize)+sizeRatio*(Math.abs(mTextSelectedSize-mTextSize)));
             }else{
                 mPaint.setTextSize(mTextSize);
             }
-
 
             canvas.drawText(mDataList.get(pos).toString(),mContentRect.centerX(),itemDrawY,mPaint);
         }
@@ -297,13 +309,47 @@ public class MyWheelPicker<T> extends View {
 
     Handler mHandler=new Handler();
 
-    Runnable mScrollerRunable=new Runnable() {
+    Runnable mScrollerRunnable =new Runnable() {
         @Override
         public void run() {
+            if(mScroller.computeScrollOffset()){
+                mOffsetY=mScroller.getCurrY();
+                postInvalidate();
+                mHandler.postDelayed(this,16);
+            }
 
+            if(mScroller.isFinished()){//结束了  响应监听事件
+                if(mOnItemSelectedListener==null){
+                    return;
+                }
+                if(mDataList==null||mDataList.size()==0){
+                    return;
+                }
+                int position=computeRealPosition(-mOffsetY/mItemHeight);
+                if(mCurrentPosition!=position) {
+                    mCurrentPosition=position;
+                    mOnItemSelectedListener.onItemSelected(position, mDataList.get(position));
+                }
+            }
         }
     };
+    private int mCurrentPosition;
+    /**
+     * 计算真正position的位置
+     * @return
+     */
+    private int computeRealPosition(int position) {
+        if(position<0){//保证pos在mDataList的长度范围
+            position=mDataList.size()+(position%mDataList.size());
+        }
+        if(position>=mDataList.size()){
+            position=position%mDataList.size();
+        }
+        return position;
+    }
+
     float mLastDownY;
+    float mLastTouchY;
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if(mTracker==null){
@@ -312,7 +358,13 @@ public class MyWheelPicker<T> extends View {
         mTracker.addMovement(event);
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
-                mLastDownY=event.getY();
+                if(!mScroller.isFinished()){//点击时候还没有停止滑动
+                    mScroller.abortAnimation();
+                    isAbortFling=true;
+                }else{
+                    isAbortFling=false;
+                }
+                mLastTouchY=mLastDownY=event.getY();
                 return true;
             case MotionEvent.ACTION_MOVE:
                 float moveDistance=event.getY()-mLastDownY;
@@ -321,39 +373,119 @@ public class MyWheelPicker<T> extends View {
                 postInvalidate();
                 break;
             case MotionEvent.ACTION_UP:
-                mTracker.computeCurrentVelocity(1000,12000);
+                float upY=event.getY();
+                if(!isAbortFling&&mLastDownY==mLastTouchY){//点击
+                    performClick();//点击
 
-                float yVelocity=mTracker.getYVelocity();
-                mScroller.fling(0,mOffsetY,0, (int) yVelocity,0,0,mMinFling,mMaxFling);
-                //通过线程
-                mHandler.post(mScrollerRunable);
-                int remainder=Math.abs(mOffsetY%mItemHeight);
-                if(remainder!=0){//移动的距离不是整数
-                    if(remainder>mItemHeight/2){//超过了一半
-                        mOffsetY=(mOffsetY/mItemHeight+(mOffsetY>0?1:-1))*mItemHeight;
-                    }else{
-                        mOffsetY=(mOffsetY/mItemHeight)*mItemHeight;
+                    if(upY>mSelectedRect.bottom){//点击下半部分
+                        int movePos= (int) (upY-mSelectedRect.bottom)/mItemHeight+1;
+                        mScroller.startScroll(0,mOffsetY,0,-movePos*mItemHeight);
+                    }else if(upY<mSelectedRect.top){//点击上半部分
+                        int movePos= (int) (mSelectedRect.top-upY)/mItemHeight+1;
+                        mScroller.startScroll(0,mOffsetY,0,movePos*mItemHeight);
+                    }
+
+                }else {
+
+                    mTracker.computeCurrentVelocity(1000, 12000);
+                    float yVelocity = mTracker.getYVelocity();
+                    if (Math.abs(yVelocity) > 800) {//有滑行
+                        mScroller.fling(0, mOffsetY, 0, (int) yVelocity, 0, 0, mMinFling, mMaxFling);
+                        //修正  保证
+                        mScroller.setFinalY(mScroller.getFinalY() +
+                                computeDistanceToEndPoint(mScroller.getFinalY() % mItemHeight));
+
+                    } else {
+                        mScroller.startScroll(0, mOffsetY, 0, computeDistanceToEndPoint(mOffsetY % mItemHeight));
                     }
                 }
                 if(!mIsCyclic) {
-                    if (mOffsetY > mMaxOffset) {//最下面一条 超出边界
-                        mOffsetY = mMaxOffset;
-                    } else if (mOffsetY > mMinOffset) {//最上面一条
-                        mOffsetY = mMinOffset;
+                    if (mScroller.getFinalY() > mMaxFling) {
+                        mScroller.setFinalY(mMaxFling);
+                    } else if (mScroller.getFinalY() < mMinFling) {
+                        mScroller.setFinalY(mMinFling);
                     }
                 }
-                postInvalidate();
+
+                //通过线程
+                mHandler.post(mScrollerRunnable);
+
+                mTracker.recycle();
+                mTracker=null;
                 break;
         }
         return super.onTouchEvent(event);
     }
 
+    private int computeDistanceToEndPoint(int remainder) {
+        if (Math.abs(remainder) > mItemHeight / 2) {
+            if (mOffsetY < 0) {
+                return -mItemHeight - remainder;
+            } else {
+                return mItemHeight - remainder;
+            }
+        } else {
+            return -remainder;
+        }
+    }
+
+
     public void setDataList(List<T> dataList) {
         mDataList = dataList;
+        computeMinMaxOffset();
+        postInvalidate();
+    }
+
+    public void setOnItemSelectedListener(OnItemSelectedListener<T> onItemSelectedListener) {
+        mOnItemSelectedListener = onItemSelectedListener;
+    }
+
+    public interface OnItemSelectedListener<T>{
+        public void onItemSelected(int position,T data);
     }
 
     public void setIndicatorText(String indicatorText) {
         mIndicatorText = indicatorText;
+    }
+
+    public void setCurrentPosition(int currentPosition) {
+        setCurrentPosition(currentPosition,true);
+    }
+
+    /**
+     * 指定选中位置
+     * @param currentPosition  跳转到的位置
+     * @param smooth  是否平滑跳转
+     */
+    public void setCurrentPosition(int currentPosition,boolean smooth) {
+        if (mCurrentPosition == currentPosition) {
+            return;
+        }
+        if (currentPosition >= mDataList.size()) {
+            currentPosition = mDataList.size() - 1;
+        }
+        if (currentPosition < 0) {
+            currentPosition = 0;
+        }
+
+        if(!mScroller.isFinished()){
+            mScroller.abortAnimation();
+        }
+
+        if(smooth){
+            mScroller.startScroll(0,mOffsetY,0,(mCurrentPosition-currentPosition)*mItemHeight,500);
+            mScroller.setFinalY(mScroller.getFinalY() +
+                    computeDistanceToEndPoint(mScroller.getFinalY() % mItemHeight));
+            mHandler.post(mScrollerRunnable);
+        }else{
+            mCurrentPosition=currentPosition;
+            mOffsetY=-currentPosition*mItemHeight;
+            postInvalidate();
+            //监听
+            if(mOnItemSelectedListener!=null&&mDataList!=null){
+                mOnItemSelectedListener.onItemSelected(currentPosition,mDataList.get(currentPosition));
+            }
+        }
     }
 
     private int dp2px(int dp){
@@ -372,4 +504,6 @@ public class MyWheelPicker<T> extends View {
         final float fontScale = getContext().getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
     }
+
+
 }
