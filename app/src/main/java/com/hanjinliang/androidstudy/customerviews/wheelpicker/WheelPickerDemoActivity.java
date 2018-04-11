@@ -34,6 +34,7 @@ public class WheelPickerDemoActivity extends AppCompatActivity {
 
         myWheelPicker.setDataList(Arrays.asList("张一","张二","张三","张四","张五","张六","张七","张八","张九"));
         myWheelPicker.setIndicatorText("名字");
+        myWheelPicker.setCyclic(false);
         myWheelPicker.setOnItemSelectedListener(new MyWheelPicker.OnItemSelectedListener<String>() {
             @Override
             public void onItemSelected(int position, String data) {

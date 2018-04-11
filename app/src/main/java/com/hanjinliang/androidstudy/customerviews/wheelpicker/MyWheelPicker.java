@@ -452,6 +452,15 @@ public class MyWheelPicker<T> extends View {
         setCurrentPosition(currentPosition,true);
     }
 
+    public void setCyclic(boolean cyclic) {
+        if (mIsCyclic == cyclic) {
+            return;
+        }
+        mIsCyclic = cyclic;
+        computeMinMaxOffset();
+        requestLayout();
+    }
+
     /**
      * 指定选中位置
      * @param currentPosition  跳转到的位置
