@@ -468,6 +468,7 @@ public class MyWheelPicker<T> extends View {
      */
     public void setCurrentPosition(int currentPosition,boolean smooth) {
         //分支上面的修改
+        //分支第二次修改
         if (mCurrentPosition == currentPosition) {
             return;
         }
