@@ -467,6 +467,7 @@ public class MyWheelPicker<T> extends View {
      * @param smooth  是否平滑跳转
      */
     public void setCurrentPosition(int currentPosition,boolean smooth) {
+        //分支上面的修改
         if (mCurrentPosition == currentPosition) {
             return;
         }
