@@ -23,6 +23,7 @@ import com.hanjinliang.androidstudy.customerviews.Region.RegionCircleActivity;
 import com.hanjinliang.androidstudy.customerviews.Scroller.ScrollerTestActivity;
 import com.hanjinliang.androidstudy.customerviews.SearchView.SearchViewActivity;
 import com.hanjinliang.androidstudy.customerviews.SelectLayout.SelectLayoutActivity;
+import com.hanjinliang.androidstudy.customerviews.StatusScrollView.StatusScrollViewActivity;
 import com.hanjinliang.androidstudy.customerviews.TimeTextView.TimeTextViewActivity;
 import com.hanjinliang.androidstudy.customerviews.WeightView.WeightProgressViewActivity;
 import com.hanjinliang.androidstudy.customerviews.banner.BannerActivity;
@@ -55,6 +56,15 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customerview_study);
     }
 
+
+
+    /**
+     * StatusScrollView
+     * @param view
+     */
+    public void StatusScrollView(View view){
+        startActivity(new Intent(this, StatusScrollViewActivity.class));
+    }
 
     /**
      * WheelPicker

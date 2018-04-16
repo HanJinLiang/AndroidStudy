@@ -14,7 +14,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/StatusScrollView"
+                    android:onClick="StatusScrollView"
+                    android:text="底部粘性ScrollView"/>
 
                 <Button
                     android:layout_width="match_parent"

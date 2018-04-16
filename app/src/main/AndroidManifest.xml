@@ -132,6 +132,8 @@
         </activity>
         <activity android:name=".customerviews.Scroller.ScrollerTestActivity">
         </activity>
+        <activity android:name=".customerviews.StatusScrollView.StatusScrollViewActivity">
+        </activity>
     </application>
 
 </manifest>
