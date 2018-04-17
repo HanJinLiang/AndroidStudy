@@ -49,6 +49,8 @@ public class StatusScrollView extends ScrollView {
                     if (getScrollY() >scrollLayout.getChildAt(scrollLayout.getChildCount()-1).getTop() - getMeasuredHeight()) {
                         smoothToPosition( getScrollY(), scrollLayout.getChildAt(scrollLayout.getChildCount()-1).getTop() - getMeasuredHeight());
                     }
+                }else{
+                    cancelAnim();
                 }
             }
 
@@ -60,9 +62,7 @@ public class StatusScrollView extends ScrollView {
              * @param end
              */
             private void smoothToPosition(int start,int end){
-                if(valueAnimator!=null){
-                    valueAnimator.cancel();
-                }
+                cancelAnim();
                 valueAnimator=ValueAnimator.ofInt(start,end);
                 valueAnimator.setDuration(600);//动画时间
                 valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());//插值器
@@ -74,6 +74,12 @@ public class StatusScrollView extends ScrollView {
                     }
                 });
                 valueAnimator.start();
+            }
+
+            private void cancelAnim(){
+                if(valueAnimator!=null&&valueAnimator.isRunning()){
+                    valueAnimator.cancel();
+                }
             }
         });
     }
