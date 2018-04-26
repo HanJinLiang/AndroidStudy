@@ -134,6 +134,8 @@
         </activity>
         <activity android:name=".customerviews.StatusScrollView.StatusScrollViewActivity">
         </activity>
+        <activity android:name=".systemwidget.listselect.ListSelectActivity">
+        </activity>
     </application>
 
 </manifest>
