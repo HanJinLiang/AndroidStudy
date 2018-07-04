@@ -186,7 +186,7 @@ public class ViewBigImageActivity extends FragmentActivity implements OnPageChan
         });
         /************************* 接收传值 ***********************/
         Bundle bundle = getIntent().getExtras();
-        code = bundle.getInt("code",0);
+        code = bundle.getInt("selet",0);
         isLocal = bundle.getBoolean("isLocal", false);
         imageuri = bundle.getStringArrayList("imageuri");
         /**是否是本应用中的图片*/

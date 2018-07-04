@@ -136,6 +136,8 @@
         </activity>
         <activity android:name=".systemwidget.listselect.ListSelectActivity">
         </activity>
+        <activity android:name=".thirdLibs.rxjava.RxJavaDemoActivity">
+        </activity>
     </application>
 
 </manifest>

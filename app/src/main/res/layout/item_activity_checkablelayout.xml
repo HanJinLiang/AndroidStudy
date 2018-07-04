@@ -10,7 +10,8 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent"
-        android:id="@+id/textview"/>
+        android:id="@+id/textview"
+        android:text="asdasdasdas"/>
     <CheckBox
         android:clickable="false"
         android:focusable="false"
