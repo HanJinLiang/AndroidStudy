@@ -7,4 +7,12 @@
     android:layout_height="match_parent"
     tools:context="com.hanjinliang.androidstudy.javabase.fanxing.FanxingActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tv_json"/>
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>
