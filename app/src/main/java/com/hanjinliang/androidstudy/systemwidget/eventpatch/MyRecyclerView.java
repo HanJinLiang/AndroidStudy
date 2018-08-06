@@ -30,7 +30,7 @@ public class MyRecyclerView extends RecyclerView {
     float mDownX ;
     float mOffsetX ;
     @Override
-    public boolean dispatchTouchEvent(MotionEvent e) {
+    public boolean dispatchTouchEvent(MotionEvent e) {//内部拦截解决滑动冲突
         switch (e.getAction()){
             case MotionEvent.ACTION_DOWN:
                 LogUtils.e("ACTION_DOWN");
