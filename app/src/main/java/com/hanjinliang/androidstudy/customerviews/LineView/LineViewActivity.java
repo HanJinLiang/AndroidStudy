@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.hanjinliang.androidstudy.R;
+import com.hanjinliang.androidstudy.customerviews.LineView.simple.SimpleLineData;
+import com.hanjinliang.androidstudy.customerviews.LineView.simple.SimpleLineView;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -14,6 +16,7 @@ import java.util.TimerTask;
 public class LineViewActivity extends AppCompatActivity {
     LineView mLineView;
 
+    SimpleLineView simpleLineView;
 
     private ArrayList<WeightData> mData=new ArrayList<WeightData>();
 
@@ -22,6 +25,8 @@ public class LineViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_line_view);
         mLineView= (LineView) findViewById(R.id.mLineView);
+        simpleLineView=findViewById(R.id.simpleLineView);
+        initSimpleLineView();
         for(int i=0;i<1000;i++){
             mData.add(new WeightData("12:00", (float) (Math.random()*100)));
         }
@@ -50,6 +55,14 @@ public class LineViewActivity extends AppCompatActivity {
                 mLineView.removeData(mLineView.getSelectedPoint());
             }
         });
+    }
+
+    private void initSimpleLineView() {
+        ArrayList<SimpleLineData> datas=new ArrayList<>();
+        for(int i=1;i<13;i++){
+            datas.add(new SimpleLineData("第"+i+"期",8+i*0.1f,i==1||i==6||i==12));
+        }
+        simpleLineView.setData(datas);
     }
 
 }

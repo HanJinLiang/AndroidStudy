@@ -7,17 +7,23 @@
     android:orientation="vertical"
     >
 
-<com.hanjinliang.androidstudy.customerviews.LineView.LineView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:color/white"
-    app:isFill="true"
-    app:MaxValue="200"
-    android:id="@+id/mLineView"/>
+    <com.hanjinliang.androidstudy.customerviews.LineView.LineView
+        android:id="@+id/mLineView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        app:MaxValue="200"
+        app:isFill="true"/>
 
-   <Button
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="删除"
-       android:id="@+id/btn_delete"/>
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="删除"/>
+
+    <com.hanjinliang.androidstudy.customerviews.LineView.simple.SimpleLineView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/simpleLineView"
+        android:layout_margin="20dp"/>
 </LinearLayout>

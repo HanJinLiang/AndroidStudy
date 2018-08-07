@@ -3,7 +3,9 @@ package com.hanjinliang.androidstudy.javabase;
 /**
  * Created by HanJinLiang on 2018-07-10.
  * json格式化
+ * 太傻比了  系统自带方法 new JSONObject(json).toString(5)
  */
+@Deprecated
 public class JSONTool {
     public static String stringToJSON(String strJson) {
         // 计数tab的个数
