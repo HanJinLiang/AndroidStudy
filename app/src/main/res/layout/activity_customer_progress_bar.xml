@@ -47,6 +47,11 @@
                 android:layout_height="50dp"
                 android:id="@+id/MyProgressView4"/>
 
+            <com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.TaskProgressView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+               android:layout_margin="20dp"  />
+
 
             <LinearLayout
                 android:layout_width="match_parent"

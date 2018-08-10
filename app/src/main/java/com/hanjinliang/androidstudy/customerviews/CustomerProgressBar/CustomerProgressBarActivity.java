@@ -54,7 +54,7 @@ public class CustomerProgressBarActivity extends BaseActivity {
         myProgressView3.setPercent(48);
         MyProgressView myProgressView4=findView(R.id.MyProgressView4);
         myProgressView4.setColor(Color.RED);
-        myProgressView4.setPercent(0);
+        myProgressView4.setPercent(100);
 
         MyProgressDetailView myProgressDetailView1=findView(R.id.MyProgressDetailView1);
         myProgressDetailView1.setPercent(0);
