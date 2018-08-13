@@ -1,27 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#098271"
+        android:text="tittle"
+   />
+
+<android.support.design.widget.CoordinatorLayout
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.hanjinliang.androidstudy.systemwidget.coordinatorlayout.CoordinatorLayoutActivity">
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#FFCC00"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="300dp"
-        android:text="Hello"
-        app:layout_behavior="com.hanjinliang.androidstudy.systemwidget.coordinatorlayout.MyBehavior"
-      />
+    <!--<Button-->
+        <!--android:id="@+id/btn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="#FFCC00"-->
+        <!--android:layout_marginLeft="300dp"-->
+        <!--android:layout_marginTop="300dp"-->
+        <!--android:text="Hello"-->
+        <!--app:layout_behavior="com.hanjinliang.androidstudy.systemwidget.coordinatorlayout.MyBehavior"-->
+      <!--/>-->
 
-    <com.hanjinliang.androidstudy.systemwidget.coordinatorlayout.TempView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="300dp"
-        android:background="#3366CC"
-          />
+    <!--<com.hanjinliang.androidstudy.systemwidget.coordinatorlayout.TempView-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:layout_marginLeft="300dp"-->
+        <!--android:layout_marginTop="300dp"-->
+        <!--android:background="#3366CC"-->
+          <!--/>-->
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#987667"
+            app:layout_scrollFlags="scroll|snap"
+            ></LinearLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            app:layout_scrollFlags="scroll|snap"/>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"></android.support.v4.view.ViewPager>
 </android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

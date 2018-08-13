@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:id="@+id/item_text"
+        android:background="#123465"></TextView>
+    <com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.TaskProgressView
+        android:id="@+id/taskProgress"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_text"/>
+
+
+</android.support.constraint.ConstraintLayout>
