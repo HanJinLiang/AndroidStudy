@@ -36,6 +36,7 @@ import com.hanjinliang.androidstudy.customerviews.curve.CurveView;
 import com.hanjinliang.androidstudy.customerviews.favorlayout.FavorLayoutActivity;
 import com.hanjinliang.androidstudy.customerviews.flowlayout.FlowLayoutActivity;
 import com.hanjinliang.androidstudy.customerviews.horizontalselectedview.HorizontalSelectedViewActivity;
+import com.hanjinliang.androidstudy.customerviews.linerecyclerview.RecyclerLineViewActivity;
 import com.hanjinliang.androidstudy.customerviews.radarview.RadarViewActivity;
 import com.hanjinliang.androidstudy.customerviews.stepview.StepViewActivity;
 import com.hanjinliang.androidstudy.customerviews.timeselect.DateTimePickerDemoActivity;
@@ -324,5 +325,14 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
      */
     public void  TimeTextView(View view){
         startActivity(new Intent(this,  TimeTextViewActivity.class));
+    }
+
+
+    /**
+     *TimeTextView  计时效果的TextView
+     * @param view
+     */
+    public void  RecycerLineView(View view){
+        startActivity(new Intent(this,  RecyclerLineViewActivity.class));
     }
 }

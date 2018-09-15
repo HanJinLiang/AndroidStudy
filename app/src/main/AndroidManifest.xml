@@ -140,6 +140,7 @@
         </activity>
         <activity android:name=".systemwidget.recyclerView.DragRecyclerViewActivity">
         </activity>
+        <activity android:name=".customerviews.linerecyclerview.RecyclerLineViewActivity"/>
     </application>
 
 </manifest>

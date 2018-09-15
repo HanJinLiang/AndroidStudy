@@ -27,7 +27,7 @@ public class LineViewActivity extends AppCompatActivity {
         mLineView= (LineView) findViewById(R.id.mLineView);
         simpleLineView=findViewById(R.id.simpleLineView);
         initSimpleLineView();
-        for(int i=0;i<1000;i++){
+        for(int i=0;i<10000;i++){
             mData.add(new WeightData("12:00", (float) (Math.random()*100)));
         }
         mLineView.setData(mData);

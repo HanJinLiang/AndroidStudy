@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="80dp"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#ffffff"
+    android:padding="10dp">
+
+    <TextView
+        android:background="#EEEEEE"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/tv_content"/>
+    <TextView
+        android:gravity="center"
+        android:background="#EEEEEE"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="王大力"
+        android:id="@+id/tv_name"/>
+    <TextView
+        android:gravity="center"
+        android:background="#6E7DBE"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:textColor="#ffffff"
+        android:text="12"
+        android:id="@+id/tv_value1"/>
+    <TextView
+        android:gravity="center"
+        android:background="#DADEED"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:id="@+id/tv_value2"
+        android:textColor="#4a4a4a"
+        android:text="2"/>
+</LinearLayout>
