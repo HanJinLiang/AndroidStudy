@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.blankj.utilcode.util.LogUtils;
@@ -18,6 +19,7 @@ import com.hanjinliang.androidstudy.systemwidget.viewpager.MyPagerTransformer;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 public class DragRecyclerViewActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
@@ -28,12 +30,31 @@ public class DragRecyclerViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drag_recycler_view);
         mRecyclerView=findViewById(R.id.recyclerView);
-      //  mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
-        mAdapter=new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_select_list) {
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.addItemDecoration(new CustomerItemDecoration(this));
+        //mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        mAdapter=new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_near_talk) {
             @Override
-            protected void convert(BaseViewHolder helper, String item) {
-                helper.setText(R.id.button,datas.get(helper.getAdapterPosition()));
+            protected void convert(final BaseViewHolder helper, String item) {
+                helper.setText(R.id.tv_name,item);
+                RecyclerView recyclerView=helper.getView(R.id.rv_image);
+                recyclerView.setVisibility(View.GONE);
+                recyclerView.setLayoutManager(new GridLayoutManager(DragRecyclerViewActivity.this, 3));
+                ImageViewAdapter adapter=new ImageViewAdapter(null);
+                recyclerView.setAdapter(adapter);
+                ArrayList<String> datas=new ArrayList<>();
+                for(int i = 0; i<Math.random()*10; i++){
+                    datas.add("index------"+i);
+                }
+                adapter.addData(datas);
+
+                helper.getView(R.id.rv_image).setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        return helper.getView(R.id.layout).onTouchEvent(event);
+                    }
+                });
+
             }
         };
 
@@ -41,7 +62,7 @@ public class DragRecyclerViewActivity extends AppCompatActivity {
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                ToastUtils.showLong("position=="+position+"--datas="+datas.get(position));
+                ToastUtils.showLong("点击item  position=="+position);
             }
         });
 
@@ -51,7 +72,7 @@ public class DragRecyclerViewActivity extends AppCompatActivity {
         }
         mAdapter.addData(datas);
 
-        initDrag();
+//        initDrag();
     }
     ItemTouchHelper mItemTouchHelper;
     private void initDrag() {
