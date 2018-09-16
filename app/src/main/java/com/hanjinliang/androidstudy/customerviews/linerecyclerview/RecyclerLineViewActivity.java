@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.hanjinliang.androidstudy.Common.BaseActivity;
 import com.hanjinliang.androidstudy.R;
-import com.hanjinliang.androidstudy.customerviews.wheelpicker.LineChartItemDecoration;
 
 import java.util.ArrayList;
 
@@ -21,21 +20,32 @@ import java.util.ArrayList;
 
 public class RecyclerLineViewActivity extends BaseActivity {
     RecyclerView mRecyclerView;
+    RecyclerView mRecyclerView2;
+    RecyclerView mRecyclerView3;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view);
-        mRecyclerView=findView(R.id.recyclerView);
-
         for(int i=0;i<100;i++){
             mFloatArrayList.add((float) (Math.random()*80+20.0f));//20-100的随机数
         }
 
+        mRecyclerView=findView(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         mRecyclerView.addItemDecoration(new LineChartItemDecoration(this,mFloatArrayList));
         mRecyclerView.setAdapter(new MyAdapter(mFloatArrayList));
 
 
+
+        mRecyclerView2=findView(R.id.recyclerView2);
+        mRecyclerView2.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        mRecyclerView2.addItemDecoration(new CornerLineChartItemDecoration(this,mFloatArrayList));
+        mRecyclerView2.setAdapter(new MyAdapter(mFloatArrayList));
+
+        mRecyclerView3=findView(R.id.recyclerView3);
+        mRecyclerView3.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        mRecyclerView3.addItemDecoration(new SignleBarChartItemDecoration(this,mFloatArrayList));
+        mRecyclerView3.setAdapter(new MyAdapter(mFloatArrayList));
     }
 
     ArrayList<Float> mFloatArrayList=new ArrayList<>();
@@ -55,7 +65,8 @@ public class RecyclerLineViewActivity extends BaseActivity {
 
         @Override
         public void onBindViewHolder(MyHolder holder, int position) {
-            holder.tv_value1.setText(""+mFloatArrayList.get(position));
+            holder.tv_value1.setText(String.valueOf(mFloatArrayList.get(position)).substring(0,4));
+            holder.tv_value2.setText(""+position);
         }
 
         @Override
@@ -67,10 +78,12 @@ public class RecyclerLineViewActivity extends BaseActivity {
     public class MyHolder extends RecyclerView.ViewHolder{
         public TextView tv_content;
         public TextView tv_value1;
+        public TextView tv_value2;
         public MyHolder(View itemView) {
             super(itemView);
             tv_content=itemView.findViewById(R.id.tv_content);
             tv_value1=itemView.findViewById(R.id.tv_value1);
+            tv_value2=itemView.findViewById(R.id.tv_value2);
         }
     }
 }

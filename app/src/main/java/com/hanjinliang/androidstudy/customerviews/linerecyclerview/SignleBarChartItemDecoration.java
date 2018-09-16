@@ -1,4 +1,4 @@
-package com.hanjinliang.androidstudy.customerviews.wheelpicker;
+package com.hanjinliang.androidstudy.customerviews.linerecyclerview;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -13,21 +13,21 @@ import java.util.ArrayList;
 
 /**
  * Created by Administrator on 2018-09-15.
- * 利用RecyclerView实现的曲线图
+ * 利用RecyclerView实现的曲线图  单个柱状图
  */
-public class LineChartItemDecoration extends RecyclerView.ItemDecoration {
+public class SignleBarChartItemDecoration extends RecyclerView.ItemDecoration {
     Paint mPaint;
     Context mContext;
     ArrayList<Float> mData;
     private float mMaxData,mMinData;
     private int mChartHeight;
-    public LineChartItemDecoration(Context context,ArrayList<Float> mData) {
+    private float mWidthRatio=0.3f;//柱状图站宽度
+    public SignleBarChartItemDecoration(Context context, ArrayList<Float> mData) {
         this.mData=mData;
         mContext=context;
         mPaint=new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setColor(Color.parseColor("#6E7DBE"));
-        mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(dip2px(1));
+        mPaint.setStyle(Paint.Style.FILL);
 
         parseData();
     }
@@ -68,23 +68,11 @@ public class LineChartItemDecoration extends RecyclerView.ItemDecoration {
             int position = parent.getChildAdapterPosition(view);
             Float data = mData.get(position);
             float pointY =(1-((data - mMinData)/(mMaxData - mMinData)))*mChartHeight+view.getPaddingTop();
-            c.drawCircle(view.getLeft()+view.getWidth()/2, pointY, dip2px(5), mPaint);
+            LogUtils.e("childCount="+childCount+"---i="+i+"------position="+position);
 
-             //画前后的折线
-            if(i==0){//第一项
-                float nextY =(1-(((data+ mData.get(position+1))/2 - mMinData)/(mMaxData - mMinData)))*mChartHeight+view.getPaddingTop();
-                c.drawLine(view.getLeft()+view.getWidth()/2, pointY,view.getRight(),nextY,mPaint);
-            }else if(i==childCount-1){//最后一项
-                float lastY =(1-(((data+ mData.get(position-1))/2 - mMinData)/(mMaxData - mMinData)))*mChartHeight+view.getPaddingTop();
-                c.drawLine(view.getLeft()+view.getWidth()/2,pointY ,view.getLeft(),lastY,mPaint);
-            }else{//根绝中间圆点  前后画折线、
-                float lastY =(1-(((data+ mData.get(position-1))/2 - mMinData)/(mMaxData - mMinData)))*mChartHeight+view.getPaddingTop();
-                c.drawLine(view.getLeft()+view.getWidth()/2,pointY ,view.getLeft(),lastY,mPaint);
-                float nextY =(1-(((data+ mData.get(position+1))/2 - mMinData)/(mMaxData - mMinData)))*mChartHeight+view.getPaddingTop();
-                c.drawLine(view.getLeft()+view.getWidth()/2, pointY,view.getRight(),nextY,mPaint);
-            }
+            c.drawRect(view.getLeft()+view.getWidth()/2-view.getWidth()*mWidthRatio/2,pointY,
+                    view.getRight()-(view.getWidth()/2-view.getWidth()*mWidthRatio/2),mChartHeight+view.getPaddingTop(),mPaint);
 
-            //画一个白色的
         }
     }
 
