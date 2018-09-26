@@ -20,11 +20,14 @@ public class MutiBarChartItemDecoration extends RecyclerView.ItemDecoration {
     Paint mPaint2;
     Context mContext;
     ArrayList<Float> mData;
-    private float mMaxData,mMinData;
+    ArrayList<Float> mData2;
+    private float mMaxData,mMaxData2;
     private int mChartHeight;
-    private float mWidthRatio=0.3f;//柱状图站宽度
-    public MutiBarChartItemDecoration(Context context, ArrayList<Float> mData) {
+    private float mPaddingWidthRatio=0.1f;//柱状图站宽度
+    private float mBarWidthRatio;//柱状图站宽度
+    public MutiBarChartItemDecoration(Context context, ArrayList<Float> mData,ArrayList<Float> mData2) {
         this.mData=mData;
+        this.mData2=mData2;
         mContext=context;
         mPaint=new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setColor(Color.parseColor("#6E7DBE"));
@@ -42,19 +45,22 @@ public class MutiBarChartItemDecoration extends RecyclerView.ItemDecoration {
      */
     private void parseData() {
         mMaxData=mData.get(0);
-        mMinData=mData.get(0);
         for(Float integer:mData){
             if(integer>mMaxData){
                 mMaxData=integer;
             }
-            if(integer<mMinData){
-                mMinData=integer;
+        }
+        mMaxData=(mMaxData/10+1)*10;
+
+        mMaxData2=mData2.get(0);
+        for(Float integer:mData2){
+            if(integer>mMaxData2){
+                mMaxData2=integer;
             }
         }
-        LogUtils.e("mMaxData=="+mMaxData+"--mMinData="+mMinData);
-        mMaxData=(mMaxData/10+1)*10;
-        mMinData=(mMinData/10)*10;
-        LogUtils.e("mMaxData=="+mMaxData+"--mMinData="+mMinData);
+        mMaxData2=(mMaxData2/10+1)*10;
+
+        mBarWidthRatio=(1-3*mPaddingWidthRatio)/2;
     }
 
     @Override
@@ -72,12 +78,18 @@ public class MutiBarChartItemDecoration extends RecyclerView.ItemDecoration {
             //真实位置
             int position = parent.getChildAdapterPosition(view);
             Float data = mData.get(position);
-            float pointY =(1-((data - mMinData)/(mMaxData - mMinData)))*mChartHeight+view.getPaddingTop();
+            Float data2 = mData2.get(position);
+            float pointY =(1-data/mMaxData)*mChartHeight+view.getPaddingTop();
+            float pointY2 =(1-data2/mMaxData2)*mChartHeight+view.getPaddingTop();
             LogUtils.e("childCount="+childCount+"---i="+i+"------position="+position);
 
-            c.drawRect(view.getLeft()+view.getWidth()/2-view.getWidth()*mWidthRatio/2,pointY,
-                    view.getRight()-(view.getWidth()/2-view.getWidth()*mWidthRatio/2),mChartHeight+view.getPaddingTop(),mPaint);
 
+            int viewRealWidth=view.getWidth()-view.getPaddingLeft()-view.getPaddingRight();
+            c.drawRect(view.getLeft()+view.getPaddingLeft()+viewRealWidth*mPaddingWidthRatio,pointY
+            ,view.getLeft()+view.getPaddingLeft()+viewRealWidth*(mPaddingWidthRatio+mBarWidthRatio),mChartHeight+view.getPaddingTop(),mPaint);
+
+            c.drawRect(view.getLeft()+view.getPaddingLeft()+viewRealWidth*(mPaddingWidthRatio*2+mBarWidthRatio),pointY2
+                    ,view.getLeft()+view.getPaddingLeft()+viewRealWidth*(mPaddingWidthRatio*2+mBarWidthRatio*2),mChartHeight+view.getPaddingTop(),mPaint2);
         }
     }
 

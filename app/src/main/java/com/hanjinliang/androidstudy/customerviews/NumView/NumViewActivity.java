@@ -2,6 +2,7 @@ package com.hanjinliang.androidstudy.customerviews.NumView;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.SeekBar;
 
 import com.hanjinliang.androidstudy.R;
@@ -9,6 +10,7 @@ import com.hanjinliang.androidstudy.R;
 public class NumViewActivity extends AppCompatActivity {
     SeekBar mSeekBar;
     NumView mNumView;
+    ScrollNumVew mScrollNumVew;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,5 +35,12 @@ public class NumViewActivity extends AppCompatActivity {
 
             }
         });
+
+        mScrollNumVew=findViewById(R.id.ScrollNumVew);
+        mScrollNumVew.setNum(586.21f);
+    }
+
+    public void onStartScroll(View view){
+        mScrollNumVew.startScan();
     }
 }

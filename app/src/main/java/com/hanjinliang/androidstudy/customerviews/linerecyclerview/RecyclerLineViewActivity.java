@@ -22,6 +22,7 @@ public class RecyclerLineViewActivity extends BaseActivity {
     RecyclerView mRecyclerView;
     RecyclerView mRecyclerView2;
     RecyclerView mRecyclerView3;
+    RecyclerView mRecyclerView4;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,7 @@ public class RecyclerLineViewActivity extends BaseActivity {
 
         mRecyclerView=findView(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        mRecyclerView.addItemDecoration(new SignleBarChartItemDecoration(this,mFloatArrayList));
         mRecyclerView.addItemDecoration(new LineChartItemDecoration(this,mFloatArrayList));
         mRecyclerView.setAdapter(new MyAdapter(mFloatArrayList));
 
@@ -46,9 +48,20 @@ public class RecyclerLineViewActivity extends BaseActivity {
         mRecyclerView3.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         mRecyclerView3.addItemDecoration(new SignleBarChartItemDecoration(this,mFloatArrayList));
         mRecyclerView3.setAdapter(new MyAdapter(mFloatArrayList));
+
+
+
+        for(int i=0;i<100;i++){
+            mFloatArrayList2.add((float) (Math.random()*80+20.0f));//20-100的随机数
+        }
+        mRecyclerView4=findView(R.id.recyclerView4);
+        mRecyclerView4.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        mRecyclerView4.addItemDecoration(new MutiBarChartItemDecoration(this,mFloatArrayList,mFloatArrayList2));
+        mRecyclerView4.setAdapter(new MyAdapter(mFloatArrayList));
     }
 
     ArrayList<Float> mFloatArrayList=new ArrayList<>();
+    ArrayList<Float> mFloatArrayList2=new ArrayList<>();
 
 
     public class MyAdapter extends RecyclerView.Adapter<MyHolder>{
