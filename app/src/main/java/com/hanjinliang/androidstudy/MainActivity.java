@@ -16,11 +16,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.blankj.utilcode.util.BarUtils;
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.Utils;
 import com.hanjinliang.androidstudy.customerviews.CustomerViewStudyActivity;
 import com.hanjinliang.androidstudy.javabase.JavaBaseStudyActivity;
 import com.hanjinliang.androidstudy.systemwidget.SystemWidgetStudyActivity;
 import com.hanjinliang.androidstudy.thirdLibs.ThirdLibActivity;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -53,6 +58,57 @@ public class MainActivity extends AppCompatActivity
 
         BarUtils.setColorForDrawerLayout(this,drawer, Color.parseColor("#4CAF50"));
         //BarUtils.setTranslucentForDrawerLayout(this,drawer);
+
+        boolean nStraightHand = isNStraightHand(new int[]{1, 2, 3, 6, 2, 3, 4, 7, 8}, 3);
+        LogUtils.e("nStraightHand","nStraightHand="+nStraightHand);
+        //https://leetcode-cn.com/problems/hand-of-straights/
+    }
+
+    public boolean isNStraightHand(int[] hand, int W) {
+        if(hand.length<W||hand.length%W!=0){
+            return false;
+        }
+        HashMap<Integer,Integer> datas=new HashMap();
+        for(int i=0;i<hand.length;i++){
+            datas.put(i,hand[i]);
+        }
+
+        return isRight(datas,W);
+    }
+
+    public boolean isRight(HashMap<Integer,Integer> datas,int count){
+        if(datas.keySet().size()==0){
+            return false;
+        }
+        Integer minKey=null;
+        Integer minValue=null;
+        for(Integer key:datas.keySet()){
+            if(minKey==null){
+                minKey=key;
+                minValue=datas.get(minKey);
+            }else{
+                if(datas.get(minKey)>datas.get(key)){
+                    minKey=key;
+                    minValue=datas.get(key);
+                }
+            }
+        }
+
+        for(int i=0;i<count;i++){
+            boolean isContains=datas.containsValue(datas.get(minKey)+i);
+            if(!isContains){
+                return false;
+            }
+        }
+        Iterator<Map.Entry<Integer, Integer>> iterator = datas.entrySet().iterator();
+        for(int i=minValue;i<=minValue+count;i++) {
+            while (iterator.hasNext()) {
+                if (iterator.next().getValue()==i) {
+                    iterator.remove();
+                }
+            }
+        }
+        return isRight(datas,count);
     }
 
     @Override
