@@ -141,6 +141,8 @@
         <activity android:name=".systemwidget.recyclerView.DragRecyclerViewActivity">
         </activity>
         <activity android:name=".customerviews.linerecyclerview.RecyclerLineViewActivity"/>
+        <activity android:name=".thirdLibs.guide.GuideActivity">
+        </activity>
     </application>
 
 </manifest>
