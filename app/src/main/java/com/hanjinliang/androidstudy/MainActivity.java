@@ -23,6 +23,7 @@ import com.hanjinliang.androidstudy.javabase.JavaBaseStudyActivity;
 import com.hanjinliang.androidstudy.systemwidget.SystemWidgetStudyActivity;
 import com.hanjinliang.androidstudy.thirdLibs.ThirdLibActivity;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -65,20 +66,42 @@ public class MainActivity extends AppCompatActivity
     }
 
     public boolean isNStraightHand(int[] hand, int W) {
-        if(hand.length<W||hand.length%W!=0){
+        int n = hand.length;
+        if (n % W != 0) {
             return false;
         }
-        HashMap<Integer,Integer> datas=new HashMap();
-        for(int i=0;i<hand.length;i++){
-            datas.put(i,hand[i]);
-        }
+        Arrays.sort(hand);
+        int[] vis = new int[n];
+        for (int i = 0; i < n; i++) {
+            if (vis[i] == 0) {
+                int cnt = 1;
+                vis[i] = 1;
+                int pre = hand[i];
+                int j = i + 1;
+                while (cnt < W) {
+                    if (j >= n) {
+                        break;
+                    }
+                    if (vis[j] == 0 && hand[j] == pre + 1) {
+                        cnt++;
+                        vis[j] = 1;
+                        pre = hand[j];
+                    }
+                    j++;
+                }
+                if (cnt != W) {
+                    return false;
+                }
 
-        return isRight(datas,W);
+            }
+        }
+        return true;
+
     }
 
     public boolean isRight(HashMap<Integer,Integer> datas,int count){
         if(datas.keySet().size()==0){
-            return false;
+            return true;
         }
         Integer minKey=null;
         Integer minValue=null;
@@ -100,11 +123,14 @@ public class MainActivity extends AppCompatActivity
                 return false;
             }
         }
-        Iterator<Map.Entry<Integer, Integer>> iterator = datas.entrySet().iterator();
-        for(int i=minValue;i<=minValue+count;i++) {
-            while (iterator.hasNext()) {
+        for(int i=minValue;i<minValue+count;i++) {
+            LogUtils.e("nStraightHand","i=="+i);
+            Iterator<Map.Entry<Integer, Integer>> iterator = datas.entrySet().iterator();
+            boolean isRemoved=false;
+            while (!isRemoved&&iterator.hasNext()) {
                 if (iterator.next().getValue()==i) {
                     iterator.remove();
+                    isRemoved=true;
                 }
             }
         }
