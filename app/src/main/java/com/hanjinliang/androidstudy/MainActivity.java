@@ -60,83 +60,31 @@ public class MainActivity extends AppCompatActivity
         BarUtils.setColorForDrawerLayout(this,drawer, Color.parseColor("#4CAF50"));
         //BarUtils.setTranslucentForDrawerLayout(this,drawer);
 
-        boolean nStraightHand = isNStraightHand(new int[]{1, 2, 3, 6, 2, 3, 4, 7, 8}, 3);
+        int nStraightHand = lengthOfLongestSubstring("au");
         LogUtils.e("nStraightHand","nStraightHand="+nStraightHand);
-        //https://leetcode-cn.com/problems/hand-of-straights/
+        //https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/submissions/
     }
-
-    public boolean isNStraightHand(int[] hand, int W) {
-        int n = hand.length;
-        if (n % W != 0) {
-            return false;
+    public int lengthOfLongestSubstring(String s) {
+        if(s==null||s.length()==0){
+            return 0;
         }
-        Arrays.sort(hand);
-        int[] vis = new int[n];
-        for (int i = 0; i < n; i++) {
-            if (vis[i] == 0) {
-                int cnt = 1;
-                vis[i] = 1;
-                int pre = hand[i];
-                int j = i + 1;
-                while (cnt < W) {
-                    if (j >= n) {
-                        break;
-                    }
-                    if (vis[j] == 0 && hand[j] == pre + 1) {
-                        cnt++;
-                        vis[j] = 1;
-                        pre = hand[j];
-                    }
-                    j++;
-                }
-                if (cnt != W) {
-                    return false;
-                }
+        int length=1;
 
+        for(int i=0;i<s.length();i++){
+            HashMap<Integer,Character> temp=new HashMap();
+            for(int j=i;j<s.length();j++){
+
+                Character value=s.charAt(j);
+                if(temp.containsValue(value)){
+                    length=Math.max(length,temp.size());
+                    temp.clear();
+                    break;
+                }
+                temp.put(j,value);
             }
         }
-        return true;
-
+        return length;
     }
-
-    public boolean isRight(HashMap<Integer,Integer> datas,int count){
-        if(datas.keySet().size()==0){
-            return true;
-        }
-        Integer minKey=null;
-        Integer minValue=null;
-        for(Integer key:datas.keySet()){
-            if(minKey==null){
-                minKey=key;
-                minValue=datas.get(minKey);
-            }else{
-                if(datas.get(minKey)>datas.get(key)){
-                    minKey=key;
-                    minValue=datas.get(key);
-                }
-            }
-        }
-
-        for(int i=0;i<count;i++){
-            boolean isContains=datas.containsValue(datas.get(minKey)+i);
-            if(!isContains){
-                return false;
-            }
-        }
-        for(int i=minValue;i<minValue+count;i++) {
-            LogUtils.e("nStraightHand","i=="+i);
-            Iterator<Map.Entry<Integer, Integer>> iterator = datas.entrySet().iterator();
-            boolean isRemoved=false;
-            while (!isRemoved&&iterator.hasNext()) {
-                if (iterator.next().getValue()==i) {
-                    iterator.remove();
-                    isRemoved=true;
-                }
-            }
-        }
-        return isRight(datas,count);
-    }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
