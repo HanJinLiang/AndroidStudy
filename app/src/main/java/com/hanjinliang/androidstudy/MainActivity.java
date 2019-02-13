@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity
 
         int nStraightHand = lengthOfLongestSubstring("au");
         LogUtils.e("nStraightHand","nStraightHand="+nStraightHand);
-        //https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/submissions/
+
     }
     public int lengthOfLongestSubstring(String s) {
         if(s==null||s.length()==0){
