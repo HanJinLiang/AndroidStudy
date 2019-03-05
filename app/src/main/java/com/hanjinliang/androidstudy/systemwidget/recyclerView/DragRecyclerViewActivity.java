@@ -10,28 +10,25 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.hanjinliang.androidstudy.R;
-import com.hanjinliang.androidstudy.systemwidget.viewpager.MyPagerTransformer;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 public class DragRecyclerViewActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     BaseQuickAdapter<String,BaseViewHolder> mAdapter;
     ArrayList<String> datas=new ArrayList<>();
+    long groupId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drag_recycler_view);
         mRecyclerView=findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.addItemDecoration(new CustomerItemDecoration(this));
         //mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
         mAdapter=new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_near_talk) {
             @Override
@@ -72,7 +69,7 @@ public class DragRecyclerViewActivity extends AppCompatActivity {
         }
         mAdapter.addData(datas);
 
-//        initDrag();
+         initDrag();
     }
     ItemTouchHelper mItemTouchHelper;
     private void initDrag() {
