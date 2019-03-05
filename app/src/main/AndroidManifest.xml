@@ -143,6 +143,7 @@
         <activity android:name=".customerviews.linerecyclerview.RecyclerLineViewActivity"/>
         <activity android:name=".thirdLibs.guide.GuideActivity">
         </activity>
+        <activity android:name=".systemwidget.recyclerView.GroupRecyclerViewActivity"/>
     </application>
 
 </manifest>
