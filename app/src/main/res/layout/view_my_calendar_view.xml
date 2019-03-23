@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:elevation="4dp"
+    android:background="@drawable/corner_gray_white">
+
+    <com.hanjinliang.androidstudy.customerviews.calendar.MyCalendarTitleView
+        android:id="@+id/calendarTitleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rv_calendarDay"
+        app:layout_constraintTop_toBottomOf="@+id/calendarTitleView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/returnToday"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_calendarDay"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="返回今日"
+        android:padding="5dp"/>
+
+</android.support.constraint.ConstraintLayout>

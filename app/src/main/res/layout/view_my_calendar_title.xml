@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              xmlns:tools="http://schemas.android.com/tools"
+    >
+<TextView
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:gravity="center"
+    android:id="@+id/calendar_title_pre_month"
+    android:text="@string/month_pre"
+    android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="50dp"
+        tools:text="2018-03"
+        android:gravity="center"
+        android:id="@+id/calendar_title_current_month"/>
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:id="@+id/calendar_title_next_month"
+        android:text="@string/month_next"
+        android:textSize="18sp"/>
+</LinearLayout>
