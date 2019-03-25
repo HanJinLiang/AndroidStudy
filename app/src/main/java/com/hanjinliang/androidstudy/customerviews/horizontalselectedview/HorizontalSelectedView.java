@@ -12,9 +12,11 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.hanjinliang.androidstudy.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by HanJinLiang on 2017-06-27.
@@ -32,7 +34,7 @@ public class HorizontalSelectedView extends View {
     private TextPaint mSelectedPaint;//选中画笔
     private TextPaint mUnSelectedPaint;//未选中画笔
 
-    private ArrayList<String>  mDatas;//数据源
+    private List<String>  mDatas;//数据源
 
     private int mWidth;//宽度
     private int mHeight;//高度
@@ -153,6 +155,9 @@ public class HorizontalSelectedView extends View {
                         if (mSelectedIndex > 0) {
                             mSelectedIndex--;
                             downX = moveX;
+                            if(mOnSelectIndexChangedListener!=null){
+                                mOnSelectIndexChangedListener.onSelectIndexChanged(mSelectedIndex);
+                            }
                         }
                     }
 
@@ -161,14 +166,32 @@ public class HorizontalSelectedView extends View {
                         if (mSelectedIndex < mDatas.size() - 1) {
                             mSelectedIndex++;
                             downX = moveX;
+                            if(mOnSelectIndexChangedListener!=null){
+                                mOnSelectIndexChangedListener.onSelectIndexChanged(mSelectedIndex);
+                            }
                         }
                     }
                 }
                 invalidate();
                 break;
             case MotionEvent.ACTION_UP:
-                mOffset=0;
-                invalidate();
+                if(downX==event.getX()){//是单击
+                    //获取到点击屏幕的区域
+                    int  clickIndex = (int) (downX /(getWidth()/mCount));
+                    LogUtils.e("clickIndex="+clickIndex);
+                    int selectedIndex=mSelectedIndex+clickIndex-mCount/2;
+                    if(selectedIndex<0||selectedIndex>mDatas.size()-1){
+                        break;
+                    }
+                    mSelectedIndex=selectedIndex;
+                    invalidate();//重绘
+                    if(mOnSelectIndexChangedListener!=null){
+                        mOnSelectIndexChangedListener.onSelectIndexChanged(mSelectedIndex);
+                    }
+                }else {
+                    mOffset = 0;
+                    invalidate();
+                }
                 break;
         }
         return super.onTouchEvent(event);
@@ -180,9 +203,9 @@ public class HorizontalSelectedView extends View {
      * 设置数据源
      * @param datas
      */
-    public void setDatas(ArrayList<String> datas) {
+    public void setDatas(List<String> datas) {
         mDatas = datas;
-        mSelectedIndex=datas.size()/2;
+        mSelectedIndex=datas.size()-1;//默认选择最后一个
     }
 
     /**
@@ -193,11 +216,22 @@ public class HorizontalSelectedView extends View {
         if(selectedIndex<0||selectedIndex>mDatas.size()-1){
            return;
         }
+        if(selectedIndex==mSelectedIndex){return;}
         mSelectedIndex=selectedIndex;
         invalidate();//重绘
     }
 
     public int getSelectedIndex() {
         return mSelectedIndex;
+    }
+
+    OnSelectIndexChangedListener mOnSelectIndexChangedListener;
+
+    public void setOnSelectIndexChangedListener(OnSelectIndexChangedListener onSelectIndexChangedListener) {
+        mOnSelectIndexChangedListener = onSelectIndexChangedListener;
+    }
+
+    public interface  OnSelectIndexChangedListener{
+        void onSelectIndexChanged(int selectedIndex);
     }
 }

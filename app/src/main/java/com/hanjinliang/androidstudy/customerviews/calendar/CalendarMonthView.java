@@ -6,6 +6,12 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.hanjinliang.androidstudy.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -16,7 +22,11 @@ import java.util.Date;
  * Describe:日历控件每一个月  是用的是RecyclerView
  */
 
-public class CalendarMonthView extends RecyclerView{
+public class CalendarMonthView extends LinearLayout {
+    LinearLayout mCalendarMonthView;
+    TextView mTvCurMonth;//当前月
+    RecyclerView mMonthRecyclerView;
+
     public CalendarMonthView(Context context) {
         this(context,null);
     }
@@ -31,18 +41,33 @@ public class CalendarMonthView extends RecyclerView{
     }
 
     public void initView(){
+        mCalendarMonthView = (LinearLayout) LayoutInflater.from(getContext()).inflate(R.layout.view_calendar_month_view,null);
+
+        LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        mCalendarMonthView.setLayoutParams(params);
+        addView(mCalendarMonthView);
+
+        mTvCurMonth= mCalendarMonthView.findViewById(R.id.calendar_title_current_month);
+
+        mMonthRecyclerView= mCalendarMonthView.findViewById(R.id.monthRecyclerView);
         //设置LayoutManager
-        setLayoutManager(new GridLayoutManager(getContext(),7));//一行显示7个
+        mMonthRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),7));//一行显示7个
     }
+
+    String[] monthArr=new String[]{"一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"};
+
 
     /**
      * 设置数据
      * @param calendar
      */
     public void initData(Calendar calendar,CalendarView.OnDayClickListener onDayClickListener){
+        int monthIndex = calendar.get(Calendar.MONTH);
+        mTvCurMonth.setText(monthArr[monthIndex]);
+
         CalendarDayAdapter calendarDayAdapter=new CalendarDayAdapter(getContext(), parseCalendar(calendar),calendar);
         calendarDayAdapter.setOnDayClickListener(onDayClickListener);
-        setAdapter(calendarDayAdapter);
+        mMonthRecyclerView.setAdapter(calendarDayAdapter);
     }
 
     /**

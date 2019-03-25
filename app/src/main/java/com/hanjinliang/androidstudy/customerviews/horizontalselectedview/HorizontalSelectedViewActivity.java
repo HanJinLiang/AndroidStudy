@@ -3,6 +3,7 @@ package com.hanjinliang.androidstudy.customerviews.horizontalselectedview;
 import android.os.Bundle;
 import android.view.View;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.hanjinliang.androidstudy.Common.BaseActivity;
 import com.hanjinliang.androidstudy.R;
 
@@ -27,7 +28,13 @@ public class HorizontalSelectedViewActivity extends BaseActivity {
             datas.add("test"+i*10);
         }
         mHorizontalSelectedView.setDatas(datas);
-        mHorizontalSelectedView.setSelectedIndex(2);
+        mHorizontalSelectedView.setSelectedIndex(20);
+        mHorizontalSelectedView.setOnSelectIndexChangedListener(new HorizontalSelectedView.OnSelectIndexChangedListener() {
+            @Override
+            public void onSelectIndexChanged(int selectedIndex) {
+                ToastUtils.showShort("selectedIndex=="+selectedIndex);
+            }
+        });
     }
 
     public void pre(View view){

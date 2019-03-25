@@ -98,6 +98,10 @@ public class CalendarDayAdapter  extends RecyclerView.Adapter<CalendarDayAdapter
                             mSelectStartDate = date;
                         }
                     }else{//开始时间  结束时间都有了  重新开始选
+                        if(date.compareTo(mSelectStartDate) == 0||date.compareTo(mSelectEndDate) == 0){
+                            //点击的是开始或者结束时间
+                            return;
+                        }
                         mSelectStartDate = date;
                         mSelectEndDate=null;
                     }

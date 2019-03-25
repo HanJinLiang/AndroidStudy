@@ -1,61 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical">
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="#ffffff">
 
-    <com.hanjinliang.androidstudy.customerviews.calendar.CalendarTitleView
-        android:id="@+id/calendarTitleView"
+    <com.hanjinliang.androidstudy.customerviews.horizontalselectedview.HorizontalSelectedView
+        android:id="@+id/horizontalSelectedView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="40dp"
+        app:HorizontalSelectedViewCount="5"
+        app:HorizontalSelectedViewSelectedColor="#4A4A4A"
+        app:HorizontalSelectedViewSelectedSize="20sp"
+        app:HorizontalSelectedViewUnselectedColor="#C2C2C2"
+        app:HorizontalSelectedViewUnselectedSize="14sp"/>
 
-    </com.hanjinliang.androidstudy.customerviews.calendar.CalendarTitleView>
-    <View
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#afafaf"/>
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalSelectedView"/>
+
+    <TextView
+        android:id="@+id/preMonth"
+        android:layout_width="wrap_content"
+        android:minWidth="80dp"
+        android:layout_height="50dp"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalSelectedView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:text="九月"
+        android:gravity="center"
+        android:textColor="#9B9B9B"
+        android:background="#ffffff"/>
+    <TextView
+        android:id="@+id/nextMonth"
+        android:layout_width="wrap_content"
+        android:minWidth="80dp"
+        android:layout_height="50dp"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalSelectedView"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="十一月"
+        android:gravity="center"
+        android:textColor="#9B9B9B"
+        android:background="#ffffff"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:orientation="horizontal">
-
-
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="一"/>
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalSelectedView">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="二"/>
+            android:text="一"
+            android:textColor="#9B9B9B"
+            android:textSize="11sp"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="三"/>
+            android:text="二"
+            android:textColor="#9B9B9B"
+            android:textSize="11sp"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="四"/>
+            android:text="三"
+            android:textColor="#9B9B9B"
+            android:textSize="11sp"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="五"/>
+            android:text="四"
+            android:textColor="#9B9B9B"
+            android:textSize="11sp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="五"
+            android:textColor="#9B9B9B"
+            android:textSize="11sp"/>
 
         <TextView
             android:layout_width="0dp"
@@ -63,22 +108,18 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="六"
-             />
+            android:textColor="#FF0000"
+            android:textSize="11sp"
+            />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="日"/>
+            android:text="日"
+            android:textColor="#FF0000"
+            android:textSize="11sp"/>
 
     </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#afafaf"/>
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
