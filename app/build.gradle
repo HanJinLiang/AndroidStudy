@@ -51,4 +51,5 @@ dependencies {
 
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
     implementation 'com.zhaozhibo.guideview:guideview:1.0.6'
+
 }

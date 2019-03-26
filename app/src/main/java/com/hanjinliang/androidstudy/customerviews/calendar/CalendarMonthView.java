@@ -26,7 +26,6 @@ public class CalendarMonthView extends LinearLayout {
     LinearLayout mCalendarMonthView;
     TextView mTvCurMonth;//当前月
     RecyclerView mMonthRecyclerView;
-
     public CalendarMonthView(Context context) {
         this(context,null);
     }
@@ -64,9 +63,9 @@ public class CalendarMonthView extends LinearLayout {
     public void initData(Calendar calendar,CalendarView.OnDayClickListener onDayClickListener){
         int monthIndex = calendar.get(Calendar.MONTH);
         mTvCurMonth.setText(monthArr[monthIndex]);
-
-        CalendarDayAdapter calendarDayAdapter=new CalendarDayAdapter(getContext(), parseCalendar(calendar),calendar);
+        CalendarDayAdapter calendarDayAdapter=new CalendarDayAdapter(getContext(),  parseCalendar(calendar),calendar);
         calendarDayAdapter.setOnDayClickListener(onDayClickListener);
+
         mMonthRecyclerView.setAdapter(calendarDayAdapter);
     }
 

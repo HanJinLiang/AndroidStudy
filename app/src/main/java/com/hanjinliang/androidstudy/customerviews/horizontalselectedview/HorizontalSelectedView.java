@@ -137,10 +137,12 @@ public class HorizontalSelectedView extends View {
     }
     float downX;
     float mOffset;
+    boolean isSelectedChanged;
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
+                isSelectedChanged=false;
                 downX=event.getX();
                 break;
             case MotionEvent.ACTION_MOVE:
@@ -155,9 +157,7 @@ public class HorizontalSelectedView extends View {
                         if (mSelectedIndex > 0) {
                             mSelectedIndex--;
                             downX = moveX;
-                            if(mOnSelectIndexChangedListener!=null){
-                                mOnSelectIndexChangedListener.onSelectIndexChanged(mSelectedIndex);
-                            }
+                            isSelectedChanged=true;
                         }
                     }
 
@@ -166,9 +166,7 @@ public class HorizontalSelectedView extends View {
                         if (mSelectedIndex < mDatas.size() - 1) {
                             mSelectedIndex++;
                             downX = moveX;
-                            if(mOnSelectIndexChangedListener!=null){
-                                mOnSelectIndexChangedListener.onSelectIndexChanged(mSelectedIndex);
-                            }
+                            isSelectedChanged=true;
                         }
                     }
                 }
@@ -184,13 +182,13 @@ public class HorizontalSelectedView extends View {
                         break;
                     }
                     mSelectedIndex=selectedIndex;
-                    invalidate();//重绘
-                    if(mOnSelectIndexChangedListener!=null){
-                        mOnSelectIndexChangedListener.onSelectIndexChanged(mSelectedIndex);
-                    }
+                    isSelectedChanged=true;
                 }else {
                     mOffset = 0;
-                    invalidate();
+                }
+                invalidate();//重绘
+                if(isSelectedChanged&&mOnSelectIndexChangedListener!=null){
+                    mOnSelectIndexChangedListener.onSelectIndexChanged(mSelectedIndex);
                 }
                 break;
         }

@@ -28,10 +28,10 @@ import java.util.HashMap;
  */
 public class CalendarView extends LinearLayout implements View.OnClickListener {
 
-    private int mMonthPageCount=12*100;//
+    private int mMonthPageCount=12*10;//
 
     ConstraintLayout mCalendarView;
-    ViewPager mViewPager;
+    WrapContentHeightViewPager mViewPager;
     TextView preMonth;
     TextView nextMonth;
 
@@ -90,20 +90,18 @@ public class CalendarView extends LinearLayout implements View.OnClickListener {
 
             @Override
             public Object instantiateItem(ViewGroup container, int position) {
-                CalendarMonthView recyclerView = initMonthView(position);
-                container.addView(recyclerView);
-                return recyclerView;
+                CalendarMonthView calendarMonthView = initMonthView(position);
+                container.addView(calendarMonthView);
+                return calendarMonthView;
             }
         });
          mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
             public void onPageSelected(int position) {
-                //mCalendarMonthView.updateCurMonth(mCalendarHashMap.get(position));
                 Calendar calendar = getCalendar(position);
                 showTitleInfo(calendar);
                 refreshYearView(calendar);
