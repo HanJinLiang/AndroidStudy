@@ -203,7 +203,6 @@ public class HorizontalSelectedView extends View {
      */
     public void setDatas(List<String> datas) {
         mDatas = datas;
-        mSelectedIndex=datas.size()-1;//默认选择最后一个
     }
 
     /**

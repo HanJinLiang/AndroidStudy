@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <TextView
+        android:id="@+id/calendar_day"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
+        android:layout_marginRight="2dp"
+        android:layout_marginLeft="2dp"
+        android:gravity="center"
+        tools:text="13"
+        android:textColor="#4A4A4A"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:background="@drawable/round_bg"/>
+
+    <TextView
+        android:textSize="10sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/subText"
+        app:layout_constraintRight_toRightOf="@+id/calendar_day"
+        app:layout_constraintLeft_toLeftOf="@+id/calendar_day"
+        app:layout_constraintTop_toTopOf="@+id/calendar_day"
+        tools:text="始"
+        />
+</android.support.constraint.ConstraintLayout>

@@ -54,6 +54,10 @@ public class CalendarView extends LinearLayout implements View.OnClickListener {
         initView();
     }
     private void initView() {
+        //静态变量置空
+        CalendarDayAdapter.mSelectEndDate=null;
+        CalendarDayAdapter.mSelectStartDate=null;
+
         mCalendarView= (ConstraintLayout) LayoutInflater.from(getContext()).inflate(R.layout.view_calendar_view,null);
         mCalendarView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         addView(mCalendarView);
@@ -143,6 +147,7 @@ public class CalendarView extends LinearLayout implements View.OnClickListener {
             calendar.add(Calendar.YEAR,-1);
         }
         mSelectedView.setDatas(mAllYears);
+        mSelectedView.setSelectedIndex(mAllYears.size()-1);//默认选择最后一个
 
         mSelectedView.setOnSelectIndexChangedListener(new HorizontalSelectedView.OnSelectIndexChangedListener() {
             @Override
