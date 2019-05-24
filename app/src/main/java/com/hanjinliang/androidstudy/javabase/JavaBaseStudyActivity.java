@@ -14,6 +14,7 @@ import com.hanjinliang.androidstudy.customerviews.basestudy.canvas.CanvasRotateV
 import com.hanjinliang.androidstudy.customerviews.basestudy.canvas.CanvasScaleViewActivity;
 import com.hanjinliang.androidstudy.customerviews.basestudy.eventdispatch.EventDispatchTestActivity;
 import com.hanjinliang.androidstudy.javabase.annotion.AnnotationActivity;
+import com.hanjinliang.androidstudy.javabase.backend.BackendTestActivity;
 import com.hanjinliang.androidstudy.javabase.fanxing.FanxingActivity;
 
 /**
@@ -24,7 +25,7 @@ public class JavaBaseStudyActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String[] pArray={"泛型学习","注解学习" };
+        String[] pArray={"泛型学习","注解学习","java后台学习" };
         setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, pArray));//绑定数据源
     }
 
@@ -37,6 +38,9 @@ public class JavaBaseStudyActivity extends ListActivity {
                 break;
             case 1://注解学习
                 start(AnnotationActivity.class);
+                break;
+            case 2://java后台学习
+                start(BackendTestActivity.class);
                 break;
 
         }

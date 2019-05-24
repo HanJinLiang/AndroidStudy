@@ -131,7 +131,7 @@ public abstract class GroupLineItemDecoration extends RecyclerView.ItemDecoratio
             groupNameTv=groupView.findViewById(R.id.groupName);
         }
         //吸顶点击效果
-        groupView.setOnClickListener(new View.OnClickListener() {
+        groupView.findViewById(R.id.groupNameClick).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ToastUtils.showShort(getItemGroupName(pos));

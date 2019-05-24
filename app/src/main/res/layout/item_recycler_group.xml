@@ -3,12 +3,23 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     >
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:id="@+id/groupName"
         android:text="我是分组"
+        android:gravity="center_vertical"
+        android:textSize="18sp"
+        android:textColor="#000"
+        android:background="#f00"/>
+    <TextView
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:id="@+id/groupNameClick"
+        android:text="点击我"
         android:gravity="center_vertical"
         android:textSize="18sp"
         android:textColor="#000"

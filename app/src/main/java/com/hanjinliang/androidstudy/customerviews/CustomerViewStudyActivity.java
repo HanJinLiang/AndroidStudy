@@ -38,6 +38,7 @@ import com.hanjinliang.androidstudy.customerviews.flowlayout.FlowLayoutActivity;
 import com.hanjinliang.androidstudy.customerviews.horizontalselectedview.HorizontalSelectedViewActivity;
 import com.hanjinliang.androidstudy.customerviews.linerecyclerview.RecyclerLineViewActivity;
 import com.hanjinliang.androidstudy.customerviews.radarview.RadarViewActivity;
+import com.hanjinliang.androidstudy.customerviews.rotate.RotateActivity;
 import com.hanjinliang.androidstudy.customerviews.stepview.StepViewActivity;
 import com.hanjinliang.androidstudy.customerviews.timeselect.DateTimePickerDemoActivity;
 import com.hanjinliang.androidstudy.customerviews.waveline.WaveLineActivity;
@@ -334,5 +335,9 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
      */
     public void  RecycerLineView(View view){
         startActivity(new Intent(this,  RecyclerLineViewActivity.class));
+    }
+
+    public void View3dRotate(View view){
+        startActivity(new Intent(this, RotateActivity.class));
     }
 }
