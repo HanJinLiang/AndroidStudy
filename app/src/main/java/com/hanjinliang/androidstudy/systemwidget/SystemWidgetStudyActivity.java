@@ -19,6 +19,7 @@ import com.hanjinliang.androidstudy.systemwidget.eventpatch.EventPatchActivity;
 import com.hanjinliang.androidstudy.systemwidget.listselect.ListSelectActivity;
 import com.hanjinliang.androidstudy.systemwidget.recyclerView.DragRecyclerViewActivity;
 import com.hanjinliang.androidstudy.systemwidget.recyclerView.GroupRecyclerViewActivity;
+import com.hanjinliang.androidstudy.systemwidget.recyclerView.screenshot.RecyclerScreenShotActivity;
 import com.hanjinliang.androidstudy.systemwidget.viewpager.ViewPagerStudyActivity;
 
 /**
@@ -30,7 +31,7 @@ public class SystemWidgetStudyActivity extends ListActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             String[] pArray={" CoordinatorLayout学习","Toolbar学习","AppBarLayout学习","SlidingPaneLayout学习","重力感应器","ConstraintLayoutActivity"
-            ,"滑动事件冲突","ViewPager学习","列表单选和多选","拖动recyclerView","分组recyclerView"};
+            ,"滑动事件冲突","ViewPager学习","列表单选和多选","拖动recyclerView","分组recyclerView","recyclerView截图"};
             setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, pArray));//绑定数据源
         }
 
@@ -70,6 +71,9 @@ public class SystemWidgetStudyActivity extends ListActivity {
                     break;
                 case 10://
                     start(GroupRecyclerViewActivity.class);
+                    break;
+                case 11://
+                    start(RecyclerScreenShotActivity.class);
                     break;
             }
         }
