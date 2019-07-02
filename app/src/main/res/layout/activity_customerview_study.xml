@@ -20,6 +20,12 @@
                     android:id="@+id/View3dRotate"
                     android:onClick="View3dRotate"
                     android:text="3D翻转动画"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/UpDownTextViewActivity"
+                    android:onClick="UpDownTextViewActivity"
+                    android:text="垂直滚动效果"/>
 
 
                 <Button
