@@ -9,6 +9,7 @@ import com.hanjinliang.androidstudy.R;
 import com.hanjinliang.androidstudy.customerviews.ArcMenu.ArcMenuActivity;
 import com.hanjinliang.androidstudy.customerviews.CheckableLinearLayout.CheckableLayoutActivity;
 import com.hanjinliang.androidstudy.customerviews.CustomerProgressBar.CustomerProgressBarActivity;
+import com.hanjinliang.androidstudy.customerviews.CustomerRefreshLayout.CustomerRefreshActivity;
 import com.hanjinliang.androidstudy.customerviews.DashLine.DashLineActivity;
 import com.hanjinliang.androidstudy.customerviews.EraserView.EraserViewActivity;
 import com.hanjinliang.androidstudy.customerviews.EraserView.GuagualeViewActivity;
@@ -339,6 +340,9 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
     }
     public void  UpDownTextViewActivity(View view){
         startActivity(new Intent(this,  UpDownTextViewActivity.class));
+    }
+    public void  CustomerRefreshLayout(View view){
+        startActivity(new Intent(this,  CustomerRefreshActivity.class));
     }
 
 

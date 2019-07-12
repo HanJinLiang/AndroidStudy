@@ -5,7 +5,7 @@ android {
     buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "com.hanjinliang.androidstudy"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0.1"
@@ -58,5 +58,10 @@ dependencies {
 
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
     implementation 'com.zhaozhibo.guideview:guideview:1.0.6'
+
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-30'
+    implementation('com.airbnb.android:lottie:2.7.0'){
+        exclude group:'com.android.support'
+    }
 
 }
