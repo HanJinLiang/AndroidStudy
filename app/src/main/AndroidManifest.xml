@@ -153,6 +153,7 @@
         </activity>
         <activity android:name=".customerviews.scorlltextlayout.UpDownTextViewActivity"/>
         <activity android:name=".customerviews.CustomerRefreshLayout.CustomerRefreshActivity"/>
+        <activity android:name=".customerviews.StatusLayout.StatusLayoutActivity"/>
     </application>
 
 </manifest>

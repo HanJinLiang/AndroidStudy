@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/rootLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="#1c1e3b">
+
+    <com.hanjinliang.androidstudy.customerviews.StatusLayout.StatusLayout
+        android:id="@+id/layout1"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_margin="10dp" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="刘文豪傻逼"
+            android:textColor="#ffffff"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="给钱"
+            android:textColor="#ffffff"/>
+    </com.hanjinliang.androidstudy.customerviews.StatusLayout.StatusLayout>
+
+    <com.hanjinliang.androidstudy.customerviews.StatusLayout.StatusLayout
+        android:id="@+id/layout2"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_margin="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="刘文豪傻逼"
+            android:textColor="#ffffff"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="给钱"
+            android:textColor="#ffffff"/>
+    </com.hanjinliang.androidstudy.customerviews.StatusLayout.StatusLayout>
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="换颜色"/>
+</LinearLayout>

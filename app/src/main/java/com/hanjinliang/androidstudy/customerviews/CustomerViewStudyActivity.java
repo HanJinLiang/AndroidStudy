@@ -24,6 +24,7 @@ import com.hanjinliang.androidstudy.customerviews.Region.RegionCircleActivity;
 import com.hanjinliang.androidstudy.customerviews.Scroller.ScrollerTestActivity;
 import com.hanjinliang.androidstudy.customerviews.SearchView.SearchViewActivity;
 import com.hanjinliang.androidstudy.customerviews.SelectLayout.SelectLayoutActivity;
+import com.hanjinliang.androidstudy.customerviews.StatusLayout.StatusLayoutActivity;
 import com.hanjinliang.androidstudy.customerviews.StatusScrollView.StatusScrollViewActivity;
 import com.hanjinliang.androidstudy.customerviews.TimeTextView.TimeTextViewActivity;
 import com.hanjinliang.androidstudy.customerviews.WeightView.WeightProgressViewActivity;
@@ -349,5 +350,9 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
 
     public void View3dRotate(View view){
         startActivity(new Intent(this, RotateActivity.class));
+    }
+
+    public void StatusLayoutActivity(View view){
+        startActivity(new Intent(this,StatusLayoutActivity.class));
     }
 }

@@ -17,6 +17,14 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:id="@+id/StatusLayoutActivity"
+                    android:onClick="StatusLayoutActivity"
+                    android:text="选中效果StatusLayoutActivity"/>
+
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:id="@+id/CustomerRefreshLayout"
                     android:onClick="CustomerRefreshLayout"
                     android:text="自定义动画SwipeRefreshLayout"/>
