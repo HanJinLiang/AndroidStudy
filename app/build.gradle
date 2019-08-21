@@ -60,8 +60,8 @@ dependencies {
     implementation 'com.zhaozhibo.guideview:guideview:1.0.6'
 
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-30'
-    implementation('com.airbnb.android:lottie:2.7.0'){
-        exclude group:'com.android.support'
+    implementation('com.airbnb.android:lottie:2.7.0') {
+        exclude group: 'com.android.support'
     }
 
 }

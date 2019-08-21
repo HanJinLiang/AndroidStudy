@@ -14,6 +14,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/StrokeRunBgActivity"
+                    android:onClick="StrokeRunBgActivity"
+                    android:text="边框背景走马灯效果StrokeRunBgActivity"/>
+
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="50dp"

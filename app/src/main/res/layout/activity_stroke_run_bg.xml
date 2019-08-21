@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#678"
+    tools:context="com.hanjinliang.androidstudy.customerviews.StrokeRunBgLinearLayout.StrokeRunBgActivity">
+    
+    <com.hanjinliang.androidstudy.customerviews.StrokeRunBgLinearLayout.StrokeRunBgLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:paddingLeft="50dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="刘文豪是大佬刘文豪是大佬"
+            android:textColor="#ffffff"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="蔡军也是大佬"
+            android:textColor="#ffffff"/>
+
+    </com.hanjinliang.androidstudy.customerviews.StrokeRunBgLinearLayout.StrokeRunBgLinearLayout>
+
+</LinearLayout>
