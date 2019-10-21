@@ -13,7 +13,7 @@
    />
 
 <android.support.design.widget.CoordinatorLayout
-
+    android:id="@+id/coordinatorLayout"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -40,23 +40,20 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="#987667"
-            app:layout_scrollFlags="scroll|snap"
-            ></LinearLayout>
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="10dp"
-            app:layout_scrollFlags="scroll|snap"/>
+            app:layout_scrollFlags="scroll|enterAlways"/>
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
+        android:background="#879"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"></android.support.v4.view.ViewPager>
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_anchorGravity="bottom"
+        app:layout_anchor="@+id/coordinatorLayout"/>
 </android.support.design.widget.CoordinatorLayout>
 </LinearLayout>

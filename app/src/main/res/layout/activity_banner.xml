@@ -9,13 +9,19 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:id="@+id/RecyclerView">
+        android:id="@+id/RecyclerView"
+        android:visibility="gone">
     </android.support.v7.widget.RecyclerView>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/RecyclerView_Indicator">
+        android:id="@+id/RecyclerView_Indicator"
+        android:visibility="gone">
     </android.support.v7.widget.RecyclerView>
 
+    <com.hanjinliang.androidstudy.customerviews.banner.BannerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bannerView"/>
 </RelativeLayout>

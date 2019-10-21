@@ -32,11 +32,14 @@ public class BannerActivity extends AppCompatActivity {
     RecyclerView mRecyclerView_Indicator;
     ArrayList<String> urlList=new ArrayList<>();
 
+    BannerView mBannerView;
+
     private int mDefaultIndex=10000*4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_banner);
+
         mRecyclerView= (RecyclerView) findViewById(R.id.RecyclerView);
         mRecyclerView_Indicator= (RecyclerView) findViewById(R.id.RecyclerView_Indicator);
 
@@ -91,6 +94,9 @@ public class BannerActivity extends AppCompatActivity {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
             }
         });
+
+        mBannerView=findViewById(R.id.bannerView);
+        mBannerView.setPicList(urlList);
     }
 
     boolean isAutoPlay;

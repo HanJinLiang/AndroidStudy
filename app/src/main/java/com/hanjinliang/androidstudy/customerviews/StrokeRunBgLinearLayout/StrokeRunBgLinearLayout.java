@@ -10,6 +10,8 @@ import android.graphics.Path;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.LinearLayout;
 
@@ -146,7 +148,7 @@ public class StrokeRunBgLinearLayout extends LinearLayout {
 
     ValueAnimator mValueAnimator;
     public void startRunAnim(){
-        mValueAnimator=ValueAnimator.ofInt(mTotalLength);
+        mValueAnimator=ValueAnimator.ofInt(mTotalLength,0);
         mValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -157,7 +159,7 @@ public class StrokeRunBgLinearLayout extends LinearLayout {
         mValueAnimator.setDuration(3000);
         mValueAnimator.setRepeatCount(ValueAnimator.INFINITE);
         //目前是线性匀速
-        mValueAnimator.setInterpolator(new LinearInterpolator());
+        mValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
         mValueAnimator.start();
     }
 

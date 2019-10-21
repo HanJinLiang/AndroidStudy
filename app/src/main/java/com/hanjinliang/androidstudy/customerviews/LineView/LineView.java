@@ -86,7 +86,7 @@ public class LineView extends View {
         setClickable(true);
         mContext=context;
 
-        TypedArray ta=context.obtainStyledAttributes(attrs, R.styleable.LineView,defStyleAttr,0);
+        TypedArray ta=context.obtainStyledAttributes(attrs, R.styleable.LineView,defStyleAttr ,0);
         mPadding=ta.getDimension(R.styleable.LineView_XYPadding, dip2px(10));
         mPointRadius=ta.getDimension(R.styleable.LineView_PointRadius, dip2px(5));
         mLineColor=ta.getColor(R.styleable.LineView_LineColor,Color.parseColor("#f56e4f"));
