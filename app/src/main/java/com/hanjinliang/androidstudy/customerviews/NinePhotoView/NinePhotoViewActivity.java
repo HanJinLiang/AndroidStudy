@@ -62,7 +62,7 @@ public class NinePhotoViewActivity extends TakePhotoActivity {
      * 设置压缩
      * @param takePhoto
      */
-    private void configCompress(TakePhoto takePhoto){
+    private void  configCompress(TakePhoto takePhoto){
         int maxSize= 102400;
         int width= 800;
         int height= 800;

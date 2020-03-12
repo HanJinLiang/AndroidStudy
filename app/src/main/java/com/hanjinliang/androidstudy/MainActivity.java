@@ -19,6 +19,7 @@ import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.Utils;
 import com.hanjinliang.androidstudy.customerviews.CustomerViewStudyActivity;
+import com.hanjinliang.androidstudy.hotfix.TestUtils;
 import com.hanjinliang.androidstudy.javabase.JavaBaseStudyActivity;
 import com.hanjinliang.androidstudy.systemwidget.SystemWidgetStudyActivity;
 import com.hanjinliang.androidstudy.thirdLibs.ThirdLibActivity;
@@ -28,14 +29,16 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import dalvik.system.BaseDexClassLoader;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Text 分支  测试2
-        Utils.init(this);
+        TestUtils.test();
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
