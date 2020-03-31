@@ -1,9 +1,10 @@
 package com.hanjinliang.androidstudy.customerviews.basestudy.ViewDragHelper;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.hanjinliang.androidstudy.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ViewDragHelperActivity extends AppCompatActivity {
 

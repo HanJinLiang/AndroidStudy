@@ -1,14 +1,14 @@
 package com.hanjinliang.androidstudy.thirdLibs.largeimage;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.hanjinliang.androidstudy.R;
-import com.hanjinliang.androidstudy.customerviews.NinePhotoView.NinePhotoViewActivity;
 
 import java.util.ArrayList;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class BigImageTestActivity extends AppCompatActivity {
 

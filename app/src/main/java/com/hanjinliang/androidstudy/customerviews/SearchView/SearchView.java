@@ -1,7 +1,6 @@
 package com.hanjinliang.androidstudy.customerviews.SearchView;
 
 import android.animation.Animator;
-import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -10,15 +9,12 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AnimationSet;
-
-import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SizeUtils;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by HanJinLiang on 2017-07-07.

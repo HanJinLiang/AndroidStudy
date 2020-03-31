@@ -1,11 +1,12 @@
 package com.hanjinliang.androidstudy.customerviews.SelectLayout;
 
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.hanjinliang.androidstudy.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SelectLayoutActivity extends AppCompatActivity {
 

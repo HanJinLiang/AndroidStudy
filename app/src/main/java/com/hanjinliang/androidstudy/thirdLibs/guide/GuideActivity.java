@@ -1,6 +1,5 @@
 package com.hanjinliang.androidstudy.thirdLibs.guide;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +15,8 @@ import com.guideview.style.LeftTopStyle;
 import com.guideview.style.RightBottomStyle;
 import com.guideview.style.RightTopStyle;
 import com.hanjinliang.androidstudy.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * 引导View库

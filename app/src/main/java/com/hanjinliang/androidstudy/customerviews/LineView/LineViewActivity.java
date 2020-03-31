@@ -1,6 +1,5 @@
 package com.hanjinliang.androidstudy.customerviews.LineView;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -12,6 +11,8 @@ import com.hanjinliang.androidstudy.customerviews.LineView.simple.SimpleLineView
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class LineViewActivity extends AppCompatActivity {
     LineView mLineView;

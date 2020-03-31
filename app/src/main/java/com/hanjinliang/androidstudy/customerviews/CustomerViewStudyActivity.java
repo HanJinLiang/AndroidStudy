@@ -2,7 +2,6 @@ package com.hanjinliang.androidstudy.customerviews;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.hanjinliang.androidstudy.R;
@@ -50,6 +49,8 @@ import com.hanjinliang.androidstudy.customerviews.wheelpicker.WheelPickerDemoAct
 import com.hanjinliang.androidstudy.systemwidget.appbarlayout.AppBarLayoutActivity;
 import com.hanjinliang.androidstudy.systemwidget.appbarlayout.ToolBarActivity;
 import com.hanjinliang.androidstudy.systemwidget.coordinatorlayout.CoordinatorLayoutActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * 自定义view学习

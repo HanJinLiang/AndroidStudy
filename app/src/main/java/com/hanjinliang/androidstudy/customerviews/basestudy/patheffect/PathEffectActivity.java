@@ -1,9 +1,10 @@
 package com.hanjinliang.androidstudy.customerviews.basestudy.patheffect;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.hanjinliang.androidstudy.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * PathEffect 学习

@@ -1,9 +1,10 @@
 package com.hanjinliang.androidstudy.Common;
 
-import android.support.annotation.IdRes;
-import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray;
 import android.view.View;
+
+import androidx.annotation.IdRes;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by HanJinLiang on 2017-06-26.

@@ -9,25 +9,26 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.LruCache;
 import android.view.View;
 
-import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.ImageUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.hanjinliang.androidstudy.R;
-import com.hanjinliang.androidstudy.javabase.annotion.BindView;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -36,8 +37,8 @@ import butterknife.OnClick;
  */
 public class RecyclerScreenShotActivity extends AppCompatActivity {
     // 要申请的权限
-     private String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-
+    private String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class RecyclerScreenShotActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recyclerview_screenshot);
         ButterKnife.bind(this);
         mRecyclerView=findViewById(R.id.recyclerView);
+
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         BaseQuickAdapter adapter= new BaseQuickAdapter<String,BaseViewHolder>(R.layout.item_app_list) {
 
@@ -76,7 +78,7 @@ public class RecyclerScreenShotActivity extends AppCompatActivity {
 
 
 
-    @OnClick(R.id.save)
+    @OnClick({R.id.save})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.save:

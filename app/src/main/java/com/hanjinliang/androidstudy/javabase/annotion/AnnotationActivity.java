@@ -1,12 +1,13 @@
 package com.hanjinliang.androidstudy.javabase.annotion;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.hanjinliang.androidstudy.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class AnnotationActivity extends AppCompatActivity {
     @BindView(R.id.button)

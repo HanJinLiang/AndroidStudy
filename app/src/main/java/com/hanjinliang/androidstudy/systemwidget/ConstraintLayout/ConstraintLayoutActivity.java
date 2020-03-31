@@ -1,9 +1,10 @@
 package com.hanjinliang.androidstudy.systemwidget.ConstraintLayout;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.hanjinliang.androidstudy.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ConstraintLayoutActivity extends AppCompatActivity {
 

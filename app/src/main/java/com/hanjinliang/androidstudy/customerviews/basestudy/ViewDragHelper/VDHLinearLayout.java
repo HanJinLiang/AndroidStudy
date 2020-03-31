@@ -1,7 +1,6 @@
 package com.hanjinliang.androidstudy.customerviews.basestudy.ViewDragHelper;
 
 import android.content.Context;
-import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -10,6 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
 import com.hanjinliang.androidstudy.R;
+
+import androidx.customview.widget.ViewDragHelper;
 
 /**
  * Created by HanJinLiang on 2017-07-10.

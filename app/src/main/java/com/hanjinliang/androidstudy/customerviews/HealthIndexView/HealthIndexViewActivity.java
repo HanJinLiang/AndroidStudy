@@ -1,10 +1,11 @@
 package com.hanjinliang.androidstudy.customerviews.HealthIndexView;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.hanjinliang.androidstudy.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class HealthIndexViewActivity extends AppCompatActivity {
 

@@ -2,20 +2,18 @@ package com.hanjinliang.androidstudy.customerviews.StrokeRunBgLinearLayout;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.LinearInterpolator;
 import android.widget.LinearLayout;
 
 import com.blankj.utilcode.util.SizeUtils;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by monkey on 2019-08-21 11:38.

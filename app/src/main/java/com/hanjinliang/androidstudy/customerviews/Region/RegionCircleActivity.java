@@ -1,6 +1,5 @@
 package com.hanjinliang.androidstudy.customerviews.Region;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.blankj.utilcode.util.ToastUtils;

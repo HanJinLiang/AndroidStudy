@@ -4,13 +4,15 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  * Created by HanJinLiang on 2018-02-28.
  */
-public class TimeTextView extends android.support.v7.widget.AppCompatTextView {
+public class TimeTextView extends AppCompatTextView {
     public TimeTextView(Context context) {
         this(context,null);
     }

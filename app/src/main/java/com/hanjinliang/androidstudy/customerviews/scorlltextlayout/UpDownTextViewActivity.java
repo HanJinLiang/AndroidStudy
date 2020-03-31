@@ -2,13 +2,12 @@ package com.hanjinliang.androidstudy.customerviews.scorlltextlayout;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.animation.Animation;
 
 import com.hanjinliang.androidstudy.R;
 
-import java.util.ArrayList;
+import androidx.annotation.Nullable;
+
 
 /**
  * Created by monkey on 2019-07-02 13:36.

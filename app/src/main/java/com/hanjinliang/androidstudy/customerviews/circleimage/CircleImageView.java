@@ -11,18 +11,20 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.blankj.utilcode.util.ImageUtils;
 import com.blankj.utilcode.util.SizeUtils;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
 
 /**
  * Created by HanJinLiang on 2017-06-29.
  * 圆形ImageView
  */
 
-public class CircleImageView extends android.support.v7.widget.AppCompatImageView {
+public class CircleImageView extends AppCompatImageView {
     Paint mPaint;
     public CircleImageView(Context context) {
         this(context,null);

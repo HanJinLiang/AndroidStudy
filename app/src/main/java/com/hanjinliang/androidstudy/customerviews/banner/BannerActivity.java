@@ -2,14 +2,8 @@ package com.hanjinliang.androidstudy.customerviews.banner;
 
 import android.content.Context;
 import android.os.Looper;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSmoothScroller;
-import android.support.v7.widget.PagerSnapHelper;
-import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -23,6 +17,13 @@ import com.hanjinliang.androidstudy.systemwidget.eventpatch.EventPatchActivity;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearSmoothScroller;
+import androidx.recyclerview.widget.PagerSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * 基于RecyclerView的Banner
@@ -43,7 +44,7 @@ public class BannerActivity extends AppCompatActivity {
         mRecyclerView= (RecyclerView) findViewById(R.id.RecyclerView);
         mRecyclerView_Indicator= (RecyclerView) findViewById(R.id.RecyclerView_Indicator);
 
-        final LinearLayoutManager linearLayoutManager=new SmoothLinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        final LinearLayoutManager linearLayoutManager=new SmoothLinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
         urlList.add(new String("http://img.zcool.cn/community/01403a591155f9a801216a3ebcd49a.jpg"));

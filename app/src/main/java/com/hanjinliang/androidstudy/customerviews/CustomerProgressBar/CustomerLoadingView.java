@@ -13,14 +13,13 @@ import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.AnimationSet;
 import android.view.animation.Interpolator;
 
 import com.blankj.utilcode.util.SizeUtils;
+
+import androidx.annotation.Nullable;
 
 
 /**

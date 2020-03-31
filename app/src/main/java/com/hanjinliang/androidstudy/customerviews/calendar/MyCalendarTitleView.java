@@ -1,12 +1,10 @@
 package com.hanjinliang.androidstudy.customerviews.calendar;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,6 +12,8 @@ import com.hanjinliang.androidstudy.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by Administrator on 2018-03-18.

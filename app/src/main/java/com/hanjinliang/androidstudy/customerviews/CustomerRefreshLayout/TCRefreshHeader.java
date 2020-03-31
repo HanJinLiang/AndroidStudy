@@ -2,8 +2,6 @@ package com.hanjinliang.androidstudy.customerviews.CustomerRefreshLayout;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -17,6 +15,9 @@ import com.scwang.smartrefresh.layout.api.RefreshKernel;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.LinearLayoutCompat;
 
 
 /**

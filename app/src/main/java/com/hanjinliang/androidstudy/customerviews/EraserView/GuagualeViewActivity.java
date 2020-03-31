@@ -1,11 +1,12 @@
 package com.hanjinliang.androidstudy.customerviews.EraserView;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.hanjinliang.androidstudy.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * 刮刮乐效果

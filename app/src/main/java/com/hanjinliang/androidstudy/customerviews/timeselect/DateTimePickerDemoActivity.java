@@ -1,10 +1,11 @@
 package com.hanjinliang.androidstudy.customerviews.timeselect;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.hanjinliang.androidstudy.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class DateTimePickerDemoActivity extends AppCompatActivity {
 

@@ -11,6 +11,6 @@ public class TestUtils {
          //Log.e("hot fix","bug已经被我hotfix了");
 //        ToastUtils.showLong("bug已经被我hotfix了");
 //        Integer.parseInt("99");
-        Integer.parseInt("99+");
+//        Integer.parseInt("99+");
     }
 }

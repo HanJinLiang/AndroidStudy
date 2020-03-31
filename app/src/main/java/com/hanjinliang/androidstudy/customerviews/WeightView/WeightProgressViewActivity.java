@@ -1,10 +1,11 @@
 package com.hanjinliang.androidstudy.customerviews.WeightView;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.hanjinliang.androidstudy.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class WeightProgressViewActivity extends AppCompatActivity {
     WeightProgressView mWeightProgressView;

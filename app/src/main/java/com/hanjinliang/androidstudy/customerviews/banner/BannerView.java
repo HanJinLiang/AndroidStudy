@@ -1,16 +1,9 @@
 package com.hanjinliang.androidstudy.customerviews.banner;
 
 import android.content.Context;
-import android.os.Looper;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSmoothScroller;
-import android.support.v7.widget.PagerSnapHelper;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -26,6 +19,13 @@ import com.hanjinliang.androidstudy.R;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearSmoothScroller;
+import androidx.recyclerview.widget.PagerSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by monkey on 2019-08-22 13:42.

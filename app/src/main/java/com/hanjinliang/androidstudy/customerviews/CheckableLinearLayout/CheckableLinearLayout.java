@@ -2,11 +2,12 @@ package com.hanjinliang.androidstudy.customerviews.CheckableLinearLayout;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Checkable;
 import android.widget.LinearLayout;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by HanJinLiang on 2017-07-11.

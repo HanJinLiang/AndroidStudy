@@ -6,18 +6,19 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.PointF;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 
 import com.hanjinliang.androidstudy.R;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
+
 /**
  * Created by HanJinLiang on 2017-07-14.
  */
-public class BgTextView extends android.support.v7.widget.AppCompatTextView {
+public class BgTextView extends AppCompatTextView {
     Path mPath;
     Paint mPaint;
     private int mWidth,mHeight;

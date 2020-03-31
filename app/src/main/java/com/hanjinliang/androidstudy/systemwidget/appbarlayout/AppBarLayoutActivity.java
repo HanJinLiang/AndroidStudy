@@ -1,14 +1,7 @@
 package com.hanjinliang.androidstudy.systemwidget.appbarlayout;
 
-import android.animation.ObjectAnimator;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.support.design.widget.AppBarLayout;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,8 +9,11 @@ import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ScreenUtils;
 import com.blankj.utilcode.util.SizeUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.google.android.material.appbar.AppBarLayout;
 import com.hanjinliang.androidstudy.Common.BaseActivity;
 import com.hanjinliang.androidstudy.R;
+
+import androidx.appcompat.widget.Toolbar;
 
 /**
  * AppBarLayoutActivity学习

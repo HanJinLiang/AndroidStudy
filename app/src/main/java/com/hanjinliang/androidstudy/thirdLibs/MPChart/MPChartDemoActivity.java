@@ -2,7 +2,6 @@ package com.hanjinliang.androidstudy.thirdLibs.MPChart;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -23,6 +22,8 @@ import com.hanjinliang.androidstudy.R;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * 测试MPChart大数据问题

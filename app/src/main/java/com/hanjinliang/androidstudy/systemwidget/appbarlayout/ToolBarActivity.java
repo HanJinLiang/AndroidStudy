@@ -1,9 +1,6 @@
 package com.hanjinliang.androidstudy.systemwidget.appbarlayout;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,12 +8,16 @@ import android.view.View;
 import com.blankj.utilcode.util.SnackbarUtils;
 import com.hanjinliang.androidstudy.R;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 /**
  * Created by HanJinLiang on 2017-06-26.
  * Toolbar学习
  */
 
-public class ToolBarActivity extends AppCompatActivity   {
+public class ToolBarActivity extends AppCompatActivity {
     Toolbar mToolbar;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState ) {

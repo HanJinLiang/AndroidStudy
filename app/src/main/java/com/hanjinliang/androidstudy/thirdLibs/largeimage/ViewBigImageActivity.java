@@ -8,10 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +33,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 
 /**
@@ -44,7 +43,7 @@ import java.util.concurrent.ExecutionException;
  *
  * @author jingbin
  */
-public class ViewBigImageActivity extends FragmentActivity implements OnPageChangeListener, OnPhotoTapListener {
+public class ViewBigImageActivity extends FragmentActivity implements ViewPager.OnPageChangeListener, OnPhotoTapListener {
 
     // 保存图片
     private TextView tv_save_big_image;

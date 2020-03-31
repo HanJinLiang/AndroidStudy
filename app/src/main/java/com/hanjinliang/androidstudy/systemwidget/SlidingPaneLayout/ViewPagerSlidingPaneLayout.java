@@ -1,15 +1,14 @@
 package com.hanjinliang.androidstudy.systemwidget.SlidingPaneLayout;
 
 import android.content.Context;
-import android.support.v4.view.MotionEventCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SlidingPaneLayout;
+import androidx.core.view.MotionEventCompat;
+import androidx.slidingpanelayout.widget.SlidingPaneLayout;
+
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 
 import com.blankj.utilcode.util.LogUtils;
-import com.hanjinliang.androidstudy.R;
 
 /**
  * Created by HanJinLiang on 2017-07-11.

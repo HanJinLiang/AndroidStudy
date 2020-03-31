@@ -3,11 +3,7 @@ package com.hanjinliang.androidstudy.customerviews.basestudy.Interpolator;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -31,6 +27,10 @@ import com.hanjinliang.androidstudy.R;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Interpolator学习

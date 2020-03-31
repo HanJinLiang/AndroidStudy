@@ -1,11 +1,12 @@
 package com.hanjinliang.androidstudy.systemwidget.coordinatorlayout;
 
 import android.content.Context;
-import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
+
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 /**
  * Created by HanJinLiang on 2017-06-26.

@@ -1,11 +1,12 @@
 package com.hanjinliang.androidstudy.systemwidget.viewpager;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.hanjinliang.androidstudy.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ViewPagerStudyActivity extends AppCompatActivity {
 

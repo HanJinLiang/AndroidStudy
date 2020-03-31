@@ -1,10 +1,6 @@
 package com.hanjinliang.androidstudy.customerviews.calendar;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +13,14 @@ import com.hanjinliang.androidstudy.R;
 import com.hanjinliang.androidstudy.customerviews.horizontalselectedview.HorizontalSelectedView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * Created by Administrator on 2018-03-18.

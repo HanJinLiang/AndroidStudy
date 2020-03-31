@@ -1,7 +1,7 @@
 package com.hanjinliang.androidstudy.thirdLibs.rxjava;
 
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * Created by HanJinLiang on 2018-06-13.

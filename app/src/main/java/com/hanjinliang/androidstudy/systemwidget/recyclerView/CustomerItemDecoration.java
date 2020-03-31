@@ -8,10 +8,11 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.hanjinliang.androidstudy.R;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by HanJinLiang on 2018-08-28.

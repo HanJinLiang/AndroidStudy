@@ -1,9 +1,6 @@
 package com.hanjinliang.androidstudy.customerviews.calendar;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +13,10 @@ import com.hanjinliang.androidstudy.R;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by monkey on 2019-03-23 16:52.

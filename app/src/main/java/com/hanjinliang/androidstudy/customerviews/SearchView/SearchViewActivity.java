@@ -1,6 +1,5 @@
 package com.hanjinliang.androidstudy.customerviews.SearchView;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,8 +7,6 @@ import android.widget.Button;
 import com.hanjinliang.androidstudy.Common.BaseActivity;
 import com.hanjinliang.androidstudy.R;
 
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class SearchViewActivity extends BaseActivity {
     SearchView mSearchView;

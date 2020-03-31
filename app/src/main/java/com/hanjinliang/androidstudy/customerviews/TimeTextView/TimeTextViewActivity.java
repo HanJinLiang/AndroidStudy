@@ -1,25 +1,25 @@
 package com.hanjinliang.androidstudy.customerviews.TimeTextView;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.hanjinliang.androidstudy.R;
 
-import java.util.ArrayList;
 import java.util.Random;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class TimeTextViewActivity extends AppCompatActivity {
+    TimeTextView timeTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_text_view);
-        TimeTextView timeTextView=findViewById(R.id.timeTextView);
+         timeTextView=findViewById(R.id.timeTextView);
         timeTextView.startCount((System.currentTimeMillis()-60*60)+"");
         ListView lv_time=findViewById(R.id.lv_time);
         lv_time.setAdapter(new BaseAdapter() {

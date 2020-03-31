@@ -1,12 +1,9 @@
 package com.hanjinliang.androidstudy.systemwidget.recyclerView;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
+
+
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -17,6 +14,14 @@ import com.hanjinliang.androidstudy.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class DragRecyclerViewActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;

@@ -2,11 +2,12 @@ package com.hanjinliang.androidstudy.customerviews.StatusLayout;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.hanjinliang.androidstudy.R;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by monkey on 2019-07-16 16:16.

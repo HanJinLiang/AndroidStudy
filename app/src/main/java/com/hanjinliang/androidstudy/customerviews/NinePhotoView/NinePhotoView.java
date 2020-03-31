@@ -4,8 +4,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.StateListDrawable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.AppCompatButton;
+
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;

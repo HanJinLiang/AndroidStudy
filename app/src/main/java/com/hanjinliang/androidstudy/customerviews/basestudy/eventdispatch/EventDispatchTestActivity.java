@@ -19,12 +19,13 @@
 
 package com.hanjinliang.androidstudy.customerviews.basestudy.eventdispatch;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 
 import com.hanjinliang.androidstudy.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class EventDispatchTestActivity extends AppCompatActivity {
     private static final String TAG = Static.TAG1;

@@ -1,6 +1,5 @@
 package com.hanjinliang.androidstudy.customerviews.CustomerRefreshLayout;
 
-import static android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
@@ -20,11 +19,13 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.IntDef;
-import android.support.annotation.NonNull;
-import android.support.annotation.RestrictTo;
-import android.support.v4.util.Preconditions;
-import android.support.v4.view.animation.FastOutSlowInInterpolator;
+
+import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
+import androidx.annotation.RestrictTo;
+import androidx.core.util.Preconditions;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
+
 import android.util.DisplayMetrics;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
@@ -33,6 +34,8 @@ import com.hanjinliang.androidstudy.R;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+
+import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP;
 
 /**
  * Drawable that renders the animated indeterminate progress indicator in the Material design style

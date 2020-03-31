@@ -7,8 +7,8 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
-
+        classpath 'com.android.tools.build:gradle:3.5.1'
+        classpath 'com.jakewharton:butterknife-gradle-plugin:10.1.0'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -25,3 +25,40 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+task helloWorld(type: SayHelloTask) {
+    println "Hello World2!"
+    age = 18
+    username = "hjy"
+    destDir = file("$buildDir/test")
+
+    println "${destDir.getAbsolutePath()}"
+}
+//helloWorld.configure {
+//    println "hello task configure"
+//    username="test"
+//    age=90
+//}
+helloWorld.setProperty("age",88)
+
+class SayHelloTask extends DefaultTask {
+
+
+    //定义输入
+    @Input
+    String username
+    @Input
+    int age
+
+    //定义输出
+    @OutputDirectory
+    File destDir
+
+    @TaskAction
+    void sayHello() {
+        println "Hello $username ! age is $age"
+    }
+
+
+}
+

@@ -3,33 +3,29 @@ package com.hanjinliang.androidstudy;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.Utils;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.hanjinliang.androidstudy.customerviews.CustomerViewStudyActivity;
 import com.hanjinliang.androidstudy.hotfix.TestUtils;
 import com.hanjinliang.androidstudy.javabase.JavaBaseStudyActivity;
 import com.hanjinliang.androidstudy.systemwidget.SystemWidgetStudyActivity;
 import com.hanjinliang.androidstudy.thirdLibs.ThirdLibActivity;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-import dalvik.system.BaseDexClassLoader;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -61,7 +57,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        BarUtils.setColorForDrawerLayout(this,drawer, Color.parseColor("#4CAF50"));
+       // BarUtils.setStatusBarColor4Drawer( drawer, drawer,Color.parseColor("#4CAF50"));
         //BarUtils.setTranslucentForDrawerLayout(this,drawer);
 
         int nStraightHand = lengthOfLongestSubstring("au");

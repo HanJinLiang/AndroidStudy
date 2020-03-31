@@ -1,7 +1,8 @@
 package com.hanjinliang.androidstudy.customerviews.calendar;
 
-import android.support.v4.view.ViewPager;
 import android.view.View;
+
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * Created by monkey on 2019-03-25 13:07.

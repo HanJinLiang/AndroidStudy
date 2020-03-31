@@ -2,13 +2,13 @@ package com.hanjinliang.androidstudy.customerviews.rotate;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
-import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 
 import com.hanjinliang.androidstudy.R;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by monkey on 2019-04-24 14:08.

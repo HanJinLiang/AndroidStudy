@@ -2,8 +2,6 @@ package com.hanjinliang.androidstudy.javabase.backend;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.blankj.utilcode.util.ImageUtils;
@@ -12,6 +10,8 @@ import com.hanjinliang.androidstudy.data.BaseCallBackWithMessage;
 import com.hanjinliang.androidstudy.data.RDataRepository;
 
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 

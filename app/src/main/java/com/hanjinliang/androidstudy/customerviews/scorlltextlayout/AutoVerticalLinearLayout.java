@@ -1,8 +1,6 @@
 package com.hanjinliang.androidstudy.customerviews.scorlltextlayout;
 
 import android.content.Context;
-import android.graphics.Typeface;
-import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.animation.Animation;
@@ -10,6 +8,8 @@ import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
 
 
 /**

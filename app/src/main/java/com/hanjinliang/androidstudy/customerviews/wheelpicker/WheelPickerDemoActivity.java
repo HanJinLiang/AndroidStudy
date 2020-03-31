@@ -1,12 +1,13 @@
 package com.hanjinliang.androidstudy.customerviews.wheelpicker;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.hanjinliang.androidstudy.R;
 
 import java.util.Arrays;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class WheelPickerDemoActivity extends AppCompatActivity {
 

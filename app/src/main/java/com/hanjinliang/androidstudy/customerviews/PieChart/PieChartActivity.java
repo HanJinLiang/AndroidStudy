@@ -1,13 +1,14 @@
 package com.hanjinliang.androidstudy.customerviews.PieChart;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.hanjinliang.androidstudy.R;
 
 import java.util.ArrayList;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class PieChartActivity extends AppCompatActivity {
     PieChartView mPieChartView;

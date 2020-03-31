@@ -1,21 +1,15 @@
 package com.hanjinliang.androidstudy.systemwidget.listselect;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.animation.AnimationUtils;
-import android.view.animation.OvershootInterpolator;
 
 import com.hanjinliang.androidstudy.Common.BaseActivity;
 import com.hanjinliang.androidstudy.R;
 
 import java.util.ArrayList;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
-import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 public class ListSelectActivity extends BaseActivity {
 

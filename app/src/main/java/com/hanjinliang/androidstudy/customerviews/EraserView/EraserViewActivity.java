@@ -1,11 +1,12 @@
 package com.hanjinliang.androidstudy.customerviews.EraserView;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.hanjinliang.androidstudy.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class EraserViewActivity extends AppCompatActivity {
 

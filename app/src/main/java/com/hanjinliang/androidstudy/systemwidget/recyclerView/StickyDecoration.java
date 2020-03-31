@@ -2,11 +2,7 @@ package com.hanjinliang.androidstudy.systemwidget.recyclerView;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.RectF;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +12,8 @@ import android.widget.TextView;
 import com.blankj.utilcode.util.SizeUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.hanjinliang.androidstudy.R;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 
 /**

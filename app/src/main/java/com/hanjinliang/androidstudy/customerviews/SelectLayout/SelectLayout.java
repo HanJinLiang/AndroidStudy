@@ -5,17 +5,15 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.blankj.utilcode.util.SizeUtils;
 import com.hanjinliang.androidstudy.R;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by HanJinLiang on 2017-08-16.

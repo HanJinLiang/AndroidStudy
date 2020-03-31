@@ -1,6 +1,6 @@
 package com.hanjinliang.androidstudy.systemwidget.recyclerView;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 
 import com.blankj.utilcode.util.ToastUtils;
