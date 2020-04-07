@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.hanjinliang.androidstudy">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".Common.MyApplication"
@@ -14,151 +14,93 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-         >
+        android:theme="@style/AppTheme">
+        <activity android:name=".customerviews.grayapp.GrayAppTestActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".systemwidget.SystemWidgetStudyActivity">
-        </activity>
-        <activity android:name=".systemwidget.coordinatorlayout.CoordinatorLayoutActivity">
-        </activity>
-        <activity android:name=".systemwidget.appbarlayout.ToolBarActivity"/>
-        <activity android:name=".systemwidget.appbarlayout.AppBarLayoutActivity">
-        </activity>
-        <activity android:name=".customerviews.horizontalselectedview.HorizontalSelectedViewActivity">
-        </activity>
-        <activity android:name=".customerviews.CustomerViewStudyActivity"/>
-        <activity android:name=".customerviews.CustomerProgressBar.CustomerProgressBarActivity">
-        </activity>
-        <activity android:name=".customerviews.curve.CurveActivity">
-        </activity>
-        <activity android:name=".customerviews.EraserView.EraserViewActivity">
-        </activity>
-        <activity android:name=".customerviews.EraserView.GuagualeViewActivity"/>
-        <activity android:name=".customerviews.circleimage.CircleImageViewActivity">
-        </activity>
-        <activity android:name=".customerviews.radarview.RadarViewActivity">
-        </activity>
-        <activity android:name=".customerviews.basestudy.patheffect.PathEffectActivity">
-        </activity>
-        <activity android:name=".customerviews.favorlayout.FavorLayoutActivity">
-        </activity>
-        <activity android:name=".customerviews.NinePhotoView.NinePhotoViewActivity">
-        </activity>
-        <activity android:name=".thirdLibs.largeimage.ViewBigImageActivity"/>
-        <activity android:name=".thirdLibs.largeimage.BigImageTestActivity">
-        </activity>
-        <activity android:name=".thirdLibs.ThirdLibActivity">
-        </activity>
-        <activity android:name=".customerviews.NetsScoreView.NetsScoreViewActivity">
-        </activity>
-        <activity android:name=".customerviews.basestudy.canvas.CanvasScaleViewActivity">
-        </activity>
-        <activity android:name=".customerviews.basestudy.BaseStudyActivity"/>
-        <activity android:name=".customerviews.basestudy.canvas.CanvasRotateViewActivity">
-        </activity>
-        <activity android:name=".customerviews.basestudy.bezier.BezierHeartActivity">
-        </activity>
-        <activity android:name=".customerviews.SearchView.SearchViewActivity">
-        </activity>
-        <activity android:name=".customerviews.basestudy.eventdispatch.EventDispatchTestActivity">
-        </activity>
-        <activity android:name=".customerviews.basestudy.ViewDragHelper.ViewDragHelperActivity">
-        </activity>
-        <activity android:name=".systemwidget.SlidingPaneLayout.SlidingPaneLayoutActivity">
-        </activity>
+        <activity android:name=".systemwidget.SystemWidgetStudyActivity"></activity>
+        <activity android:name=".systemwidget.coordinatorlayout.CoordinatorLayoutActivity"></activity>
+        <activity android:name=".systemwidget.appbarlayout.ToolBarActivity" />
+        <activity android:name=".systemwidget.appbarlayout.AppBarLayoutActivity"></activity>
+        <activity android:name=".customerviews.horizontalselectedview.HorizontalSelectedViewActivity"></activity>
+        <activity android:name=".customerviews.CustomerViewStudyActivity" />
+        <activity android:name=".customerviews.CustomerProgressBar.CustomerProgressBarActivity"></activity>
+        <activity android:name=".customerviews.curve.CurveActivity"></activity>
+        <activity android:name=".customerviews.EraserView.EraserViewActivity"></activity>
+        <activity android:name=".customerviews.EraserView.GuagualeViewActivity" />
+        <activity android:name=".customerviews.circleimage.CircleImageViewActivity"></activity>
+        <activity android:name=".customerviews.radarview.RadarViewActivity"></activity>
+        <activity android:name=".customerviews.basestudy.patheffect.PathEffectActivity"></activity>
+        <activity android:name=".customerviews.favorlayout.FavorLayoutActivity"></activity>
+        <activity android:name=".customerviews.NinePhotoView.NinePhotoViewActivity"></activity>
+        <activity android:name=".thirdLibs.largeimage.ViewBigImageActivity" />
+        <activity android:name=".thirdLibs.largeimage.BigImageTestActivity"></activity>
+        <activity android:name=".thirdLibs.ThirdLibActivity"></activity>
+        <activity android:name=".customerviews.NetsScoreView.NetsScoreViewActivity"></activity>
+        <activity android:name=".customerviews.basestudy.canvas.CanvasScaleViewActivity"></activity>
+        <activity android:name=".customerviews.basestudy.BaseStudyActivity" />
+        <activity android:name=".customerviews.basestudy.canvas.CanvasRotateViewActivity"></activity>
+        <activity android:name=".customerviews.basestudy.bezier.BezierHeartActivity"></activity>
+        <activity android:name=".customerviews.SearchView.SearchViewActivity"></activity>
+        <activity android:name=".customerviews.basestudy.eventdispatch.EventDispatchTestActivity"></activity>
+        <activity android:name=".customerviews.basestudy.ViewDragHelper.ViewDragHelperActivity"></activity>
+        <activity android:name=".systemwidget.SlidingPaneLayout.SlidingPaneLayoutActivity"></activity>
         <activity
             android:name=".customerviews.Region.RegionCircleActivity"
-            android:hardwareAccelerated="false">
-        </activity>
-        <activity android:name=".customerviews.CheckableLinearLayout.CheckableLayoutActivity">
-        </activity>
-        <activity android:name=".customerviews.basestudy.Interpolator.InterpolatorActivity">
-        </activity>
-        <activity android:name=".javabase.JavaBaseStudyActivity"/>
-        <activity android:name=".javabase.fanxing.FanxingActivity">
-        </activity>
-        <activity android:name=".customerviews.waveline.WaveLineActivity">
-        </activity>
-        <activity android:name=".customerviews.ArcMenu.ArcMenuActivity">
-        </activity>
-        <activity android:name=".customerviews.HealthIndexView.HealthIndexViewActivity">
-        </activity>
-        <activity android:name=".customerviews.LineView.LineViewActivity">
-        </activity>
-        <activity android:name=".customerviews.flowlayout.FlowLayoutActivity">
-        </activity>
-        <activity android:name=".customerviews.WeightView.WeightProgressViewActivity">
-        </activity>
-        <activity android:name=".customerviews.SelectLayout.SelectLayoutActivity">
-        </activity>
-        <activity android:name=".thirdLibs.MPChart.MPChartDemoActivity">
-        </activity>
-        <activity android:name=".systemwidget.Sensor.SensorTestActivity"/>
-        <activity android:name=".customerviews.stepview.StepViewActivity">
-        </activity>
-        <activity android:name=".customerviews.NumView.NumViewActivity">
-        </activity>
-        <activity android:name=".systemwidget.ConstraintLayout.ConstraintLayoutActivity">
-        </activity>
-        <activity android:name=".systemwidget.eventpatch.EventPatchActivity">
-        </activity>
-        <activity android:name=".customerviews.PieChart.PieChartActivity">
-        </activity>
-        <activity android:name=".customerviews.banner.BannerActivity">
-        </activity>
-        <activity android:name=".systemwidget.viewpager.ViewPagerStudyActivity">
-        </activity>
-        <activity android:name=".systemwidget.viewpager.ViewPagerBaseActivity">
-        </activity>
-        <activity android:name=".systemwidget.viewpager.ViewPagerFragmentActivity">
-        </activity>
-        <activity android:name=".customerviews.DashLine.DashLineActivity">
-        </activity>
-        <activity android:name=".customerviews.timeselect.DateTimePickerDemoActivity">
-        </activity>
-        <activity android:name=".customerviews.TimeTextView.TimeTextViewActivity">
-        </activity>
-        <activity android:name=".customerviews.calendar.CalendarDemoActivity">
-        </activity>
-        <activity android:name=".customerviews.LoadingView.CircleLoadingViewActivity">
-        </activity>
-        <activity android:name=".customerviews.wheelpicker.WheelPickerDemoActivity">
-        </activity>
-        <activity android:name=".customerviews.Scroller.ScrollerTestActivity">
-        </activity>
-        <activity android:name=".customerviews.StatusScrollView.StatusScrollViewActivity">
-        </activity>
-        <activity android:name=".systemwidget.listselect.ListSelectActivity">
-        </activity>
-        <activity android:name=".thirdLibs.rxjava.RxJavaDemoActivity">
-        </activity>
-        <activity android:name=".systemwidget.recyclerView.DragRecyclerViewActivity">
-        </activity>
-        <activity android:name=".customerviews.linerecyclerview.RecyclerLineViewActivity"/>
-        <activity android:name=".thirdLibs.guide.GuideActivity">
-        </activity>
-        <activity android:name=".systemwidget.recyclerView.GroupRecyclerViewActivity"/>
-        <activity android:name=".javabase.annotion.AnnotationActivity">
-        </activity>
-        <activity android:name=".customerviews.rotate.RotateActivity"/>
-        <activity android:name=".javabase.backend.BackendTestActivity"/>
-        <activity android:name=".systemwidget.recyclerView.screenshot.RecyclerScreenShotActivity">
-        </activity>
-        <activity android:name=".customerviews.scorlltextlayout.UpDownTextViewActivity"/>
-        <activity android:name=".customerviews.CustomerRefreshLayout.CustomerRefreshActivity"/>
-        <activity android:name=".customerviews.StatusLayout.StatusLayoutActivity"/>
-        <activity android:name=".customerviews.StrokeRunBgLinearLayout.StrokeRunBgActivity">
-        </activity>
+            android:hardwareAccelerated="false"></activity>
+        <activity android:name=".customerviews.CheckableLinearLayout.CheckableLayoutActivity"></activity>
+        <activity android:name=".customerviews.basestudy.Interpolator.InterpolatorActivity"></activity>
+        <activity android:name=".javabase.JavaBaseStudyActivity" />
+        <activity android:name=".javabase.fanxing.FanxingActivity"></activity>
+        <activity android:name=".customerviews.waveline.WaveLineActivity"></activity>
+        <activity android:name=".customerviews.ArcMenu.ArcMenuActivity"></activity>
+        <activity android:name=".customerviews.HealthIndexView.HealthIndexViewActivity"></activity>
+        <activity android:name=".customerviews.LineView.LineViewActivity"></activity>
+        <activity android:name=".customerviews.flowlayout.FlowLayoutActivity"></activity>
+        <activity android:name=".customerviews.WeightView.WeightProgressViewActivity"></activity>
+        <activity android:name=".customerviews.SelectLayout.SelectLayoutActivity"></activity>
+        <activity android:name=".thirdLibs.MPChart.MPChartDemoActivity"></activity>
+        <activity android:name=".systemwidget.Sensor.SensorTestActivity" />
+        <activity android:name=".customerviews.stepview.StepViewActivity"></activity>
+        <activity android:name=".customerviews.NumView.NumViewActivity"></activity>
+        <activity android:name=".systemwidget.ConstraintLayout.ConstraintLayoutActivity"></activity>
+        <activity android:name=".systemwidget.eventpatch.EventPatchActivity"></activity>
+        <activity android:name=".customerviews.PieChart.PieChartActivity"></activity>
+        <activity android:name=".customerviews.banner.BannerActivity"></activity>
+        <activity android:name=".systemwidget.viewpager.ViewPagerStudyActivity"></activity>
+        <activity android:name=".systemwidget.viewpager.ViewPagerBaseActivity"></activity>
+        <activity android:name=".systemwidget.viewpager.ViewPagerFragmentActivity"></activity>
+        <activity android:name=".customerviews.DashLine.DashLineActivity"></activity>
+        <activity android:name=".customerviews.timeselect.DateTimePickerDemoActivity"></activity>
+        <activity android:name=".customerviews.TimeTextView.TimeTextViewActivity"></activity>
+        <activity android:name=".customerviews.calendar.CalendarDemoActivity"></activity>
+        <activity android:name=".customerviews.LoadingView.CircleLoadingViewActivity"></activity>
+        <activity android:name=".customerviews.wheelpicker.WheelPickerDemoActivity"></activity>
+        <activity android:name=".customerviews.Scroller.ScrollerTestActivity"></activity>
+        <activity android:name=".customerviews.StatusScrollView.StatusScrollViewActivity"></activity>
+        <activity android:name=".systemwidget.listselect.ListSelectActivity"></activity>
+        <activity android:name=".thirdLibs.rxjava.RxJavaDemoActivity"></activity>
+        <activity android:name=".systemwidget.recyclerView.DragRecyclerViewActivity"></activity>
+        <activity android:name=".customerviews.linerecyclerview.RecyclerLineViewActivity" />
+        <activity android:name=".thirdLibs.guide.GuideActivity"></activity>
+        <activity android:name=".systemwidget.recyclerView.GroupRecyclerViewActivity" />
+        <activity android:name=".javabase.annotion.AnnotationActivity"></activity>
+        <activity android:name=".customerviews.rotate.RotateActivity" />
+        <activity android:name=".javabase.backend.BackendTestActivity" />
+        <activity android:name=".systemwidget.recyclerView.screenshot.RecyclerScreenShotActivity"></activity>
+        <activity android:name=".customerviews.scorlltextlayout.UpDownTextViewActivity" />
+        <activity android:name=".customerviews.CustomerRefreshLayout.CustomerRefreshActivity" />
+        <activity android:name=".customerviews.StatusLayout.StatusLayoutActivity" />
+        <activity android:name=".customerviews.StrokeRunBgLinearLayout.StrokeRunBgActivity"></activity>
     </application>
 
 </manifest>

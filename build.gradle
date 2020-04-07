@@ -26,6 +26,11 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+//获取Project的名字
+String name = getName()
+println "project name = $name"
+
+
 task helloWorld(type: SayHelloTask) {
     println "Hello World2!"
     age = 18
@@ -41,6 +46,13 @@ task helloWorld(type: SayHelloTask) {
 //}
 helloWorld.setProperty("age",88)
 
+File mkDir = mkdir("${buildDir}/test");
+File mkDir2 = mkdir("${buildDir}/test2")
+println "检测目录是否创建成功：${mkDir.exists()}, ${mkDir2.exists()}"
+
+//通过名字查找指定的task
+def task3 = getTasks().findByName("helloWorld")
+println "findByName() return task is " + task3
 class SayHelloTask extends DefaultTask {
 
 

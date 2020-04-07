@@ -37,6 +37,7 @@ import com.hanjinliang.androidstudy.customerviews.curve.CurveActivity;
 import com.hanjinliang.androidstudy.customerviews.curve.CurveView;
 import com.hanjinliang.androidstudy.customerviews.favorlayout.FavorLayoutActivity;
 import com.hanjinliang.androidstudy.customerviews.flowlayout.FlowLayoutActivity;
+import com.hanjinliang.androidstudy.customerviews.grayapp.GrayAppTestActivity;
 import com.hanjinliang.androidstudy.customerviews.horizontalselectedview.HorizontalSelectedViewActivity;
 import com.hanjinliang.androidstudy.customerviews.linerecyclerview.RecyclerLineViewActivity;
 import com.hanjinliang.androidstudy.customerviews.radarview.RadarViewActivity;
@@ -360,6 +361,11 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
     public void StrokeRunBgActivity(View view){
         startActivity(new Intent(this,StrokeRunBgActivity.class));
     }
+
+    public void GrayAppTestActivity(View view){
+        startActivity(new Intent(this, GrayAppTestActivity.class));
+    }
+
 
 
 }
