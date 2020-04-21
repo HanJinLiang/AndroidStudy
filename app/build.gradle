@@ -1,6 +1,8 @@
+import java.text.SimpleDateFormat
+
 apply plugin: 'com.android.application'
 def static releaseTime() {
-    return new Date().format("yyMMddhhmmss", TimeZone.getTimeZone("UTC"))
+    return new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date())
 }
 android {
     compileSdkVersion 28
@@ -53,7 +55,7 @@ android {
 
             android.applicationVariants.all { variant ->
                 variant.outputs.all {
-                    outputFileName = "AndroidStudy_v${variant.versionName}.apk"
+                    outputFileName = "AndroidStudy_v${variant.versionName}_${releaseTime()}.apk"
                 }
             }
 
