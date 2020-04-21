@@ -18,16 +18,16 @@ android {
 
     signingConfigs {
         debug {
-            storeFile file("keystore.jks")
-            storePassword "androidstudy"
-            keyAlias "androidstudy"
-            keyPassword "androidstudy"
+            storeFile file('D:\\GithubProject\\AndroidStudy\\app\\keystore.jks')
+            storePassword 'androidstudy'
+            keyAlias = 'androidstudy'
+            keyPassword 'androidstudy'
         }
-        release {
-            storeFile file("keystore.jks")
-            storePassword "androidstudy"
-            keyAlias "androidstudy"
-            keyPassword "androidstudy"
+        release{
+            storeFile file('D:\\GithubProject\\AndroidStudy\\app\\keystore.jks')
+            storePassword 'androidstudy'
+            keyAlias = 'androidstudy'
+            keyPassword 'androidstudy'
         }
     }
 
@@ -64,6 +64,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
 
 }
 
