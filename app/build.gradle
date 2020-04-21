@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
-
+def static releaseTime() {
+    return new Date().format("yyMMddhhmmss", TimeZone.getTimeZone("UTC"))
+}
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -13,9 +15,47 @@ android {
         //Enabling multidex support.
         multiDexEnabled true
     }
-    buildTypes {
+
+    signingConfigs {
+        debug {
+            storeFile file("keystore.jks")
+            storePassword "androidstudy"
+            keyAlias "androidstudy"
+            keyPassword "androidstudy"
+        }
         release {
+            storeFile file("keystore.jks")
+            storePassword "androidstudy"
+            keyAlias "androidstudy"
+            keyPassword "androidstudy"
+        }
+    }
+
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+
+            //混淆
             minifyEnabled false
+            //前一部分代表系统默认的android程序的混淆文件，该文件已经包含了基本的混淆声明
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            signingConfig signingConfigs.release
+
+
+            //渠道Flavors,配置不同风格的app`
+
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "AndroidStudy_v${variant.versionName}.apk"
+                }
+            }
+
+            //混淆
+            minifyEnabled false
+            //前一部分代表系统默认的android程序的混淆文件，该文件已经包含了基本的混淆声明
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -24,6 +64,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
 }
 
 
