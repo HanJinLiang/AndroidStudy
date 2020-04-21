@@ -55,7 +55,8 @@ android {
 
             android.applicationVariants.all { variant ->
                 variant.outputs.all {
-                    outputFileName = "AndroidStudy_v${variant.versionName}_${releaseTime()}.apk"
+                    //outputFileName = "AndroidStudy_v${variant.versionName}_${releaseTime()}.apk"
+                    outputFileName = "AndroidStudy.apk"
                 }
             }
 
