@@ -22,12 +22,16 @@ android {
             storePassword 'androidstudy'
             keyAlias = 'androidstudy'
             keyPassword 'androidstudy'
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
         release{
             storeFile file('D:\\GithubProject\\AndroidStudy\\app\\keystore.jks')
             storePassword 'androidstudy'
             keyAlias = 'androidstudy'
             keyPassword 'androidstudy'
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
     }
 
