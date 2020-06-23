@@ -9,6 +9,7 @@ import android.widget.ListView;
 
 import com.hanjinliang.androidstudy.R;
 import com.hanjinliang.androidstudy.thirdLibs.MPChart.MPChartDemoActivity;
+import com.hanjinliang.androidstudy.thirdLibs.camera.CameraVideoMainActivity;
 import com.hanjinliang.androidstudy.thirdLibs.guide.GuideActivity;
 import com.hanjinliang.androidstudy.thirdLibs.largeimage.BigImageTestActivity;
 import com.hanjinliang.androidstudy.thirdLibs.rxjava.RxJavaDemoActivity;
@@ -18,7 +19,7 @@ public class ThirdLibActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String[] pArray={"查看大图PhotoView","MPChart","RxJava","功能引导蒙版"};
+        String[] pArray={"查看大图PhotoView","MPChart","RxJava","功能引导蒙版","录制短视频"};
         setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, pArray));//绑定数据源
     }
 
@@ -37,6 +38,9 @@ public class ThirdLibActivity extends ListActivity {
                 break;
             case 3://RxJava
                 start(GuideActivity.class);
+                break;
+            case 4://录制短视频
+                start(CameraVideoMainActivity.class);
                 break;
         }
     }

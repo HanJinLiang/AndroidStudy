@@ -8,7 +8,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.hanjinliang.androidstudy"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0.1"
@@ -117,4 +117,5 @@ dependencies {
 //        exclude group: 'com.android.support'
 //    }
 
+    implementation 'com.github.xionger0520:flowcamera:V1.1.3'
 }
