@@ -15,8 +15,10 @@
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <LinearLayout
+            android:id="@+id/topLayout"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:orientation="vertical"
             app:layout_scrollFlags="scroll">
 
         </LinearLayout>
