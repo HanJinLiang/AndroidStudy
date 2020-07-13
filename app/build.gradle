@@ -1,9 +1,11 @@
 import java.text.SimpleDateFormat
 
 apply plugin: 'com.android.application'
+
 def static releaseTime() {
     return new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date())
 }
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -27,7 +29,7 @@ android {
             v1SigningEnabled true
             v2SigningEnabled true
         }
-        release{
+        release {
             storeFile file('\\keystore.jks')
             storePassword 'androidstudy'
             keyAlias = 'androidstudy'
