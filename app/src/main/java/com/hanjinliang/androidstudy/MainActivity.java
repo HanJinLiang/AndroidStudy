@@ -1,7 +1,10 @@
 package com.hanjinliang.androidstudy;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 
@@ -15,7 +18,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.blankj.utilcode.util.BarUtils;
+import com.blankj.utilcode.util.ImageUtils;
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.MapUtils;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -60,31 +65,31 @@ public class MainActivity extends AppCompatActivity
        // BarUtils.setStatusBarColor4Drawer( drawer, drawer,Color.parseColor("#4CAF50"));
         //BarUtils.setTranslucentForDrawerLayout(this,drawer);
 
-        int nStraightHand = lengthOfLongestSubstring("au");
-        LogUtils.e("nStraightHand","nStraightHand="+nStraightHand);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.banner1);
 
-    }
-    public int lengthOfLongestSubstring(String s) {
-        if(s==null||s.length()==0){
-            return 0;
-        }
-        int length=1;
+        int allocationByteCount = bitmap.getAllocationByteCount();
 
-        for(int i=0;i<s.length();i++){
-            HashMap<Integer,Character> temp=new HashMap();
-            for(int j=i;j<s.length();j++){
+        LogUtils.e("allocationByteCount=="+allocationByteCount );
 
-                Character value=s.charAt(j);
-                if(temp.containsValue(value)){
-                    length=Math.max(length,temp.size());
-                    temp.clear();
-                    break;
-                }
-                temp.put(j,value);
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inPreferredConfig=Bitmap.Config.RGB_565;//一个像素占用两个字节  默认是888 占用4个字节
+        options.inSampleSize=2;//采集压缩  宽高都每隔inSampleSize 采集一次
+        Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.banner1,options);
+
+        int allocationByteCount2 = bitmap2.getAllocationByteCount();
+
+        LogUtils.e("allocationByteCount2=="+allocationByteCount2 );
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                new DownloadTask().execute(10);
             }
-        }
-        return length;
+        },"SubThread").start();
+
+
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -144,5 +149,42 @@ public class MainActivity extends AppCompatActivity
 //        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 //        drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    public  class DownloadTask extends AsyncTask<Integer,Integer,String> {
+
+        @Override
+        protected String doInBackground(Integer... integers) {
+            for(int i=0;i<integers[0];i++){
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                publishProgress(i);
+            }
+            return "doInBackground result";
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            System.out.println(Thread.currentThread().getName()+"onPreExecute=");
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+            //更新UI publishProgress方法触发
+            System.out.println(Thread.currentThread().getName()+"onProgressUpdate="+values[0]);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            //doInBackground方法执行结束之后
+            System.out.println(Thread.currentThread().getName()+"onPostExecute="+s);
+        }
     }
 }
