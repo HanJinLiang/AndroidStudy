@@ -26,8 +26,10 @@ public class FlvPlayActivity extends AppCompatActivity {
         //关键 player 对象与界面 view
         mLivePlayer.setPlayerView(mView);
 
-        String flvUrl = "http://183.214.92.119:8000/main/013512345305_2.flv";
-        mLivePlayer.startPlay(flvUrl, TXLivePlayer.PLAY_TYPE_LIVE_FLV); //推荐 FLV
+        //String flvUrl = "http://183.214.92.119:8000/main/013512345305_2.flv";
+        //mLivePlayer.startPlay(flvUrl, TXLivePlayer.PLAY_TYPE_LIVE_FLV); //推荐 FLV
+        String flvUrl ="rtmp://58.200.131.2:1935/livetv/hunantv";
+        mLivePlayer.startPlay(flvUrl, TXLivePlayer.PLAY_TYPE_LIVE_RTMP); //推荐 FLV
 
         // 设置填充模式
         mLivePlayer.setRenderMode(TXLiveConstants.RENDER_MODE_ADJUST_RESOLUTION);
