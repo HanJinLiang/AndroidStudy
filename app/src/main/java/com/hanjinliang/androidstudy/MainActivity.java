@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.MessageQueue;
 import android.view.View;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -87,6 +88,12 @@ public class MainActivity extends AppCompatActivity
             }
         },"SubThread").start();
 
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
 
     }
 

@@ -18,6 +18,10 @@ android {
 
         //Enabling multidex support.
         multiDexEnabled true
+
+        ndk{
+            abiFilters "armeabi-v7a"
+        }
     }
 
     signingConfigs {
@@ -125,4 +129,7 @@ dependencies {
     implementation 'cn.jzvd:jiaozivideoplayer:7.6.0'
 
     implementation 'com.tencent.liteav:LiteAVSDK_Player:latest.release'
+
+    implementation 'tv.danmaku.ijk.media:ijkplayer-java:0.8.8'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-exo:0.8.8'
 }
