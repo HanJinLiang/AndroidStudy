@@ -28,6 +28,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.hanjinliang.androidstudy.customerviews.CustomerViewStudyActivity;
 import com.hanjinliang.androidstudy.hotfix.TestUtils;
 import com.hanjinliang.androidstudy.javabase.JavaBaseStudyActivity;
+import com.hanjinliang.androidstudy.jjzg.JJZGMainActivity;
 import com.hanjinliang.androidstudy.systemwidget.SystemWidgetStudyActivity;
 import com.hanjinliang.androidstudy.thirdLibs.ThirdLibActivity;
 
@@ -150,6 +151,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
+
+        } else if (id == R.id.nav_JJZG) {
+            //进阶之光
+            startActivity(new Intent(this, JJZGMainActivity.class));
 
         }
 

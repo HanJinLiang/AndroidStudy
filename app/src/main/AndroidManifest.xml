@@ -33,7 +33,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".thirdLibs.aviPlay.AviPlayActivity"></activity>
+        <activity android:name=".jjzg.part1.NotificationStudyActivity"></activity>
+        <activity android:name=".thirdLibs.aviPlay.AviPlayActivity" />
         <activity android:name=".thirdLibs.flv.FlvPlayActivity" />
         <activity android:name=".systemwidget.netease.NeteaseSongListActivity" />
         <activity android:name=".customerviews.grayapp.GrayAppTestActivity" />
@@ -127,6 +128,9 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="fullUser"
             android:theme="@style/VideoAppTheme" />
+        <activity android:name=".jjzg.JJZGMainActivity" />
+        <activity android:name=".jjzg.part1.Part1MainActivity" />
+        <activity android:name=".jjzg.part1.PaletteStudyActivity" />
 
         <provider
             android:name=".systemwidget.contentprovider.MyProvider"

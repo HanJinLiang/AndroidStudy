@@ -46,7 +46,7 @@ public class MyRecyclerView extends RecyclerView {
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                getParent().requestDisallowInterceptTouchEvent(false);
+               // getParent().requestDisallowInterceptTouchEvent(false);
                 LogUtils.e("ACTION_UP");
                 break;
         }
