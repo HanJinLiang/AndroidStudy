@@ -17,6 +17,7 @@ import androidx.viewpager.widget.ViewPager;
 
 public class EventPatchActivity extends AppCompatActivity {
     ViewPager mViewPager;
+
     ArrayList<View> mViews=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,19 +26,6 @@ public class EventPatchActivity extends AppCompatActivity {
         mViewPager=  findViewById(R.id.viewpager);
 
         for(int i=0;i<5;i++){
-            if(i==3){
-                HorizontalScrollView horizontalScrollView=new HorizontalScrollView(this);
-                horizontalScrollView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 500));
-
-                TextView view=new TextView(this);
-                view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, 100));
-                view.setText("7月24日下午3时55分许，在华山长空栈道，一男子从容解开保险绳，稍作停顿，然后纵身一跃跳下悬崖，两旁正在通过栈道的游客目瞪口呆。3天后，华山景区搜救队寻获该男子遗体，警方也介入调查。"+i);
-                view.setBackgroundColor(Color.RED);
-                horizontalScrollView.addView(view);
-
-                mViews.add(horizontalScrollView);
-             continue;
-            }
             TextView view=new TextView(this);
             view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             view.setText("index===="+i);

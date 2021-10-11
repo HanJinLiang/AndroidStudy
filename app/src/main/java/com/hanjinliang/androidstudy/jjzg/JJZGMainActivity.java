@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.hanjinliang.androidstudy.jjzg.part1.Part1MainActivity;
+import com.hanjinliang.androidstudy.jjzg.part3.Part3MainActivity;
 
 public class JJZGMainActivity extends ListActivity {
 
@@ -29,6 +30,7 @@ public class JJZGMainActivity extends ListActivity {
             case 1://Part2_MaterialDesign
                 break;
             case 2://Part3_View自定义
+                start(Part3MainActivity.class);
                 break;
             case 3://Part4_多线程
                 break;

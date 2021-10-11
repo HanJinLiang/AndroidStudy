@@ -15,6 +15,7 @@ import com.hanjinliang.androidstudy.systemwidget.appbarlayout.AppBarLayoutActivi
 import com.hanjinliang.androidstudy.systemwidget.appbarlayout.ToolBarActivity;
 import com.hanjinliang.androidstudy.systemwidget.coordinatorlayout.CoordinatorLayoutActivity;
 import com.hanjinliang.androidstudy.systemwidget.eventpatch.EventPatchActivity;
+import com.hanjinliang.androidstudy.systemwidget.eventpatch.EventPatchActivity2;
 import com.hanjinliang.androidstudy.systemwidget.listselect.ListSelectActivity;
 import com.hanjinliang.androidstudy.systemwidget.netease.NeteaseSongListActivity;
 import com.hanjinliang.androidstudy.systemwidget.recyclerView.DragRecyclerViewActivity;
@@ -31,7 +32,7 @@ public class SystemWidgetStudyActivity extends ListActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             String[] pArray={" CoordinatorLayout学习","Toolbar学习","AppBarLayout学习","SlidingPaneLayout学习","重力感应器","ConstraintLayoutActivity"
-            ,"滑动事件冲突","ViewPager学习","列表单选和多选","拖动recyclerView","分组recyclerView","recyclerView截图","网易云歌单页效果"};
+            ,"滑动事件冲突","滑动事件冲突2 同方向","ViewPager学习","列表单选和多选","拖动recyclerView","分组recyclerView","recyclerView截图","网易云歌单页效果"};
             setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, pArray));//绑定数据源
         }
 
@@ -61,21 +62,24 @@ public class SystemWidgetStudyActivity extends ListActivity {
                     start(EventPatchActivity.class);
                     break;
                 case 7://
-                    start(ViewPagerStudyActivity.class);
+                    start(EventPatchActivity2.class);
                     break;
                 case 8://
-                    start(ListSelectActivity.class);
+                    start(ViewPagerStudyActivity.class);
                     break;
                 case 9://
-                    start(DragRecyclerViewActivity.class);
+                    start(ListSelectActivity.class);
                     break;
                 case 10://
-                    start(GroupRecyclerViewActivity.class);
+                    start(DragRecyclerViewActivity.class);
                     break;
                 case 11://
-                    start(RecyclerScreenShotActivity.class);
+                    start(GroupRecyclerViewActivity.class);
                     break;
                 case 12://
+                    start(RecyclerScreenShotActivity.class);
+                    break;
+                case 13://
                     start(NeteaseSongListActivity.class);
                     break;
             }
