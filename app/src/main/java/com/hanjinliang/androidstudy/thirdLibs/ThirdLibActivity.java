@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.hanjinliang.androidstudy.R;
+import com.hanjinliang.androidstudy.thirdLibs.CalendarView.CalendarViewActivity;
 import com.hanjinliang.androidstudy.thirdLibs.MPChart.MPChartDemoActivity;
 import com.hanjinliang.androidstudy.thirdLibs.aviPlay.AviPlayActivity;
 import com.hanjinliang.androidstudy.thirdLibs.camera.CameraVideoMainActivity;
@@ -21,7 +22,7 @@ public class ThirdLibActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String[] pArray={"查看大图PhotoView","MPChart","RxJava","功能引导蒙版","录制短视频","FLV格式视频","avi格式视频"};
+        String[] pArray={"查看大图PhotoView","MPChart","RxJava","功能引导蒙版","录制短视频","FLV格式视频","avi格式视频","CalendarView"};
         setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, pArray));//绑定数据源
     }
 
@@ -49,6 +50,9 @@ public class ThirdLibActivity extends ListActivity {
                 break;
             case 6:
                 start(AviPlayActivity.class);
+                break;
+            case 7:
+                start(CalendarViewActivity.class);
                 break;
         }
     }

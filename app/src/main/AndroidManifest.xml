@@ -33,7 +33,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".jjzg.part3.MoveViewActivity"></activity>
+        <activity android:name=".thirdLibs.CalendarView.CalendarViewActivity"></activity>
+        <activity android:name=".jjzg.part3.MoveViewActivity" />
         <activity android:name=".jjzg.part1.NotificationStudyActivity" />
         <activity android:name=".thirdLibs.aviPlay.AviPlayActivity" />
         <activity android:name=".thirdLibs.flv.FlvPlayActivity" />

@@ -1,5 +1,6 @@
 package com.hanjinliang.androidstudy.systemwidget.eventpatch;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +25,15 @@ public class EventPatchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_patch);
         mViewPager=  findViewById(R.id.viewpager);
-
+        findViewById(R.id.testButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.putExtra("data","页面返回数据");
+                setResult(RESULT_OK,intent);
+                finish();
+            }
+        });
         for(int i=0;i<5;i++){
             TextView view=new TextView(this);
             view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));

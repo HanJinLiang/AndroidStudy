@@ -5,6 +5,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
+    <Button
+        android:id="@+id/testButton"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:text="蔡总牛逼"/>
         <com.hanjinliang.androidstudy.systemwidget.eventpatch.MyScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">

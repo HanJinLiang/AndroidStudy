@@ -5,6 +5,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
+        <Button
+            android:id="@+id/testButton"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:text="测试registerForActivityResult"/>
         <com.hanjinliang.androidstudy.systemwidget.eventpatch.MySwipeRefreshLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
