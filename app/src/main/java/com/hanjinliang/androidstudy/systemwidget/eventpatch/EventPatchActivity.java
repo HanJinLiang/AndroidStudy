@@ -13,18 +13,31 @@ import com.hanjinliang.androidstudy.R;
 import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 public class EventPatchActivity extends AppCompatActivity {
     ViewPager mViewPager;
-
+     MySwipeRefreshLayout swipeRefreshLayout;
     ArrayList<View> mViews=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_patch);
         mViewPager=  findViewById(R.id.viewpager);
+        swipeRefreshLayout=findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                },2000);
+            }
+        });
         findViewById(R.id.testButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

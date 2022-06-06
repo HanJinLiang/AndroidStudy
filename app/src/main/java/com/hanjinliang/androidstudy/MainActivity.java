@@ -3,10 +3,10 @@ package com.hanjinliang.androidstudy;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.MessageQueue;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -14,14 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.blankj.utilcode.util.BarUtils;
-import com.blankj.utilcode.util.ImageUtils;
 import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.MapUtils;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -32,6 +30,7 @@ import com.hanjinliang.androidstudy.jjzg.JJZGMainActivity;
 import com.hanjinliang.androidstudy.systemwidget.SystemWidgetStudyActivity;
 import com.hanjinliang.androidstudy.thirdLibs.ThirdLibActivity;
 
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity
@@ -67,35 +66,13 @@ public class MainActivity extends AppCompatActivity
        // BarUtils.setStatusBarColor4Drawer( drawer, drawer,Color.parseColor("#4CAF50"));
         //BarUtils.setTranslucentForDrawerLayout(this,drawer);
 
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.banner1);
-
-        int allocationByteCount = bitmap.getAllocationByteCount();
-
-        LogUtils.e("allocationByteCount=="+allocationByteCount );
-
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inPreferredConfig=Bitmap.Config.RGB_565;//一个像素占用两个字节  默认是888 占用4个字节
-        options.inSampleSize=2;//采集压缩  宽高都每隔inSampleSize 采集一次
-        Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.banner1,options);
-
-        int allocationByteCount2 = bitmap2.getAllocationByteCount();
-
-        LogUtils.e("allocationByteCount2=="+allocationByteCount2 );
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                new DownloadTask().execute(10);
-            }
-        },"SubThread").start();
-
+        handler.sendEmptyMessageDelayed(0,3000);
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-
     }
 
     @Override
@@ -163,40 +140,21 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-
-    public  class DownloadTask extends AsyncTask<Integer,Integer,String> {
-
+    //内部静态类+WeakReference 解决Handler内存泄露
+    public static class MyHandler extends Handler{
+        WeakReference<MainActivity> activityWeakReference;
+        public MyHandler(MainActivity activity){
+            activityWeakReference=new WeakReference<MainActivity>(activity);
+        }
         @Override
-        protected String doInBackground(Integer... integers) {
-            for(int i=0;i<integers[0];i++){
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                publishProgress(i);
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            MainActivity mainActivity = activityWeakReference.get();
+            if(mainActivity!=null){
+//                mainActivity.onBackPressed();
             }
-            return "doInBackground result";
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            System.out.println(Thread.currentThread().getName()+"onPreExecute=");
-        }
-
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-            super.onProgressUpdate(values);
-            //更新UI publishProgress方法触发
-            System.out.println(Thread.currentThread().getName()+"onProgressUpdate="+values[0]);
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            //doInBackground方法执行结束之后
-            System.out.println(Thread.currentThread().getName()+"onPostExecute="+s);
+            LogUtils.e(Thread.currentThread().getName());
         }
     }
+    public MyHandler handler=new MyHandler(this);
 }

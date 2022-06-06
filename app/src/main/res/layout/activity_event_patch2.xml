@@ -1,42 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<com.hanjinliang.androidstudy.systemwidget.eventpatch.MyScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
-    <Button
-        android:id="@+id/testButton"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:text="蔡总牛逼"/>
-        <com.hanjinliang.androidstudy.systemwidget.eventpatch.MyScrollView
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                       <TextView
-                           android:layout_width="match_parent"
-                           android:layout_height="150dp"
-                           android:background="#890"
-                           android:text="title"
-                           android:gravity="center"
-                           android:textSize="30sp"/>
+            android:layout_height="300dp"
+            android:background="#890"
+            android:text="title"
+            android:gravity="center"
+            android:textSize="30sp"/>
 
-                        <ListView
-                            android:id="@+id/listView"
-                            android:layout_width="match_parent"
-                            android:layout_height="600dp"/>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="150dp"
-                            android:background="#890"
-                            android:text="bottom"
-                            android:gravity="center"
-                            android:textSize="30sp"/>
-                </LinearLayout>
-        </com.hanjinliang.androidstudy.systemwidget.eventpatch.MyScrollView>
-
-</LinearLayout>
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="#890"
+            android:text="bottom"
+            android:gravity="center"
+            android:textSize="30sp"/>
+    </LinearLayout>
+</com.hanjinliang.androidstudy.systemwidget.eventpatch.MyScrollView>
