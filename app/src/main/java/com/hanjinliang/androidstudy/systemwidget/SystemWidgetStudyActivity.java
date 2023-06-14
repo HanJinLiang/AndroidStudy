@@ -9,6 +9,7 @@ import android.widget.ListView;
 
 import com.hanjinliang.androidstudy.R;
 import com.hanjinliang.androidstudy.systemwidget.ConstraintLayout.ConstraintLayoutActivity;
+import com.hanjinliang.androidstudy.systemwidget.LevelAnim.LevelAnimActivity;
 import com.hanjinliang.androidstudy.systemwidget.Sensor.SensorTestActivity;
 import com.hanjinliang.androidstudy.systemwidget.SlidingPaneLayout.SlidingPaneLayoutActivity;
 import com.hanjinliang.androidstudy.systemwidget.appbarlayout.AppBarLayoutActivity;
@@ -32,7 +33,7 @@ public class SystemWidgetStudyActivity extends ListActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             String[] pArray={" CoordinatorLayout学习","Toolbar学习","AppBarLayout学习","SlidingPaneLayout学习","重力感应器","ConstraintLayoutActivity"
-            ,"滑动事件冲突","滑动事件冲突2 同方向","ViewPager学习","列表单选和多选","拖动recyclerView","分组recyclerView","recyclerView截图","网易云歌单页效果"};
+            ,"滑动事件冲突","滑动事件冲突2 同方向","ViewPager学习","列表单选和多选","拖动recyclerView","分组recyclerView","recyclerView截图","网易云歌单页效果","司机等级动画"};
             setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, pArray));//绑定数据源
         }
 
@@ -81,6 +82,9 @@ public class SystemWidgetStudyActivity extends ListActivity {
                     break;
                 case 13://
                     start(NeteaseSongListActivity.class);
+                    break;
+                case 14://
+                    start(LevelAnimActivity.class);
                     break;
             }
         }

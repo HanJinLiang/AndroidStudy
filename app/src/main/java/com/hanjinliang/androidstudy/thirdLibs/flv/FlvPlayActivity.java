@@ -69,7 +69,7 @@ public class FlvPlayActivity extends AppCompatActivity {
         //String flvUrl = "http://183.214.92.119:8000/main/013512345305_2.flv";
         //mLivePlayer2.startPlay(flvUrl, TXLivePlayer.PLAY_TYPE_LIVE_FLV); //推荐 FLV
         String flvUrl2 ="rtmp://58.200.131.2:1935/livetv/hunantv";
-        livePlayer.startPlay("http://183.214.92.119:8000/main/013512345303_1.flv", TXLivePlayer.PLAY_TYPE_LIVE_FLV); //推荐 FLV
+        livePlayer.startLivePlay("http://183.214.92.119:8000/main/013512345303_1.flv", TXLivePlayer.PLAY_TYPE_LIVE_FLV); //推荐 FLV
     }
     @Override
     public void onDestroy() {

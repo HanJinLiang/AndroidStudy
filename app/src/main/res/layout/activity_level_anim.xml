@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/tvLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="50sp"
+            tools:text="Lv.1"
+            android:textStyle="bold"
+            android:textColor="#000"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/llCrownOrDiamond"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:animateLayoutChanges="true"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/star_gray"
+                android:layout_margin="5dp"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/star_gray"
+                android:layout_margin="5dp"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/star_gray"
+                android:layout_margin="5dp"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/star_gray"
+                android:layout_margin="5dp"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/star_gray"
+                android:layout_margin="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llStar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="202dp"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true">
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/starDiamond"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/level_diamond"
+                android:layout_margin="5dp"
+                android:visibility="invisible"
+                tools:visibility="visible"/>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始动画"
+        android:onClick="startAnim"/>
+
+</LinearLayout>

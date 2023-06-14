@@ -137,6 +137,9 @@
         <activity android:name=".jjzg.part3.HorizontalViewActivity" />
         <activity android:name=".systemwidget.eventpatch.EventPatchActivity2" />
 
+        <activity android:name=".systemwidget.LevelAnim.LevelAnimActivity" />
+
+
         <provider
             android:name=".systemwidget.contentprovider.MyProvider"
             android:authorities="com.example.hanjinliang"
