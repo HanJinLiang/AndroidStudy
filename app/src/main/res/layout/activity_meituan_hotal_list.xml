@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".systemwidget.meituanHotalList.MeituanHotalListActivity">
+
+    <TextView
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#627"
+        android:textColor="#fff"
+        android:text="顶部布局"
+        android:gravity="center"/>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/panelLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="我是地图我是地图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图我是地图"
+                android:textColor="#afafaf"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/design_bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#ffffff"
+            app:behavior_hideable="false"
+            app:behavior_peekHeight="56dp"
+            app:behavior_halfExpandedRatio="0.8"
+            app:behavior_fitToContents="false"
+            app:layout_behavior="@string/bottom_sheet_behavior">
+
+            <TextView
+                android:id="@+id/handlerView"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="#012"
+                android:gravity="center"
+                android:text="是把手哈"
+                android:textColor="#768" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+
+        </LinearLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>
