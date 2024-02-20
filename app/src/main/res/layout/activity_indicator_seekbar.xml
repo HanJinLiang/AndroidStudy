@@ -69,7 +69,7 @@
             android:splitTrack="false"
             android:thumb="@drawable/seekbar_thumb"
             android:thumbOffset="4dp"
-
+            android:duplicateParentState="true"
             />
     </LinearLayout>
 
