@@ -15,6 +15,12 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/IndicatorSeekBarActivity"
+                    android:onClick="IndicatorSeekBarActivity"
+                    android:text="带指示的seekbar"/>
 
                 <Button
                     android:layout_width="match_parent"

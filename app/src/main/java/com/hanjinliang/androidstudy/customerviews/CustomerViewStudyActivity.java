@@ -13,6 +13,7 @@ import com.hanjinliang.androidstudy.customerviews.DashLine.DashLineActivity;
 import com.hanjinliang.androidstudy.customerviews.EraserView.EraserViewActivity;
 import com.hanjinliang.androidstudy.customerviews.EraserView.GuagualeViewActivity;
 import com.hanjinliang.androidstudy.customerviews.HealthIndexView.HealthIndexViewActivity;
+import com.hanjinliang.androidstudy.customerviews.IndicatorSeekBar.IndicatorSeekBarActivity;
 import com.hanjinliang.androidstudy.customerviews.LineView.LineViewActivity;
 import com.hanjinliang.androidstudy.customerviews.LoadingView.CircleLoadingViewActivity;
 import com.hanjinliang.androidstudy.customerviews.NetsScoreView.NetsScoreViewActivity;
@@ -364,6 +365,10 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
 
     public void GrayAppTestActivity(View view){
         startActivity(new Intent(this, GrayAppTestActivity.class));
+    }
+
+    public void IndicatorSeekBarActivity(View view){
+        startActivity(new Intent(this, IndicatorSeekBarActivity.class));
     }
 
 

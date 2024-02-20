@@ -138,6 +138,7 @@
         <activity android:name=".jjzg.part3.HorizontalViewActivity" />
         <activity android:name=".systemwidget.eventpatch.EventPatchActivity2" />
         <activity android:name=".systemwidget.LevelAnim.LevelAnimActivity" />
+        <activity android:name=".customerviews.IndicatorSeekBar.IndicatorSeekBarActivity" />
 
         <provider
             android:name=".systemwidget.contentprovider.MyProvider"
