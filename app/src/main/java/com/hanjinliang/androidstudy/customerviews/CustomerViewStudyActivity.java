@@ -44,6 +44,7 @@ import com.hanjinliang.androidstudy.customerviews.linerecyclerview.RecyclerLineV
 import com.hanjinliang.androidstudy.customerviews.radarview.RadarViewActivity;
 import com.hanjinliang.androidstudy.customerviews.rotate.RotateActivity;
 import com.hanjinliang.androidstudy.customerviews.scorlltextlayout.UpDownTextViewActivity;
+import com.hanjinliang.androidstudy.customerviews.signView.SignViewActivity;
 import com.hanjinliang.androidstudy.customerviews.stepview.StepViewActivity;
 import com.hanjinliang.androidstudy.customerviews.timeselect.DateTimePickerDemoActivity;
 import com.hanjinliang.androidstudy.customerviews.waveline.WaveLineActivity;
@@ -369,6 +370,10 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
 
     public void IndicatorSeekBarActivity(View view){
         startActivity(new Intent(this, IndicatorSeekBarActivity.class));
+    }
+
+    public void signViewActivity(View view){
+        startActivity(new Intent(this, SignViewActivity.class));
     }
 
 

@@ -33,7 +33,7 @@ public class BackendTestActivity extends AppCompatActivity {
     public void onClick(View view){
         switch (view.getId()){
             case R.id.uploadPic:
-                RDataRepository.getInstance().uploadPic(ImageUtils.bitmap2Bytes(ImageUtils.getBitmap(R.drawable.banner1), Bitmap.CompressFormat.JPEG), new BaseCallBackWithMessage<String>() {
+                RDataRepository.getInstance().uploadPic(ImageUtils.bitmap2Bytes(ImageUtils.getBitmap(R.drawable.banner1), Bitmap.CompressFormat.JPEG,100), new BaseCallBackWithMessage<String>() {
                     @Override
                     protected void onSuccess(String code, String message, String data) {
 

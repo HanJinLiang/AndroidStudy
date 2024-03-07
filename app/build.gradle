@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId "com.hanjinliang.androidstudy"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -96,7 +96,7 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
-    implementation 'com.blankj:utilcode:1.25.9'
+    implementation 'com.blankj:utilcode:1.30.6'
     implementation 'me.yifeiyuan.periscopelayout:library:1.0.0'
     implementation 'com.jph.takephoto:takephoto_library:4.0.3'
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'

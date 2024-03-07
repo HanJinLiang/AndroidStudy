@@ -139,6 +139,7 @@
         <activity android:name=".systemwidget.eventpatch.EventPatchActivity2" />
         <activity android:name=".systemwidget.LevelAnim.LevelAnimActivity" />
         <activity android:name=".customerviews.IndicatorSeekBar.IndicatorSeekBarActivity" />
+        <activity android:name=".customerviews.signView.SignViewActivity"/>
 
         <provider
             android:name=".systemwidget.contentprovider.MyProvider"

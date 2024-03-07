@@ -18,6 +18,12 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:id="@+id/signViewActivity"
+                    android:onClick="signViewActivity"
+                    android:text="手写签名View"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:id="@+id/IndicatorSeekBarActivity"
                     android:onClick="IndicatorSeekBarActivity"
                     android:text="带指示的seekbar"/>
