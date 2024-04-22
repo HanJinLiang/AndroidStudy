@@ -140,6 +140,7 @@
         <activity android:name=".systemwidget.LevelAnim.LevelAnimActivity" />
         <activity android:name=".customerviews.IndicatorSeekBar.IndicatorSeekBarActivity" />
         <activity android:name=".customerviews.signView.SignViewActivity"/>
+        <activity android:name=".systemwidget.recyclerView.expand.ExpandRecyclerViewActivity" />
 
         <provider
             android:name=".systemwidget.contentprovider.MyProvider"

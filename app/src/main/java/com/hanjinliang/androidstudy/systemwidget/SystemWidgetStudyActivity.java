@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.hanjinliang.androidstudy.R;
 import com.hanjinliang.androidstudy.systemwidget.ConstraintLayout.ConstraintLayoutActivity;
 import com.hanjinliang.androidstudy.systemwidget.LevelAnim.LevelAnimActivity;
 import com.hanjinliang.androidstudy.systemwidget.Sensor.SensorTestActivity;
@@ -21,6 +20,7 @@ import com.hanjinliang.androidstudy.systemwidget.listselect.ListSelectActivity;
 import com.hanjinliang.androidstudy.systemwidget.meituanHotalList.MeituanHotalListActivity;
 import com.hanjinliang.androidstudy.systemwidget.netease.NeteaseSongListActivity;
 import com.hanjinliang.androidstudy.systemwidget.recyclerView.DragRecyclerViewActivity;
+import com.hanjinliang.androidstudy.systemwidget.recyclerView.expand.ExpandRecyclerViewActivity;
 import com.hanjinliang.androidstudy.systemwidget.recyclerView.GroupRecyclerViewActivity;
 import com.hanjinliang.androidstudy.systemwidget.recyclerView.screenshot.RecyclerScreenShotActivity;
 import com.hanjinliang.androidstudy.systemwidget.viewpager.ViewPagerStudyActivity;
@@ -33,8 +33,9 @@ public class SystemWidgetStudyActivity extends ListActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            String[] pArray={" CoordinatorLayout学习","Toolbar学习","AppBarLayout学习","SlidingPaneLayout学习","重力感应器","ConstraintLayoutActivity"
-            ,"滑动事件冲突","滑动事件冲突2 同方向","ViewPager学习","列表单选和多选","拖动recyclerView","分组recyclerView","recyclerView截图","网易云歌单页效果","司机等级动画","美团酒店列表首页地图效果UI"};
+            String[] pArray={"CoordinatorLayout学习","Toolbar学习","AppBarLayout学习","SlidingPaneLayout学习","重力感应器","ConstraintLayoutActivity"
+            ,"滑动事件冲突","滑动事件冲突2 同方向","ViewPager学习","列表单选和多选","拖动recyclerView","分组recyclerView","recyclerView截图","网易云歌单页效果"
+                    ,"司机等级动画","美团酒店列表首页地图效果UI","展开列表",};
             setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, pArray));//绑定数据源
         }
 
@@ -89,6 +90,9 @@ public class SystemWidgetStudyActivity extends ListActivity {
                     break;
                 case 15:
                     start(MeituanHotalListActivity.class);
+                    break;
+                case 16:
+                    start(ExpandRecyclerViewActivity.class);
                     break;
             }
         }
