@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         TestUtils.test();
 
+        //解决rebase 冲突
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
