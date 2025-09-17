@@ -141,6 +141,7 @@
         <activity android:name=".customerviews.IndicatorSeekBar.IndicatorSeekBarActivity" />
         <activity android:name=".customerviews.signView.SignViewActivity"/>
         <activity android:name=".systemwidget.recyclerView.expand.ExpandRecyclerViewActivity" />
+        <activity android:name=".customerviews.ScrollTableView.ScrollTableActivity" />
 
         <provider
             android:name=".systemwidget.contentprovider.MyProvider"

@@ -306,8 +306,12 @@
                     android:onClick="PieChart"
                     android:text="PieChart"/>
 
-
-                PieChart
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/ScrollTable"
+                    android:onClick="ScrollTable"
+                    android:text="滚动表格"/>
 
             </LinearLayout>
         </ScrollView>

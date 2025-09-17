@@ -21,6 +21,7 @@ import com.hanjinliang.androidstudy.customerviews.NinePhotoView.NinePhotoViewAct
 import com.hanjinliang.androidstudy.customerviews.NumView.NumViewActivity;
 import com.hanjinliang.androidstudy.customerviews.PieChart.PieChartActivity;
 import com.hanjinliang.androidstudy.customerviews.Region.RegionCircleActivity;
+import com.hanjinliang.androidstudy.customerviews.ScrollTableView.ScrollTableActivity;
 import com.hanjinliang.androidstudy.customerviews.Scroller.ScrollerTestActivity;
 import com.hanjinliang.androidstudy.customerviews.SearchView.SearchViewActivity;
 import com.hanjinliang.androidstudy.customerviews.SelectLayout.SelectLayoutActivity;
@@ -67,7 +68,13 @@ public class CustomerViewStudyActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * StatusScrollView
+     * @param view
+     */
+    public void ScrollTable(View view){
+        startActivity(new Intent(this, ScrollTableActivity.class));
+    }
     /**
      * StatusScrollView
      * @param view
