@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AndroidStudy.iml" filepath="$PROJECT_DIR$/.idea/modules/AndroidStudy.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/AndroidStudy.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/AndroidStudy.app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/calendarview/AndroidStudy.calendarview.iml" filepath="$PROJECT_DIR$/.idea/modules/calendarview/AndroidStudy.calendarview.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/javatestlib/AndroidStudy.javatestlib.iml" filepath="$PROJECT_DIR$/.idea/modules/javatestlib/AndroidStudy.javatestlib.iml" />
